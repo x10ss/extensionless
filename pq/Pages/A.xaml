@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="pq.Pages.A"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Style="{StaticResource ContentRoot}">
+        <ScrollViewer>
+            <Grid MinWidth="200" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="7*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock HorizontalAlignment="Center" FontStyle="Italic" Grid.Row="2" Text=" . . . " Style="{StaticResource Heading2}" />
+                <TextBlock HorizontalAlignment="Center" FontStyle="Italic" Grid.Row="1">Page intentionally left blank</TextBlock>
+
+
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

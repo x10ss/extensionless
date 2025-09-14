@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="pq.Pages.F"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Style="{StaticResource ContentRoot}">
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <TextBlock Text="0" TextAlignment="Center" TextWrapping="Wrap" x:Name="Flaya7" />
+             
+                    <mui:ModernProgressRing Width="100" Style="{StaticResource RotatingPlaneProgressRingStyle}" x:Name="Loading"></mui:ModernProgressRing>
+                
+                        <TextBlock Text="0" TextAlignment="Center" TextWrapping="Wrap" x:Name="Flaya8" />
+                        <TextBlock Text="0" TextAlignment="Center" TextWrapping="Wrap" x:Name="Flaya9" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="8" HorizontalAlignment="Right" MinWidth="200">
+                
+                <TextBlock TextAlignment="Right" x:Name="Flaya" Style="{StaticResource Heading1}"  />
+                    <TextBlock TextAlignment="Right" x:Name="Flaya2" Style="{StaticResource Heading2}"  />
+                    <TextBlock TextAlignment="Right" x:Name="Flaya3" />
+                    <TextBlock TextAlignment="Right" x:Name="Flaya4" />
+                    <TextBlock TextAlignment="Right" x:Name="Flaya5" />
+            </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                <TextBlock TextAlignment="Left" Height="{Binding ActualHeight}" x:Name="Flaya6" />
+            </StackPanel>
+                <Image x:Name="image1"></Image>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,40 @@
+﻿<mui:ModernDialog x:Class="pq.Pages.FlagPicker"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                  xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+                  mc:Ignorable="d" 
+                  xmlns:country="clr-namespace:CountryFlag;assembly=CountryFlag"
+                  d:DesignHeight="300" d:DesignWidth="300"
+                  Title="Country Picker">
+    <Grid ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource ContentRoot}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="SRCH" KeyUp="SRCH_KeyUp"></TextBox>
+        <ListBox Grid.Row="1" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedItem="{Binding CTRY,Mode=TwoWay}" x:Name="CTRIES" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="10" HorizontalAlignment="Center"/>
+
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="36" Height="36">
+                        <Border BorderBrush="{DynamicResource ItemText}" BorderThickness="1">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                                <Border Background="{DynamicResource SeparatorBackground}" BorderBrush="{DynamicResource SeparatorBackground}" BorderThickness="2">
+                                    <country:CountryFlag Code="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="28" Height="18"></country:CountryFlag>
+                                </Border>
+                                <TextBlock FontSize="11" FontWeight="Bold" FontStretch="ExtraExpanded" FontFamily="Consolas" HorizontalAlignment="Center" Text="{Binding Converter={StaticResource ToUpperConverter}}"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</mui:ModernDialog>

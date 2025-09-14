@@ -1,0 +1,349 @@
+﻿<UserControl x:Class="pq.FETdetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:pq.Pages"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:local="clr-namespace:pq.MyConverters"
+             xmlns:drawing2d="clr-namespace:System.Drawing.Drawing2D;assembly=System.Drawing"
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <local:ConverterSample x:Key="ConverterSample"></local:ConverterSample>
+        <local:BorderBras x:Key="BorderBras"></local:BorderBras>
+        <local:InvBool x:Key="InvBool"></local:InvBool>
+        <local:InvTmpl2Bool x:Key="InvTmpl2Bool"></local:InvTmpl2Bool>
+        <local:ConverterSample22 x:Key="ConverterSample22"></local:ConverterSample22>
+        <local:Tmpl2Bool x:Key="Tmpl2Bool"></local:Tmpl2Bool>
+        <local:FourthBool x:Key="FourthBool"></local:FourthBool>
+        <local:ThirdBool x:Key="ThirdBool"></local:ThirdBool>
+        <local:ConverterSample2 x:Key="ConverterSample2"></local:ConverterSample2>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <local:MyBoolToVis x:Key="MyBoolToVis" />
+        <local:NullToVis x:Key="NullToVis" />
+        <local:RealTmpl2Bool x:Key="RealTmpl2Bool" />
+        <local:Open x:Key="Open" />
+        <local:Binary x:Key="Binary" />
+        <local:Mine x:Key="Mine" />
+        <local:Aux x:Key="Aux" />
+        <local:InvBoolToVis x:Key="InvBoolToVis" />
+        <local:RealConverterSample x:Key="RealConverterSample" />
+        <local:DateString x:Key="DateString" />
+    </UserControl.Resources>
+    <UserControl.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Delete" Executed="NewCommand_Executed2" CanExecute="NewCommand_CanExecute2" />
+    </UserControl.CommandBindings>
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="ADD KEY"  Foreground="LightGreen" Background="ForestGreen">
+                <MenuItem.Icon>
+                    <ContentPresenter Content="{StaticResource appbar_chess_king}"></ContentPresenter>
+
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Click="MenuItem_Click" Header="Reload registry" Foreground="LightGreen" Background="ForestGreen">
+                <MenuItem.Icon>
+                    <ContentPresenter Content="{StaticResource appbar_alien}"></ContentPresenter>
+                </MenuItem.Icon>
+
+            </MenuItem>
+            <MenuItem Header="BACK" Foreground="LightGreen" Background="ForestGreen">
+                <MenuItem.Icon>
+                    <ContentPresenter Content="{StaticResource appbar_alien}"></ContentPresenter>
+                </MenuItem.Icon>
+
+            </MenuItem>
+            <MenuItem Header="BACK" Foreground="LightGreen" Background="ForestGreen">
+                <MenuItem.Icon>
+                    <ContentPresenter Content="{StaticResource appbar_alien}"></ContentPresenter>
+                </MenuItem.Icon>
+
+            </MenuItem>
+            <MenuItem  Header="History log" Foreground="Teal" Background="LightGreen">
+                <MenuItem.Icon>
+                    <ContentPresenter Content="{StaticResource appbar_acorn}"></ContentPresenter>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Default apps"  Foreground="LightGreen" Background="ForestGreen">
+                <MenuItem.Icon>
+                    <ContentPresenter Content="{StaticResource appbar_undo_point}"></ContentPresenter>
+
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Start templating" Foreground="Teal" Background="LightGreen">
+                <MenuItem.Icon>
+                    <ContentPresenter Content="{StaticResource appbar_book_side}"></ContentPresenter>
+
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem  Header="Tutorial"  Foreground="LightGreen" Background="ForestGreen">
+                <MenuItem.Icon>
+                    <ContentPresenter Content="{StaticResource appbar_chess_king}"></ContentPresenter>
+
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="aBOUT"  Foreground="LightGreen" Background="ForestGreen">
+                <MenuItem.Icon>
+                    <ContentPresenter Content="{StaticResource appbar_chess_king}"></ContentPresenter>
+
+                </MenuItem.Icon>
+            </MenuItem>
+
+        </ContextMenu>
+
+    </UserControl.ContextMenu>
+    <Grid Style="{StaticResource ContentRoot}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Resources>
+
+        </Grid.Resources>
+
+        <Grid Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox VerticalAlignment="Top" x:Name="Searchit" Grid.Row="0" HorizontalAlignment="Stretch" ToolTip="Search" Margin="5" KeyUp="TextBox_KeyUp"></TextBox>
+            <mui:ModernProgressRing Visibility="{Binding IsLoading,Converter={StaticResource BoolToVis}}" Style="{StaticResource WaveProgressRingStyle}" Grid.Row="1" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"></mui:ModernProgressRing>
+            <ListBox Visibility="{Binding IsLoading,Converter={StaticResource InvBoolToVis}}" PreviewKeyDown="Board_PreviewKeyDown" x:Name="Board" SelectionMode="Extended" VerticalAlignment="Top" SizeChanged="Gridlock" Grid.Row="1" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListBox_Selected" ItemsSource="{Binding FEIs}"
+                         SelectedItem="{Binding SelectedFE}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="{Binding Cols}" HorizontalAlignment="Center"/>
+
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ToolTip="{Binding FullName}" Width="45" Height="40" Margin="2" >
+
+                            <Border>
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0.5,0.2" EndPoint="1,1">
+                                        <GradientStop Offset="0" Color="{Binding FEColor}" />
+                                        <GradientStop Offset="1" Color="{Binding PGB}" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Grid>
+
+                                    <TextBlock  Foreground="{Binding IsDark}" Text="{Binding Name}" Margin="2">
+                                    </TextBlock>
+                                    <StackPanel Margin="4,22,0,0" Orientation="Horizontal">
+                                        <TextBlock  Foreground="{Binding IsDark}" ToolTip="Templated"  Visibility="{Binding TemplateID,Converter={StaticResource RealConverterSample}}">♥</TextBlock>
+                                        <TextBlock  Foreground="{Binding IsDark}" ToolTip="AUX"  Visibility="{Binding IsExtended,Converter={StaticResource BoolToVis}}">+</TextBlock>
+                                        <TextBlock  Foreground="{Binding IsDark}" ToolTip="MY" Visibility="{Binding IsMine,Converter={StaticResource BoolToVis}}">○</TextBlock>
+                                    </StackPanel>
+                                    <RadioButton GroupName="{Binding ID}" Foreground="{DynamicResource ItemText}" IsEnabled="False" IsChecked="{Binding IsEnabled}" Margin="27,18,0,0"/>
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <GridSplitter Grid.Column="1" />
+        <Border Margin="{StaticResource SplitRight}"  Grid.Column="2" BorderBrush="{DynamicResource Accent}"   Background="{DynamicResource gdb}" BorderThickness="1" Padding="5,0,5,5" CornerRadius="0,0,22,22">
+
+            <Grid ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <Grid   VerticalAlignment="Bottom" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid  Grid.Row="0" Visibility="{Binding SelectedFE, Converter={StaticResource ConverterSample}}">
+                        <TextBlock   Margin="10,0,5,0" ToolTip="Extension name" HorizontalAlignment="Left" TextTrimming="CharacterEllipsis" FontWeight="Bold" FontSize="20">
+                      
+                        <Run Text="{Binding SelectedFE.Name}"></Run>
+
+                        </TextBlock>
+                        <StackPanel  HorizontalAlignment="Right"  Orientation="Vertical" Margin="16,0,16,0">
+
+                            <!--  <TextBlock FontSize="11" TextTrimming="CharacterEllipsis" FontFamily="Consolas" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="Logged in user">
+                            <Run Text="Admin:"></Run>
+                            <Run MouseLeftButtonDown="Run_MouseLeftButtonDown" Text="{Binding Username}"></Run>
+
+                        </TextBlock>
+-->
+                            <TextBlock FontSize="11" TextTrimming="CharacterEllipsis" FontFamily="Consolas"  VerticalAlignment="Bottom"  HorizontalAlignment="Right" ToolTip="Last record time" Text="{Binding SelectedFE.Last, Converter={StaticResource DateString}}"></TextBlock>
+                            <TextBlock FontSize="11" TextTrimming="CharacterEllipsis" FontFamily="Consolas"  VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="Registry" Text="{Binding RegKey}"></TextBlock>
+                        </StackPanel>
+
+                    </Grid>
+                    <Border ClipToBounds="True" BorderThickness="2" BorderBrush="{DynamicResource SeparatorBackground}" CornerRadius="0,0,22,22" Grid.Row="0" Grid.RowSpan="5"  Background="{DynamicResource WindowBackground}" Visibility="{Binding SelectedFE, Converter={StaticResource ConverterSample2}}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Content="{StaticResource appbar_cabinet_files_variant}" ></ContentPresenter>
+                    </Border>
+                    <Border CornerRadius="0,0,22,22" Grid.Row="1"  Visibility="{Binding SelectedFE, Converter={StaticResource ConverterSample}}"  Background="{DynamicResource WindowBackground}" BorderBrush="{Binding SelectedFE.TemplateID, Converter={StaticResource BorderBras}}" BorderThickness="2">
+                        <StackPanel>
+
+                            <StackPanel.Resources>
+                                <!--<Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type RadioButton}}">
+                         <Setter Property="Foreground" Value="Orange" />
+                    </Style> -->
+                                <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                    <Setter Property="Foreground" Value="LimeGreen" />
+                                </Style>
+                            </StackPanel.Resources>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Margin="10,5,5,0" ToolTip="Full name" Style="{StaticResource Heading2}" TextTrimming="CharacterEllipsis" FontStyle="Italic" Foreground="{DynamicResource ButtonTextDisabled}" HorizontalAlignment="Left">
+                        <Run  Text="{Binding SelectedFE.FullName}" ></Run>
+                                </TextBlock >
+                                <StackPanel Margin="5,5,10,0" Grid.Column="1" HorizontalAlignment="Right" >
+
+                                    <TextBlock FontStyle="Italic" HorizontalAlignment="Right" Foreground="{DynamicResource ItemTextDisabled}" TextTrimming="CharacterEllipsis">
+                        <Run ToolTip="Category" Text="{Binding SelectedFE.FT}" ></Run>
+                        <Run Text="→"></Run>
+                        <Run ToolTip="Subcategory" Text="{Binding SelectedFE.FEMTE}"></Run>
+
+
+                                    </TextBlock>
+                                    <TextBlock FontStyle="Italic" HorizontalAlignment="Right" Foreground="{DynamicResource ItemTextDisabled}" VerticalAlignment="Center"  TextTrimming="CharacterEllipsis">
+                                          <Run ToolTip="EXTENSION MIME TYPE">Application/Zip</Run>                                    
+                                          <Run  ToolTip="EXTENSION FROM MY LIBRARY" Text="{Binding SelectedFE.IsMine,Converter={StaticResource Mine}}"></Run>                                    
+                                          <Run  ToolTip="EXTENSION FROM AUXILARY LIBRARY"  Text="{Binding SelectedFE.IsExtended,Converter={StaticResource Aux}}"></Run>
+                                    </TextBlock>
+
+
+
+                                    <TextBlock  FontStyle="Italic" HorizontalAlignment="Right" Foreground="{DynamicResource ItemTextDisabled}" TextTrimming="CharacterEllipsis">
+                                     
+                        <Run ToolTip="Binary | Plain Text" Text="{Binding SelectedFE.IsBinary,Converter={StaticResource Binary} }"></Run>
+                        <Run Text="•"></Run>
+                        <Run ToolTip="Proprietary | Open" Text="{Binding SelectedFE.IsOpen,Converter={StaticResource Open} }"></Run>
+                                    </TextBlock>
+
+
+                                </StackPanel>
+                            </Grid>
+                            <StackPanel Margin="0, -25, 0, 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <RadioButton Unchecked="On_Unchecked" Checked="On_Checked_1" PreviewMouseLeftButtonDown ="RadioButton_Checked" IsChecked="{Binding SelectedFE.IsEnabled,Mode=TwoWay,Converter={StaticResource FourthBool}}" ToolTip="Turn ON" Foreground="LightGreen" x:Name="On"/>
+                                <ContentPresenter Visibility="{Binding SelectedFE.IsEnabled, Converter={StaticResource InvBoolToVis}}" Content="{StaticResource appbar_connect}"></ContentPresenter>
+                                <ContentPresenter Visibility="{Binding SelectedFE.IsEnabled, Converter={StaticResource MyBoolToVis }}" Content="{StaticResource appbar_disconnect}"></ContentPresenter>
+                                <ContentPresenter Visibility="{Binding SelectedFE.IsEnabled, Converter={StaticResource NullToVis }}" Content="{StaticResource appbar_diagram}"></ContentPresenter>
+
+                                <RadioButton PreviewMouseLeftButtonDown ="RadioButton_Checked" Unchecked="Off_Unchecked" IsChecked="{Binding SelectedFE.IsEnabled,Mode=TwoWay , Converter={StaticResource ThirdBool}}" Checked="Off_Checked"  ToolTip="Turn OFF" Foreground="LightCoral" x:Name="Off">
+
+                                </RadioButton>
+
+
+
+                                <!--IsChecked="{Binding SelectedFE.IsEnabled}"/>-->
+
+
+
+
+                            </StackPanel>
+
+                            <!--     <StackPanel Visibility="{Binding Path=SelectedFE.IsEnabled, Converter={StaticResource BoolToVis}}" Orientation="Horizontal" HorizontalAlignment="Center" Margin="1">
+
+
+                        <ContentPresenter Content="{StaticResource appbar_app_plus}"></ContentPresenter>
+                    <CheckBox x:Name="Full" Unchecked="Full_Checked" Checked="Full_Checked"></CheckBox>
+                    <ContentPresenter Content="{StaticResource appbar_app_minus}"></ContentPresenter>
+                      <RadioButton Name="Empty" Checked="RadioButton_Checked" Content="Empty"/>
+                    <RadioButton Name="Full" Checked="RadioButton_Checked" Content="Templateds!"/>
+                    </StackPanel>
+-->
+
+                            <StackPanel Orientation="Vertical"  Visibility="{Binding Path=SelectedFE.TemplateID, Converter={StaticResource ConverterSample22}}" Margin="20,0,20,5" HorizontalAlignment="Stretch">
+
+                                <Border  MinWidth="110" CornerRadius="22,0,0,22" BorderThickness="1" BorderBrush="{DynamicResource ButtonTextDisabled}" Grid.Row="0" 
+                                    Visibility="{Binding SelectedFE.TemplateID, Converter={StaticResource InvTmpl2Bool}}"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="{DynamicResource ItemTextDisabled}">
+                                    <Border CornerRadius=" 22,0,0,22" BorderThickness="1" Background="{DynamicResource gd}">
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Margin="10,0,0,0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                                <TextBlock FontFamily="Consolas" FontSize="11" Foreground="WhiteSmoke">✖ Browse Boilerplate</TextBlock>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+
+                                                <Button x:Name="plus" ClipToBounds="True" Command="ApplicationCommands.New" ToolTip="Add Boilerplate File AS Template" >
+                                                    <ContentPresenter Content="{StaticResource appbar_app_plus}"></ContentPresenter>
+                                                </Button>
+
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                                <Border MinWidth="180"  CornerRadius="22,0,0,22"  Grid.Row="1" BorderThickness="1"
+                                     BorderBrush="{DynamicResource ButtonTextDisabled}" Visibility="{Binding SelectedFE.TemplateID, Converter={StaticResource Tmpl2Bool}}" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="LightGreen">
+                                    <Border CornerRadius=" 22,0,0,22" BorderThickness="1" Background="{DynamicResource gd}">
+
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0" Margin="10,0,0,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                                <TextBlock TextWrapping="Wrap" FontSize="11" Text="✔ " Foreground="ForestGreen"></TextBlock>
+                                                <TextBlock TextTrimming="CharacterEllipsis"  FontFamily="Consolas" FontSize="11" Text="{Binding SelectedFE.TemplateID}" Foreground="ForestGreen"></TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Button x:Name="open" ClipToBounds="True"  Click="open_Click" ToolTip="Open Boilerplate File" >
+                                                    <ContentPresenter Content="{StaticResource appbar_book_open_text}"></ContentPresenter>
+                                                </Button>
+                                                <Button x:Name="minus" ClipToBounds="True" Command="ApplicationCommands.Delete"  ToolTip="Remove Boilerplate File - Empty Template">
+                                                    <ContentPresenter Content="{StaticResource appbar_app_minus}"></ContentPresenter>
+                                                </Button>
+
+                                            </StackPanel>
+
+                                            <!-- <ContentPresenter Content="{StaticResource appbar_lock}"></ContentPresenter>
+   <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Command="ApplicationCommands.New" >
+                                    <ContentPresenter Content="{StaticResource appbar_page_add}"></ContentPresenter>
+                                </Button>
+                              <Button Command="ApplicationCommands.Delete">
+
+                                    <ContentPresenter Content="{StaticResource appbar_delete}"></ContentPresenter>
+                                </Button>
+                            </StackPanel>-->
+
+                                        </Grid>
+                                    </Border>
+                                </Border>
+
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal">
+
+
+                                <TextBlock Margin="10" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" Visibility="{Binding SelectedFE.TemplateID, Converter={StaticResource InvTmpl2Bool} }" ToolTip="Status"  Foreground="LightCoral">◼ TEMPLATE IS EMPTY</TextBlock>
+                                <TextBlock Margin="10" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" Visibility="{Binding SelectedFE.TemplateID, Converter={StaticResource RealConverterSample} }" ToolTip="Status" Foreground="LightSeaGreen" >♥ EXTENSION TEMPLATED</TextBlock>
+                                <TextBlock Margin="10" HorizontalAlignment="Center" Visibility="{Binding SelectedFE.IsEnabled, Converter={StaticResource InvBoolToVis} }"  ToolTip="Status" Foreground="DimGray" >◻ OFF</TextBlock>
+                            </StackPanel>
+                            <!--  <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
+                    <mui:BBCodeBlock BBCode="[url=/Pages/Frame.xaml]Create Files With Extensionless Tools[/url]" />
+
+                </StackPanel>-->
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+            </Grid>
+        </Border>
+
+
+    </Grid>
+
+
+</UserControl>

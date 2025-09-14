@@ -1,0 +1,34 @@
+﻿<mui:ModernDialog x:Class="pq.Pages.OpenDialog"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                  xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+                  mc:Ignorable="d"
+                  Height="555" Width="888"
+                  
+                  Title="Choose Load">
+    <DockPanel >
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+            <!-- <TextBlock Style="{StaticResource Heading2}" x:Name="Username"/>-->
+
+
+
+            <TreeView MaxWidth="350" HorizontalAlignment="Left">
+                <TreeViewItem MouseLeave="TreeViewItem_MouseLeave" MouseDoubleClick="TreeViewItem_MouseDoubleClick_2" IsExpanded="True" IsEnabled="{Binding IsAdmin}" Header="MACHINE REGISTRY" Selected="TreeViewItem_Selected_1">
+                    <TreeViewItem  FontSize="10" IsEnabled="False" Header="○ Registry are read from the Registry.ClassesRoot."></TreeViewItem>
+                    <TreeViewItem FontSize="10" IsEnabled="False" Header="○ Templates Copied to each users USERNAME/TEMPLATES/ folder."></TreeViewItem>
+                    <TreeViewItem FontSize="10" IsEnabled="False" Header="○ Each user has this settings unless they specify differently."></TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem MouseLeave="TreeViewItem_MouseLeave_1" MouseDoubleClick="TreeViewItem_MouseDoubleClick_3" IsExpanded="True" IsEnabled="{Binding IsAdmin}"  Header="CURRENT USER REGISTRY" Selected="TreeViewItem_Selected">
+                    <TreeViewItem FontSize="10" IsEnabled="False" Header="• Registry are read from the Registry.CurrentUser.Software.Classes."></TreeViewItem>
+                    <TreeViewItem  FontSize="10" IsEnabled="False" Header="• Templates Copied only to your USERNAME/TEMPLATES/ folder."></TreeViewItem>
+                    <TreeViewItem  FontSize="10" IsEnabled="False" Header="• These settings apply only to you."></TreeViewItem>
+                </TreeViewItem>
+            </TreeView>
+        </StackPanel>
+        <StackPanel Margin="0,10,0,0" Orientation="Vertical" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+            <CheckBox Content="Don't ask again?"></CheckBox>
+        </StackPanel>
+    </DockPanel>
+</mui:ModernDialog>

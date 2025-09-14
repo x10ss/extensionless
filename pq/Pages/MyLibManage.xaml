@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="pq.Pages.MyLibManage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Style="{StaticResource ContentRoot}">
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <UniformGrid Columns="2" Rows="1">
+                    <StackPanel  Margin="3" Orientation="Vertical">
+                        <TextBlock Text="Extension:"></TextBlock>
+                        <TextBox Margin="3" x:Name="Name"></TextBox>
+                    </StackPanel>
+                    <StackPanel  Margin="3" Orientation="Vertical">
+                        <TextBlock Text="Full name: "></TextBlock>
+                        <TextBox  Margin="3" x:Name="FullName"></TextBox>
+                    </StackPanel>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Rows="1">
+                    <StackPanel  Margin="3" Orientation="Vertical">
+                        <TextBlock Text="Category: "></TextBlock>
+                        <ComboBox Margin="3" x:Name="FT"></ComboBox>
+                    </StackPanel>
+                    <StackPanel  Margin="3" Orientation="Vertical">
+                        <TextBlock Text="Subcategory: "></TextBlock>
+                        <ComboBox Margin="3"  x:Name="FEMTE"></ComboBox>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="2" Rows="1">
+                    <StackPanel Margin="3" HorizontalAlignment="Center"  Orientation="Vertical">
+                        <StackPanel  Orientation="Horizontal">
+                            <RadioButton Margin="3"  Content="Proprietary" x:Name="Proprietary"></RadioButton>
+                            <RadioButton Margin="3"  Content="Open" x:Name="Open"></RadioButton>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel  Margin="3" HorizontalAlignment="Center" Orientation="Vertical">
+                        <StackPanel  Orientation="Horizontal">
+                            <RadioButton  Margin="3" Content="Binary"  x:Name="Binary"></RadioButton>
+                            <RadioButton Margin="3"  Content="PlainText" x:Name="Plain_Text"></RadioButton>
+                        </StackPanel>
+                    </StackPanel>
+                </UniformGrid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

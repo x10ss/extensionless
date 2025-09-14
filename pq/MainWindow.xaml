@@ -1,0 +1,53 @@
+﻿<mui:ModernWindow x:Class="pq.MainWindow"
+                  x:Name="MW"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+            Title="extensionless•com" IsTitleVisible="True"
+              WindowStartupLocation="Manual"
+    Left="25" Top="15"
+                  MinWidth="1120"
+                  MinHeight="630"
+                  Loaded="MW_Loaded"
+                   Closing="MW_Closing"
+                  KeyDown="MW_KeyDown"
+       ContentSource="/Pages/Home.xaml">
+    <!--LogoData="M6715 657c-2183,-322 -4356,724 -5464,2639l-204 350 1987 1147 205 -341 2 -3c352,-609 892,-1072 1534,-1328l0 2215 -4003 2312 125 320c447,1145 1264,2094 2328,2709 822,474 1747,724 2696,724l6 0 398 -3 0 -2300 -403 2c-545,0 -1075,-143 -1547,-415 -129,-75 -252,-158 -368,-249l1918 -1108 4007 2313 215 -272c168,-212 320,-435 455,-669 967,-1675 963,-3729 0,-5400l-199 -347 -1992 1150 199 347c348,604 482,1310 384,1994l-1912 -1104 -21 -3904 -2 -731 -344 -48z"      -->
+    <!--LogoData="M6715 657c-2183,-322 -4356,724 -5464,2639l-204 350 1987 1147 205 -341 2 -3c352,-609 892,-1072 1534,-1328l0 2215 -4003 2312 125 320c447,1145 1264,2094 2328,2709 822,474 1747,724 2696,724l6 0 398 -3 0 -2300 -403 2c-545,0 -1075,-143 -1547,-415 -129,-75 -252,-158 -368,-249l1918 -1108 4007 2313 215 -272c168,-212 320,-435 455,-669 967,-1675 963,-3729 0,-5400l-199 -347 -1992 1150 199 347c348,604 482,1310 384,1994l-1912 -1104 -21 -3904 -2 -731 -344 -48z"      -->
+
+
+
+    <mui:ModernWindow.MenuLinkGroups>
+
+        <mui:LinkGroup DisplayName="Home">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="| Home |" Source="/Pages/Home.xaml" />
+
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+        <mui:LinkGroup DisplayName="Switchbox">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="| PICKS |" Source="/Pages/Split8.xaml" />
+                <mui:Link DisplayName="| Code |" Source="/Pages/Split.xaml"/>
+                <mui:Link DisplayName="| Documents |" Source="/Pages/Split2.xaml"/>
+                <mui:Link DisplayName="| Media |" Source="/Pages/Split3.xaml"/>
+                <mui:Link DisplayName="| Data |" Source="/Pages/Split4.xaml" />
+                <mui:Link DisplayName="| Misc |" Source="/Pages/Split5.xaml" />
+                <mui:Link DisplayName="| Games |" Source="/Pages/Split6.xaml" />
+                <mui:Link DisplayName="| ALL |" Source="/Pages/Split7.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+
+        <mui:LinkGroup DisplayName="Catalog">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="| Quickstart |" Source="/Pages/Templates.xaml" />
+                <mui:Link DisplayName="| Community Exhibition |" Source="/Pages/UserTemplates.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+        <!--<mui:LinkGroup DisplayName="Utility">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="| Forge |" Source="/Pages/ControlsStylesDataGrid.xaml" />
+                <mui:Link DisplayName="| Warehouse |" Source="/Pages/ExtendedLib.xaml" />
+            </mui:LinkGroup.Links>-->
+    </mui:ModernWindow.MenuLinkGroups>
+</mui:ModernWindow>

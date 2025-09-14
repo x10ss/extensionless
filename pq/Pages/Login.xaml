@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="pq.Pages.Login"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Orientation="Vertical" Style="{StaticResource ContentRoot}" >
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Style="{StaticResource Heading1}" VerticalAlignment="Center" Text="Log"></TextBlock>
+            <ContentPresenter Content="{StaticResource appbar_elevator_up}"></ContentPresenter>
+            <TextBlock Style="{StaticResource Heading1}" VerticalAlignment="Center" Text="In"></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Right" Content="ID: " Grid.Column="0">
+                </Label>
+                <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Stretch">
+                    <TextBox MaxLength="36" x:Name="exguid"></TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Right" Content="Username: " Grid.Column="0">
+                </Label>
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <TextBox MaxLength="15" x:Name="exuser"></TextBox>
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+        
+    </StackPanel>
+</UserControl>

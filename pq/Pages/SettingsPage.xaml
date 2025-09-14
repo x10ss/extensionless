@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="pq.Pages.SettingsPage"
+             x:Name="setpg"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Style="{StaticResource ContentRoot}">
+        <mui:ModernTab x:Name="spfaq" Layout="List" SelectedSource="/Pages/Faq/faq1.xaml">
+            <mui:ModernTab.Links >
+                <mui:Link DisplayName="Extensionless App" Source="/Pages/Faq/faq1.xaml" />
+                <mui:Link DisplayName="File extensions" Source="/Pages/Faq/faq2.xaml" />
+                <mui:Link DisplayName="Open with defaults" Source="/Pages/Faq/faq3.xaml" />
+                <mui:Link DisplayName="Proprietary / Open" Source="/Pages/Faq/faq4.xaml" />
+                <mui:Link DisplayName="Bulk actions" Source="/Pages/Faq/faq5.xaml" />
+                <mui:Link DisplayName="Turn on Extension" Source="/Pages/Faq/faq6.xaml" />
+                <mui:Link DisplayName="Template an extension" Source="/Pages/Faq/faq7.xaml" />
+                <mui:Link DisplayName="Turn off extension" Source="/Pages/Faq/faq8.xaml" />
+                <mui:Link DisplayName="Machine / User" Source="/Pages/Faq/faq9.xaml" />
+                <mui:Link DisplayName="Log interpretation" Source="/Pages/Faq/faq10.xaml" />
+                <mui:Link DisplayName="Plain text / Binary" Source="/Pages/Faq/faq11.xaml" />
+
+                <mui:Link DisplayName="Repair" Source="/Pages/Faq/faq12.xaml" />
+                <mui:Link DisplayName="Templates storage" Source="/Pages/Faq/faq13.xaml" />
+
+                <mui:Link DisplayName="Add your extension" Source="/Pages/Faq/faq14.xaml" />
+                <mui:Link DisplayName="Create template files" Source="/Pages/Faq/faq15.xaml" />
+                <mui:Link DisplayName="Auxiliary library" Source="/Pages/Faq/faq16.xaml" />
+                <mui:Link DisplayName="Extensionless templates" Source="/Pages/Faq/faq17.xaml" />
+            </mui:ModernTab.Links>
+        </mui:ModernTab>
+    </Grid>
+</UserControl>

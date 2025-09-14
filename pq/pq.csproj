@@ -1,0 +1,1040 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{92A809EE-03D1-4B15-8837-B2DCB5A9690F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>pq</RootNamespace>
+    <AssemblyName>pq</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <PublishUrl>ftp://extensionless.com//public_html/download/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>https://download.extensionless.com/</InstallUrl>
+    <UpdateUrl>http://download.extensionless.com/</UpdateUrl>
+    <SupportUrl>http://support.extensionless.com</SupportUrl>
+    <TargetCulture>en-GB</TargetCulture>
+    <ProductName>Extensionless</ProductName>
+    <PublisherName>extensionless</PublisherName>
+    <MinimumRequiredVersion>1.0.0.10</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>38</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>tanji.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8FB4EDE60CCB07FC32A79491AC558A1BC3462CCB</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>pq_7_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Internet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AurelienRibon.Ui.SyntaxHighlightBox">
+      <HintPath>..\..\..\..\Downloads\SyntaxHighlightBox\sourceCode\syntaxhighlightbox\Test\bin\Debug\AurelienRibon.Ui.SyntaxHighlightBox.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="CountryFlag, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CountryFlag.2.1.0\lib\CountryFlag.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FirstFloor.ModernUI, Version=1.0.9.0, Culture=neutral, PublicKeyToken=bc9b0c37bf06c6a9, processorArchitecture=MSIL">
+      <HintPath>..\packages\ModernUI.WPF.1.0.9\lib\net45\FirstFloor.ModernUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.19\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="pgn.net, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\pgn.net.1.2.1\lib\net45\pgn.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Converters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b532964b8548be77, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Converters.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Core, Version=0.3.1.1588, Culture=neutral, PublicKeyToken=7407205e337c98ef, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Css, Version=0.3.1.1590, Culture=neutral, PublicKeyToken=7a46e3f532fdb787, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Css.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Dom, Version=0.3.1.1589, Culture=neutral, PublicKeyToken=517340b6277b1a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Dom.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Model, Version=0.3.1.1592, Culture=neutral, PublicKeyToken=2236cfc76b505845, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Rendering.Gdi, Version=0.3.1.1595, Culture=neutral, PublicKeyToken=03902092284347e3, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Rendering.Gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Rendering.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d0902381100df30e, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Rendering.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVectors.Runtime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d16e717f0a981fb9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ToastNotifications, Version=2.5.1.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.2.5.1\lib\net40\ToastNotifications.dll</HintPath>
+    </Reference>
+    <Reference Include="ToastNotifications.Messages, Version=2.5.1.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.Messages.2.5.1\lib\net40\ToastNotifications.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.19\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.18.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.18\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Achievements.cs">
+      <DependentUpon>ExModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentLoader\MyCL.cs" />
+    <Compile Include="Converters\ConverterSample.cs" />
+    <Compile Include="DBConnection.cs" />
+    <Compile Include="Ex.cs">
+      <DependentUpon>ExModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ExPro.cs">
+      <DependentUpon>ExModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inst.cs">
+      <DependentUpon>ExModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InverseBooleanConverter.cs" />
+    <Compile Include="Model\ExTemplate.cs" />
+    <Compile Include="Model\MyButt.cs" />
+    <Compile Include="Pages\A.xaml.cs">
+      <DependentUpon>A.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Bin.xaml.cs">
+      <DependentUpon>Bin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Bulk.xaml.cs">
+      <DependentUpon>Bulk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Delete.xaml.cs">
+      <DependentUpon>Delete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FlagPicker.xaml.cs">
+      <DependentUpon>FlagPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forgot.xaml.cs">
+      <DependentUpon>Forgot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Disconnect.xaml.cs">
+      <DependentUpon>Disconnect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ControlsStylesDataGrid.xaml.cs">
+      <DependentUpon>ControlsStylesDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BlankDialog.xaml.cs">
+      <DependentUpon>BlankDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExTemplateItem2.xaml.cs">
+      <DependentUpon>ExTemplateItem2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ChangeData.xaml.cs">
+      <DependentUpon>ChangeData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CreateAccount.xaml.cs">
+      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExDialog.xaml.cs">
+      <DependentUpon>ExDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExtendedLib.xaml.cs">
+      <DependentUpon>ExtendedLib.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Extensionless.xaml.cs">
+      <DependentUpon>Extensionless.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExtensionlessConnect.xaml.cs">
+      <DependentUpon>ExtensionlessConnect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExtensionlessTemplates.xaml.cs">
+      <DependentUpon>ExtensionlessTemplates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\F.xaml.cs">
+      <DependentUpon>F.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq17.xaml.cs">
+      <DependentUpon>faq17.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq16.xaml.cs">
+      <DependentUpon>faq16.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq15.xaml.cs">
+      <DependentUpon>faq15.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq14.xaml.cs">
+      <DependentUpon>faq14.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq13.xaml.cs">
+      <DependentUpon>faq13.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq12.xaml.cs">
+      <DependentUpon>faq12.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq11.xaml.cs">
+      <DependentUpon>faq11.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq10.xaml.cs">
+      <DependentUpon>faq10.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq1.xaml.cs">
+      <DependentUpon>faq1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq2.xaml.cs">
+      <DependentUpon>faq2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq4.xaml.cs">
+      <DependentUpon>faq4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq8.xaml.cs">
+      <DependentUpon>faq8.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq5.xaml.cs">
+      <DependentUpon>faq5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq6.xaml.cs">
+      <DependentUpon>faq6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq7.xaml.cs">
+      <DependentUpon>faq7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq9.xaml.cs">
+      <DependentUpon>faq9.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Faq\faq3.xaml.cs">
+      <DependentUpon>faq3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Flaya.xaml.cs">
+      <DependentUpon>Flaya.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Frame2.xaml.cs">
+      <DependentUpon>Frame2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Gen.xaml.cs">
+      <DependentUpon>Gen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Give.xaml.cs">
+      <DependentUpon>Give.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\I.xaml.cs">
+      <DependentUpon>I.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Img.xaml.cs">
+      <DependentUpon>Img.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ModernDialog1.xaml.cs">
+      <DependentUpon>ModernDialog1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ModernDialog2.xaml.cs">
+      <DependentUpon>ModernDialog2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyLib.xaml.cs">
+      <DependentUpon>MyLib.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyLibList.xaml.cs">
+      <DependentUpon>MyLibList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyLibManage.xaml.cs">
+      <DependentUpon>MyLibManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Share.xaml.cs">
+      <DependentUpon>Share.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\General.xaml.cs">
+      <DependentUpon>General.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Split9.xaml.cs">
+      <DependentUpon>Split9.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Split8.xaml.cs">
+      <DependentUpon>Split8.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplateFile.xaml.cs">
+      <DependentUpon>TemplateFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyTemplatePack.xaml.cs">
+      <DependentUpon>MyTemplatePack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExTemplateItem.xaml.cs">
+      <DependentUpon>ExTemplateItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UTemplatePack.xaml.cs">
+      <DependentUpon>UTemplatePack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplatePack.xaml.cs">
+      <DependentUpon>TemplatePack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplatePack8.xaml.cs">
+      <DependentUpon>TemplatePack8.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplatePack7.xaml.cs">
+      <DependentUpon>TemplatePack7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplatePack6.xaml.cs">
+      <DependentUpon>TemplatePack6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplatePack5.xaml.cs">
+      <DependentUpon>TemplatePack5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplatePack4.xaml.cs">
+      <DependentUpon>TemplatePack4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplatePack3.xaml.cs">
+      <DependentUpon>TemplatePack3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplatePack2.xaml.cs">
+      <DependentUpon>TemplatePack2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TemplatePack1.xaml.cs">
+      <DependentUpon>TemplatePack1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserTemplates.xaml.cs">
+      <DependentUpon>UserTemplates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Templates.xaml.cs">
+      <DependentUpon>Templates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\U.xaml.cs">
+      <DependentUpon>U.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User.xaml.cs">
+      <DependentUpon>User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Resources\HLResources.cs" />
+    <Compile Include="Setting.cs">
+      <DependentUpon>ExModel.tt</DependentUpon>
+    </Compile>
+    <Page Include="Assets\ModernUI.Theme1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FETdetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="cm\MyCM.cs" />
+    <Compile Include="FETdetails.xaml.cs">
+      <DependentUpon>FETdetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Helper.cs" />
+    <Compile Include="IFileExtensionVM.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\A.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Bin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Bulk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Delete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\FlagPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Forgot.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Disconnect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ControlsStylesDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\BlankDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ExTemplateItem2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ChangeData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ExDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ExtensionlessConnect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OpenDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Editor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ExtendedLib.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Extensionless.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ExtensionlessTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\F.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq17.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq16.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq15.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq14.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq13.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq12.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq11.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq10.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Faq\faq2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Faq\faq4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq8.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq9.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Faq\faq3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Flaya.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Frame2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Frame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Gen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Give.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\I.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Img.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\List2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\List.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ModernDialog1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ModernDialog2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MyLib.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MyLibList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MyLibManage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Share.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Model\FileExtensionItem.cs" />
+    <Compile Include="Model\FileExtensionTypeEnum.cs" />
+    <Compile Include="Resources\FyleTipe.cs" />
+    <Compile Include="Pages\OpenDialog.xaml.cs">
+      <DependentUpon>OpenDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Editor.xaml.cs">
+      <DependentUpon>Editor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Frame.xaml.cs">
+      <DependentUpon>Frame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\List2.xaml.cs">
+      <DependentUpon>List2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\List.xaml.cs">
+      <DependentUpon>List.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Pages\Settings\General.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Settings\Appearance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Pages\Settings\Appearance.xaml.cs">
+      <DependentUpon>Appearance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\AppearanceViewModel.cs" />
+    <Page Include="Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Pages\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Split2.xaml.cs">
+      <DependentUpon>Split2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Split7.xaml.cs">
+      <DependentUpon>Split7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Split6.xaml.cs">
+      <DependentUpon>Split6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Split5.xaml.cs">
+      <DependentUpon>Split5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Split4.xaml.cs">
+      <DependentUpon>Split4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Split3.xaml.cs">
+      <DependentUpon>Split3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Split.xaml.cs">
+      <DependentUpon>Split.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SplitViewModel.cs" />
+    <Compile Include="Pages\Tab.xaml.cs">
+      <DependentUpon>Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Page Include="Pages\Split2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Split9.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Split8.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Split7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Split6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Split5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Split4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Split3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Split.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TemplateFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MyTemplatePack.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ExTemplateItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\UTemplatePack.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TemplatePack.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TemplatePack8.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TemplatePack7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TemplatePack6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TemplatePack5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TemplatePack4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TemplatePack3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TemplatePack2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TemplatePack1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Templates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\U.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\IconsNonShared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\MyStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomHighlighting.xshd" />
+    <None Include="App.Config" />
+    <None Include="app.manifest" />
+    <EntityDeploy Include="ExModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ExModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ExModel.edmx.diagram">
+      <DependentUpon>ExModel.edmx</DependentUpon>
+    </None>
+    <None Include="Images\Extensionless.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="pq_1_TemporaryKey.pfx" />
+    <None Include="pq_2_TemporaryKey.pfx" />
+    <None Include="pq_7_TemporaryKey.pfx" />
+    <None Include="pq_TemporaryKey.pfx" />
+    <None Include="Resources\Resources\Light\AS3.xshd" />
+    <None Include="Resources\Resources\Light\ASPX.xshd" />
+    <None Include="Resources\Resources\Light\Boo.xshd" />
+    <None Include="Resources\Resources\Light\Coco-Mode.xshd" />
+    <None Include="Resources\Resources\Light\CPP-Mode.xshd" />
+    <None Include="Resources\Resources\Light\CSharp-Mode.xshd" />
+    <None Include="Resources\Resources\Light\CSS-Mode.xshd" />
+    <None Include="Resources\Resources\Light\DOSBATCH.xshd" />
+    <None Include="Resources\Resources\Light\FSharp-Mode.xshd" />
+    <None Include="Resources\Resources\Light\HLSL.xshd" />
+    <None Include="Resources\Resources\Light\HTML-Mode.xshd" />
+    <None Include="Resources\Resources\Light\INI.xshd" />
+    <None Include="Resources\Resources\Light\Java-Mode.xshd" />
+    <None Include="Resources\Resources\Light\JavaScript-Mode.xshd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Resources\Light\Log.xshd" />
+    <None Include="Resources\Resources\Light\MarkDown-Mode.xshd" />
+    <None Include="Resources\Resources\Light\Pascal.xshd" />
+    <None Include="Resources\Resources\Light\Patch-Mode.xshd" />
+    <None Include="Resources\Resources\Light\PHP-Mode.xshd" />
+    <None Include="Resources\Resources\Light\PLSQL.xshd" />
+    <None Include="Resources\Resources\Light\PowerShell.xshd" />
+    <None Include="Resources\Resources\Light\Python-Mode.xshd" />
+    <None Include="Resources\Resources\Light\Ruby.xshd" />
+    <None Include="Resources\Resources\Light\scheme.xshd" />
+    <None Include="Resources\Resources\Light\squirrel.xshd" />
+    <None Include="Resources\Resources\Light\Tex-Mode.xshd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Resources\Light\TSQL-Mode.xshd" />
+    <None Include="Resources\Resources\Light\TXT.xshd" />
+    <None Include="Resources\Resources\Light\VB-Mode.xshd" />
+    <None Include="Resources\Resources\Light\vtl.xshd" />
+    <None Include="Resources\Resources\Light\XML-Mode.xshd" />
+    <None Include="Resources\Resources\Light\XmlDoc.xshd" />
+    <None Include="Resources\Resources\Themes\Dark.xshtd" />
+    <None Include="Resources\Resources\Themes\TrueBlue.xshtd" />
+    <None Include="Resources\Resources\Themes\VS2019_Dark.xshtd" />
+    <EmbeddedResource Include="VS2019_Dark.xshtd" />
+    <None Include="Web-classic.config" />
+    <None Include="World\world.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+    <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ExModel.edmx</DependentUpon>
+      <LastGenOutput>ExModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ExModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ExModel.edmx</DependentUpon>
+      <LastGenOutput>ExModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="ExtensionlessBase.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExtensionlessBase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ExtensionlessBase.mdf</DependentUpon>
+    </Content>
+    <Content Include="tanji.ico" />
+    <Resource Include="Images\Copy.png" />
+    <Resource Include="Images\Cut.png" />
+    <Resource Include="Images\Delete.png" />
+    <Resource Include="Images\Open.png" />
+    <Resource Include="Images\Paste.png" />
+    <Resource Include="Images\Redo.png" />
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\Undo.png" />
+    <Resource Include="Images\WordWrap.png" />
+    <Content Include="ico.ico" />
+    <Content Include="Images\Extensionless.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\I.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ico.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\tanji.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="ExtensionlessBase.mdf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="ExtensionlessBase_log.ldf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

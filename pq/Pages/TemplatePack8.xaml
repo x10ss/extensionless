@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="pq.Pages.TemplatePack8"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Style="{StaticResource ContentRoot}">
+        <ScrollViewer>
+            <Border  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{DynamicResource ItemTextDisabled}" CornerRadius="5"  BorderThickness="2">
+                <Grid Margin="10"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+
+                    </Grid.RowDefinitions>
+
+
+                    <ContentPresenter Grid.Row="0" Content="{StaticResource appbar_map_folds}"></ContentPresenter>
+                    <StackPanel  Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
+                        <TextBlock Foreground="{DynamicResource ItemTextDisabled}" FontWeight="Light" FontFamily="Cambria" VerticalAlignment="Bottom" Text="scrap tome" Style="{StaticResource Heading1}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical"  Grid.Row="1">
+                        <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal"  Grid.Row="1">
+
+                            <TextBlock FontStyle="Italic" Text="DOC∟DOCX∟PPTX"></TextBlock>
+                        </StackPanel>
+                        <StackPanel  HorizontalAlignment="Center" Orientation="Horizontal"  Grid.Row="2">
+                            <TextBlock FontStyle="Oblique" Text="RTF∟PDF∟CSV"></TextBlock>
+
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Button Margin="0,8,1,0" ToolTip="Restore a fresh copy">
+                            <ContentPresenter HorizontalAlignment="Center" Content="{StaticResource appbar_reset}"></ContentPresenter>
+                        </Button>
+                        <Button Margin="1,8,0,0" ToolTip="Open folder">
+                            <ContentPresenter Content="{StaticResource appbar_book_open}"></ContentPresenter>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Margin="0,8,0,0"  HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="3">
+                        <Canvas Width="20" Height="20" Clip="F1 M 0,0L 70,0L 76,76L 0,70L 0,0">
+                            <Path Width="18" Height="18" Canvas.Left="1" Canvas.Top="1" Stretch="Fill" Fill="{DynamicResource ItemTextDisabled}" Data="M6715 657c-2183,-322 -4356,724 -5464,2639l-204 350 1987 1147 205 -341 2 -3c352,-609 892,-1072 1534,-1328l0 2215 -4003 2312 125 320c447,1145 1264,2094 2328,2709 822,474 1747,724 2696,724l6 0 398 -3 0 -2300 -403 2c-545,0 -1075,-143 -1547,-415 -129,-75 -252,-158 -368,-249l1918 -1108 4007 2313 215 -272c168,-212 320,-435 455,-669 967,-1675 963,-3729 0,-5400l-199 -347 -1992 1150 199 347c348,604 482,1310 384,1994l-1912 -1104 -21 -3904 -2 -731 -344 -48z"/>
+                        </Canvas>
+                        <TextBlock Foreground="{DynamicResource ItemTextDisabled}" Text="PACK² " VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

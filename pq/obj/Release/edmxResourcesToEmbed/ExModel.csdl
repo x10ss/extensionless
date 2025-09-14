@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExtensionlessBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ExtensionlessBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Achievements" EntityType="ExtensionlessBaseModel.Achievements" />
+    <EntitySet Name="Ex" EntityType="ExtensionlessBaseModel.Ex" />
+    <EntitySet Name="ExPro" EntityType="ExtensionlessBaseModel.ExPro" />
+    <EntitySet Name="Inst" EntityType="ExtensionlessBaseModel.Inst" />
+    <EntitySet Name="Setting" EntityType="ExtensionlessBaseModel.Setting" />
+    <AssociationSet Name="FK_Achievements_ExPro" Association="ExtensionlessBaseModel.FK_Achievements_ExPro">
+      <End Role="ExPro" EntitySet="ExPro" />
+      <End Role="Achievements" EntitySet="Achievements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Setting_ExPro" Association="ExtensionlessBaseModel.FK_Setting_ExPro">
+      <End Role="ExPro" EntitySet="ExPro" />
+      <End Role="Setting" EntitySet="Setting" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Achievements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExProID" Type="Int32" Nullable="false" />
+    <Property Name="A1" Type="Int32" />
+    <Property Name="A2" Type="Int32" />
+    <Property Name="A3" Type="Int32" />
+    <Property Name="A4" Type="Int32" />
+    <Property Name="A5" Type="Int32" />
+    <Property Name="A6" Type="Int32" />
+    <Property Name="A7" Type="Int32" />
+    <Property Name="A8" Type="Int32" />
+    <Property Name="A9" Type="Int32" />
+    <Property Name="A0" Type="Int32" />
+    <NavigationProperty Name="ExPro" Relationship="ExtensionlessBaseModel.FK_Achievements_ExPro" FromRole="Achievements" ToRole="ExPro" />
+  </EntityType>
+  <EntityType Name="Ex">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IsOpen" Type="Boolean" />
+    <Property Name="IsBinary" Type="Boolean" />
+    <Property Name="FEMTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IsExtended" Type="Boolean" />
+    <Property Name="IsMine" Type="Boolean" />
+    <Property Name="IsUsed" Type="Boolean" />
+    <Property Name="Last" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ExPro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WinUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dob" Type="DateTime" Precision="0" />
+    <Property Name="WinDomain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DonateUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ShareDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Achievements" Relationship="ExtensionlessBaseModel.FK_Achievements_ExPro" FromRole="ExPro" ToRole="Achievements" />
+    <NavigationProperty Name="Setting" Relationship="ExtensionlessBaseModel.FK_Setting_ExPro" FromRole="ExPro" ToRole="Setting" />
+  </EntityType>
+  <EntityType Name="Inst">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Setting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsExtended" Type="Boolean" Nullable="false" />
+    <Property Name="IsMine" Type="Boolean" Nullable="false" />
+    <Property Name="DoAsk" Type="Boolean" Nullable="false" />
+    <Property Name="ExProID" Type="Int32" Nullable="false" />
+    <Property Name="DoAsk2" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ExPro" Relationship="ExtensionlessBaseModel.FK_Setting_ExPro" FromRole="Setting" ToRole="ExPro" />
+  </EntityType>
+  <Association Name="FK_Achievements_ExPro">
+    <End Type="ExtensionlessBaseModel.ExPro" Role="ExPro" Multiplicity="1" />
+    <End Type="ExtensionlessBaseModel.Achievements" Role="Achievements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExPro">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Achievements">
+        <PropertyRef Name="ExProID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Setting_ExPro">
+    <End Type="ExtensionlessBaseModel.ExPro" Role="ExPro" Multiplicity="1" />
+    <End Type="ExtensionlessBaseModel.Setting" Role="Setting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExPro">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Setting">
+        <PropertyRef Name="ExProID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

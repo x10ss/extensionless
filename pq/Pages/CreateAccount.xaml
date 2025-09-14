@@ -1,0 +1,133 @@
+﻿<UserControl x:Class="pq.Pages.CreateAccount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:pq.MyConverters"
+                  xmlns:country="clr-namespace:CountryFlag;assembly=CountryFlag"
+            >
+    <UserControl.Resources>
+
+        <local:InvBoolToVis x:Key="InvBoolToVis"></local:InvBoolToVis>
+
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical" Style="{StaticResource ContentRoot}" >
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock VerticalAlignment="Center" Text="Sign Up For" Style="{StaticResource Heading1}"></TextBlock>
+            <ContentPresenter Content="{StaticResource appbar_elevator_up}"></ContentPresenter>
+            <TextBlock VerticalAlignment="Center" Text="A New Account" Style="{StaticResource Heading1}"></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Right" Grid.Column="0" Content="Username: ">
+                </Label>
+                <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Stretch">
+                    <TextBox MaxLength="20" x:Name="exuser"></TextBox>
+                </StackPanel>
+                <CheckBox Margin="10,0,0,0" Grid.Column="3" Content="Quick sign up" IsChecked="False" x:Name="IsQuick"></CheckBox>
+            </Grid>
+            <StackPanel Visibility="{Binding ElementName=IsQuick,Path=IsChecked,Converter={StaticResource InvBoolToVis}}">
+
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label HorizontalAlignment="Right"  Content="Name: ">
+                    </Label>
+                    <StackPanel Grid.Column="1"  Orientation="Vertical" HorizontalAlignment="Stretch">
+                        <TextBox MaxLength="20" x:Name="lname"></TextBox>
+                    </StackPanel>
+                    <Label  Grid.Column="2" HorizontalAlignment="Right"  Content="E-mail: ">
+                    </Label>
+                    <StackPanel  Grid.Column="3" Orientation="Vertical">
+                        <TextBox MaxLength="30" x:Name="email"></TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label HorizontalAlignment="Right" Content="Gender: ">
+                    </Label>
+                    <ComboBox  Grid.Column="1" x:Name="gender">
+                        <ComboBoxItem>Male ♂</ComboBoxItem>
+                        <ComboBoxItem>Female ♀</ComboBoxItem>
+                        <ComboBoxItem>Other •○</ComboBoxItem>
+                        <ComboBoxItem>No say ◙</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Column="2"  HorizontalAlignment="Right" Content="Born: ">
+                    </Label>
+                    <DatePicker Grid.Column="3"  x:Name="dob"></DatePicker>
+                </Grid>
+
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label HorizontalAlignment="Right" Content="Donate: ">
+                    </Label>
+                    <StackPanel Grid.Column="1"  Orientation="Vertical">
+                        <TextBox x:Name="donate" MaxLength="40"></TextBox>
+                    </StackPanel>
+                    <Label Grid.Column="2"  HorizontalAlignment="Right" Content="Country: "></Label>
+                    <ComboBox Grid.Column="3"  x:Name="country" SelectionChanged="country_SelectionChanged" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <country:CountryFlag Width="28" Height="18" Code="{Binding}"></country:CountryFlag>
+                                    <TextBlock Text="{Binding Converter={StaticResource ToUpperConverter}}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" HorizontalAlignment="Right" Content="Province: "></Label>
+                    <ComboBox Grid.Column="1"  x:Name="Province" SelectionChanged="Province_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Converter={StaticResource ToUpperConverter}}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label Grid.Column="2"  HorizontalAlignment="Right" Content="City: "></Label>
+                    <ComboBox Grid.Column="3"  x:Name="City">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name, Converter={StaticResource ToUpperConverter}}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>

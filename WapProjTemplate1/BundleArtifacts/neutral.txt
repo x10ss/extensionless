@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Lovre\source\repos\pq - Copy\WapProjTemplate1\bin\AnyCPU\Debug\WapProjTemplate1_1.0.0.0_AnyCPU_Debug.appx
+SymbolPackage=C:\Users\Lovre\source\repos\pq - Copy\WapProjTemplate1\obj\Debug\Symbols\WapProjTemplate1_1.0.0.0_AnyCPU_Debug.appxsym

@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ExtensionlessBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Achievements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExProID" Type="int" Nullable="false" />
+          <Property Name="A1" Type="int" />
+          <Property Name="A2" Type="int" />
+          <Property Name="A3" Type="int" />
+          <Property Name="A4" Type="int" />
+          <Property Name="A5" Type="int" />
+          <Property Name="A6" Type="int" />
+          <Property Name="A7" Type="int" />
+          <Property Name="A8" Type="int" />
+          <Property Name="A9" Type="int" />
+          <Property Name="A0" Type="int" />
+        </EntityType>
+        <EntityType Name="Ex">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="FullName" Type="varchar" MaxLength="30" />
+          <Property Name="IsOpen" Type="bit" />
+          <Property Name="IsBinary" Type="bit" />
+          <Property Name="FEMTE" Type="varchar" MaxLength="10" />
+          <Property Name="FT" Type="varchar" MaxLength="10" />
+          <Property Name="IsExtended" Type="bit" />
+          <Property Name="IsMine" Type="bit" />
+          <Property Name="IsUsed" Type="bit" />
+          <Property Name="Last" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ExPro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WinUsername" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExUsername" Type="varchar" MaxLength="50" />
+          <Property Name="ExID" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Dob" Type="date" />
+          <Property Name="WinDomain" Type="varchar" MaxLength="50" />
+          <Property Name="DonateUrl" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="5" />
+          <Property Name="ShareDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Inst">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Guid" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsExtended" Type="bit" Nullable="false" />
+          <Property Name="IsMine" Type="bit" Nullable="false" />
+          <Property Name="DoAsk" Type="bit" Nullable="false" />
+          <Property Name="ExProID" Type="int" Nullable="false" />
+          <Property Name="DoAsk2" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Achievements_ExPro">
+          <End Role="ExPro" Type="Self.ExPro" Multiplicity="1" />
+          <End Role="Achievements" Type="Self.Achievements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExPro">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Achievements">
+              <PropertyRef Name="ExProID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Setting_ExPro">
+          <End Role="ExPro" Type="Self.ExPro" Multiplicity="1" />
+          <End Role="Setting" Type="Self.Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExPro">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Setting">
+              <PropertyRef Name="ExProID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ExtensionlessBaseModelStoreContainer">
+          <EntitySet Name="Achievements" EntityType="Self.Achievements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ex" EntityType="Self.Ex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExPro" EntityType="Self.ExPro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inst" EntityType="Self.Inst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Setting" EntityType="Self.Setting" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Achievements_ExPro" Association="Self.FK_Achievements_ExPro">
+            <End Role="ExPro" EntitySet="ExPro" />
+            <End Role="Achievements" EntitySet="Achievements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Setting_ExPro" Association="Self.FK_Setting_ExPro">
+            <End Role="ExPro" EntitySet="ExPro" />
+            <End Role="Setting" EntitySet="Setting" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExtensionlessBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ExtensionlessBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Achievements" EntityType="ExtensionlessBaseModel.Achievements" />
+          <EntitySet Name="Ex" EntityType="ExtensionlessBaseModel.Ex" />
+          <EntitySet Name="ExPro" EntityType="ExtensionlessBaseModel.ExPro" />
+          <EntitySet Name="Inst" EntityType="ExtensionlessBaseModel.Inst" />
+          <EntitySet Name="Setting" EntityType="ExtensionlessBaseModel.Setting" />
+          <AssociationSet Name="FK_Achievements_ExPro" Association="ExtensionlessBaseModel.FK_Achievements_ExPro">
+            <End Role="ExPro" EntitySet="ExPro" />
+            <End Role="Achievements" EntitySet="Achievements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Setting_ExPro" Association="ExtensionlessBaseModel.FK_Setting_ExPro">
+            <End Role="ExPro" EntitySet="ExPro" />
+            <End Role="Setting" EntitySet="Setting" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Achievements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExProID" Type="Int32" Nullable="false" />
+          <Property Name="A1" Type="Int32" />
+          <Property Name="A2" Type="Int32" />
+          <Property Name="A3" Type="Int32" />
+          <Property Name="A4" Type="Int32" />
+          <Property Name="A5" Type="Int32" />
+          <Property Name="A6" Type="Int32" />
+          <Property Name="A7" Type="Int32" />
+          <Property Name="A8" Type="Int32" />
+          <Property Name="A9" Type="Int32" />
+          <Property Name="A0" Type="Int32" />
+          <NavigationProperty Name="ExPro" Relationship="ExtensionlessBaseModel.FK_Achievements_ExPro" FromRole="Achievements" ToRole="ExPro" />
+        </EntityType>
+        <EntityType Name="Ex">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IsOpen" Type="Boolean" />
+          <Property Name="IsBinary" Type="Boolean" />
+          <Property Name="FEMTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsExtended" Type="Boolean" />
+          <Property Name="IsMine" Type="Boolean" />
+          <Property Name="IsUsed" Type="Boolean" />
+          <Property Name="Last" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ExPro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WinUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dob" Type="DateTime" Precision="0" />
+          <Property Name="WinDomain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DonateUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ShareDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Achievements" Relationship="ExtensionlessBaseModel.FK_Achievements_ExPro" FromRole="ExPro" ToRole="Achievements" />
+          <NavigationProperty Name="Setting" Relationship="ExtensionlessBaseModel.FK_Setting_ExPro" FromRole="ExPro" ToRole="Setting" />
+        </EntityType>
+        <EntityType Name="Inst">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Guid" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsExtended" Type="Boolean" Nullable="false" />
+          <Property Name="IsMine" Type="Boolean" Nullable="false" />
+          <Property Name="DoAsk" Type="Boolean" Nullable="false" />
+          <Property Name="ExProID" Type="Int32" Nullable="false" />
+          <Property Name="DoAsk2" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExPro" Relationship="ExtensionlessBaseModel.FK_Setting_ExPro" FromRole="Setting" ToRole="ExPro" />
+        </EntityType>
+        <Association Name="FK_Achievements_ExPro">
+          <End Type="ExtensionlessBaseModel.ExPro" Role="ExPro" Multiplicity="1" />
+          <End Type="ExtensionlessBaseModel.Achievements" Role="Achievements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExPro">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Achievements">
+              <PropertyRef Name="ExProID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Setting_ExPro">
+          <End Type="ExtensionlessBaseModel.ExPro" Role="ExPro" Multiplicity="1" />
+          <End Type="ExtensionlessBaseModel.Setting" Role="Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExPro">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Setting">
+              <PropertyRef Name="ExProID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExtensionlessBaseModelStoreContainer" CdmEntityContainer="ExtensionlessBaseEntities">
+          <EntitySetMapping Name="Achievements">
+            <EntityTypeMapping TypeName="ExtensionlessBaseModel.Achievements">
+              <MappingFragment StoreEntitySet="Achievements">
+                <ScalarProperty Name="A0" ColumnName="A0" />
+                <ScalarProperty Name="A9" ColumnName="A9" />
+                <ScalarProperty Name="A8" ColumnName="A8" />
+                <ScalarProperty Name="A7" ColumnName="A7" />
+                <ScalarProperty Name="A6" ColumnName="A6" />
+                <ScalarProperty Name="A5" ColumnName="A5" />
+                <ScalarProperty Name="A4" ColumnName="A4" />
+                <ScalarProperty Name="A3" ColumnName="A3" />
+                <ScalarProperty Name="A2" ColumnName="A2" />
+                <ScalarProperty Name="A1" ColumnName="A1" />
+                <ScalarProperty Name="ExProID" ColumnName="ExProID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ex">
+            <EntityTypeMapping TypeName="ExtensionlessBaseModel.Ex">
+              <MappingFragment StoreEntitySet="Ex">
+                <ScalarProperty Name="Last" ColumnName="Last" />
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+                <ScalarProperty Name="IsMine" ColumnName="IsMine" />
+                <ScalarProperty Name="IsExtended" ColumnName="IsExtended" />
+                <ScalarProperty Name="FT" ColumnName="FT" />
+                <ScalarProperty Name="FEMTE" ColumnName="FEMTE" />
+                <ScalarProperty Name="IsBinary" ColumnName="IsBinary" />
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExPro">
+            <EntityTypeMapping TypeName="ExtensionlessBaseModel.ExPro">
+              <MappingFragment StoreEntitySet="ExPro">
+                <ScalarProperty Name="ShareDate" ColumnName="ShareDate" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="DonateUrl" ColumnName="DonateUrl" />
+                <ScalarProperty Name="WinDomain" ColumnName="WinDomain" />
+                <ScalarProperty Name="Dob" ColumnName="Dob" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ExID" ColumnName="ExID" />
+                <ScalarProperty Name="ExUsername" ColumnName="ExUsername" />
+                <ScalarProperty Name="WinUsername" ColumnName="WinUsername" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inst">
+            <EntityTypeMapping TypeName="ExtensionlessBaseModel.Inst">
+              <MappingFragment StoreEntitySet="Inst">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Setting">
+            <EntityTypeMapping TypeName="ExtensionlessBaseModel.Setting">
+              <MappingFragment StoreEntitySet="Setting">
+                <ScalarProperty Name="DoAsk2" ColumnName="DoAsk2" />
+                <ScalarProperty Name="ExProID" ColumnName="ExProID" />
+                <ScalarProperty Name="DoAsk" ColumnName="DoAsk" />
+                <ScalarProperty Name="IsMine" ColumnName="IsMine" />
+                <ScalarProperty Name="IsExtended" ColumnName="IsExtended" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

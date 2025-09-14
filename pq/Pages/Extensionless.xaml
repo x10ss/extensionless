@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="pq.Pages.Extenstionless"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+                  xmlns:country="clr-namespace:CountryFlag;assembly=CountryFlag"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Style="{StaticResource ContentRoot}">
+        <ScrollViewer>
+
+            <StackPanel MinWidth="200" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ContentPresenter  Content="{StaticResource extensionless}"></ContentPresenter>
+
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock FontSize="21" HorizontalAlignment="Center" Foreground="{DynamicResource Accent}" TextAlignment="Center" Text="extensionless" Style="{StaticResource Heading1}" />
+
+                </StackPanel>
+                <StackPanel Margin="70,-10,0,0" HorizontalAlignment="Center" Orientation="Horizontal"/>
+                <UniformGrid Margin="22" Rows="1" Columns="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                  
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Content="{StaticResource appbar_user}" ></ContentPresenter>
+                        <TextBlock Foreground="{DynamicResource ItemTextDisabled}" HorizontalAlignment="Center" FontFamily="Consolas" TextAlignment="Center" Text="developed by:" />
+                        <TextBlock HorizontalAlignment="Center" Text="Lovre Šimunović" FontFamily="Consolas" Foreground="{DynamicResource Accent}" TextAlignment="Center" >
+
+                        </TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Text="Split, Croatia" FontFamily="Consolas" Foreground="{DynamicResource ItemText}" TextAlignment="Center" >
+
+                        </TextBlock>
+
+
+
+                    </StackPanel>
+
+                </UniformGrid>
+            </StackPanel>
+
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,12 @@
+﻿<mui:ModernDialog x:Class="pq.Pages.ExDialog"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                  xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+                  xmlns:pages="clr-namespace:pq.Pages"
+                  mc:Ignorable="d"
+                  Title="extensionless"
+                  MinWidth="600">
+    <pages:ExtensionlessConnect></pages:ExtensionlessConnect>
+</mui:ModernDialog>
