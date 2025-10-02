@@ -139,14 +139,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="pq.exe" size="2791392">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="pq.exe" size="2791384">
       <assemblyIdentity name="pq" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fqKf9V/1EbHn7xCZMq1jhNrr6eiSLRLdMdEwUlUHGJg=</dsig:DigestValue>
+        <dsig:DigestValue>rLGVuKJr3ftYals92MSyYJ8RjP4nR+hNLXphJlfrwQ8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -387,13 +387,13 @@
       <dsig:DigestValue>1gRe5SQ/7SwD/zRTxPYGv3unqum7h+0lcK/6mPVvFVU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="pq.exe.config" size="2955">
+  <file name="pq.exe.config" size="3032">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>M35+59J42L1VLxp9/dviy+Mufq4opCdFUFuSExiHaIE=</dsig:DigestValue>
+      <dsig:DigestValue>pypxoUbIm2CIcc6pBeOk84LqF13CdyXh3h/apTly2aI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="tanji.ico" size="73790">

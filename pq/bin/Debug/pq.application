@@ -11,7 +11,7 @@
     <deploymentProvider codebase="http://download.extensionless.com/pq.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
     <dependentAssembly dependencyType="install" codebase="pq.exe.manifest" size="22912">
@@ -21,7 +21,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AEuiA4l/Lw0T4kup7+JBqiILS+Dpi2Zg/BhYhQzElyA=</dsig:DigestValue>
+        <dsig:DigestValue>LAySetrxKJ1nhQFepTpipzVFgAm/mogLEw6U//PCt7U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
