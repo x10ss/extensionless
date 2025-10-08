@@ -133,26 +133,26 @@ namespace pq.Helper
 
 
         }
-        public static Achievements GetAch()
-        {
-            using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
-            {
+        //public static Achievements GetAch()
+        //{
+        //    using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+        //    {
 
 
-                Achievements achievements = ent.Achievements.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
-                if (achievements == null)
-                {
-                    achievements = new Achievements() { ExProID = GetExPro(true).Id };
-                    ent.Achievements.Add(achievements);
-                    ent.SaveChanges();
-                }
-                return achievements;
+        //        Achievements achievements = ent.Achievements.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+        //        if (achievements == null)
+        //        {
+        //            achievements = new Achievements() { ExProID = GetExPro(true).Id };
+        //            ent.Achievements.Add(achievements);
+        //            ent.SaveChanges();
+        //        }
+        //        return achievements;
 
-            }
+        //    }
 
 
 
-        }
+        //}
         public static string GetGuid()
         {
             using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
@@ -952,7 +952,7 @@ namespace pq.Helper
                     throw new Exception("sjebosirođo111");  // ModernDialog.ShowMessage("GADAN", "fail", MessageBoxButton.OK);
                 }
                 // ModernDialog.ShowMessage("???", "fail", MessageBoxButton.OK);
-                return false;
+          
 
 
             }
@@ -1121,13 +1121,13 @@ namespace pq.Helper
                                 {
                                     throw new Exception("shit happens");
                                     //        ModernDialog.ShowMessage("y", "na", MessageBoxButton.OK);
-                                    using (RegistryKey rk = winLogonKey.CreateSubKey("ShellNew", RegistryKeyPermissionCheck.ReadWriteSubTree))
+                                    //using (RegistryKey rk = winLogonKey.CreateSubKey("ShellNew", RegistryKeyPermissionCheck.ReadWriteSubTree))
                                     //using (RegistryKey rk = winLogonKey.CreateSubKey("ShellNew",RegistryKeyPermissionCheck.ReadWriteSubTree))
                                     {
                                         //        ModernDialog.ShowMessage("1", "na", MessageBoxButton.OK);
                                         //  rk.SetValue("", null);
 
-                                        rk.SetValue("NullFile", "");
+                                        //rk.SetValue("NullFile", "");
                                         //       ModernDialog.ShowMessage("2", "na", MessageBoxButton.OK);
                                     }
 
@@ -1646,7 +1646,6 @@ namespace pq.Helper
                 color.B -= (byte)127;
             }
             else color.B += (byte)127;
-            byte x = 42;
             /*  if (color.GetBrightness()>0.5f)
               {
                   color.R += x;
@@ -2236,20 +2235,20 @@ namespace pq.Helper
                 using (MySqlCommand command = new MySqlCommand())
                 {
                     command.Connection = DBConnection.Connection;
-                    command.CommandText = "select BoilPack.ID, ExPro.Username from BoilPack INNER JOIN ExPro ON BoilPack.ExProID = ExPro.ExProID;";
+                    command.CommandText = "SELECT boilpack.ExProID, boilpack.ID, boilpack.DateTime, boilpack.Username, boilpack.CountryID, boilpack.DonateUrl, Count(ratings.ID) FROM boilpack LEFT JOIN ratings ON boilpack.ID= ratings.ForID GROUP BY ID ORDER BY Count(ratings.ID) DESC"; ;
 
                     MySqlDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
                         ExTemplate et = new ExTemplate();
-                        et.ID = reader.GetInt16(0);
-                        et.Username = reader.GetString(1);
-                        et.Rating = rnd.NextDouble() % 5;
+                        et.ID = reader.GetInt32(0);
+                        et.Username = reader.GetString(3);
+                        et.Rating = reader.GetInt64(6);
                         tmpl.Add(et);
                     }
 
-                    Tmpl = tmpl.OrderBy(x => x.Rating).ToList();
+                    Tmpl = tmpl.OrderByDescending(x => x.Rating).ToList();
 
 
                 }
@@ -2258,7 +2257,7 @@ namespace pq.Helper
             }
             catch (Exception bazatemplajt)
             {
-                //  ModernDialog.ShowMessage(bazatemplajt.Message, "bazatemplajt", MessageBoxButton.OK);
+                  //ModernDialog.ShowMessage(bazatemplajt.Message, "bazatemplajt", MessageBoxButton.OK);
             }
 
         }

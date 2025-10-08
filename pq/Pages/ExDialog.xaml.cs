@@ -41,20 +41,21 @@ namespace pq.Pages
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            if (CreateAccount.createAcc != null)
+            if (CreateAccount.createAccount != null)
             {
-                string exguid = Guid.NewGuid().ToString();
 
-                string dt = ((DateTime)(CreateAccount.createAcc.EDob.SelectedDate)).ToString("yyyy-MM-dd HH:mm:ss");
+               // string dt = ((DateTime)(CreateAccount.createAcc.EDob.SelectedDate)).ToString("yyyy-MM-dd HH:mm:ss");
 
                 //suppose col0 and col1 are defined as VARCHAR in the DB
                 // string query = "SELECT ID FROM ExPro";
-                string query = "insert into ExPro(ExProID,WinProID,CountryID,Username,DonateUrl,Email,Dob) values('" + exguid + "','" + Helper.Helper.GetGuid()
-                    + "','" + CreateAccount.createAcc.EFlag.SelectedItem.ToString() +
-                    "','" + CreateAccount.createAcc.EName.Text + "','" + CreateAccount.createAcc.EDonate.Text +
-                    "','" + CreateAccount.createAcc.EEmail.Text + "','" + dt + "');";
+                string query = "insert into boilpack(ExProID, CountryID, Username,DonateURL, BoilerplateZip, Hits, ZipSize, Category, FilesList, Password) " +
+                    "values('" + Helper.Helper.GetGuid()
+                    + "','" + CreateAccount.createAccount.EFlag.SelectedItem.ToString() 
+                    + "','" + CreateAccount.createAccount.EName.Text
+                    + "','" + CreateAccount.createAccount.EDonate.Text 
+                    + "' , '',0, 0, '', '', '');";
                 var cmd = new MySqlCommand(query, DBConnection.Connection);
-                var reader = cmd.ExecuteNonQuery();
+                int reader = cmd.ExecuteNonQuery();
                 if (reader > 0)
                 {
                     MessageBox.Show("Bravo - " + reader.ToString());
@@ -68,32 +69,32 @@ namespace pq.Pages
 
                 using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
                 {
-                    ExPro newep = ent.ExPro.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
-                    newep.ExUsername = CreateAccount.createAcc.EName.Text;
-                    newep.Email = CreateAccount.createAcc.EEmail.Text;
-                    newep.DonateUrl = CreateAccount.createAcc.EDonate.Text;
-                    newep.Dob = CreateAccount.createAcc.EDob.SelectedDate;
-                    newep.ExID = exguid;
-                    newep.Country = CreateAccount.createAcc.EFlag.SelectedItem.ToString();
+                    //ExPro newep = ent.ExPro.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
+                    ExPro newep = new ExPro();
+                    newep.ExUsername = CreateAccount.createAccount.EName.Text;
+                    newep.Password = CreateAccount.createAccount.EPassword.Password;
+                   // newep.Email = CreateAccount.createAcc.EEmail.Text;
+                    newep.DonateUrl = CreateAccount.createAccount.EDonate.Text;
+                   // newep.Dob = CreateAccount.createAcc.EDob.SelectedDate;
+                    newep.ExID = Helper.Helper.GetGuid();
+                    newep.Country = CreateAccount.createAccount.EFlag.SelectedItem.ToString();
+                   // ent.ExPro.Add(newep);
                     ent.SaveChanges();
                     ep = newep;
-
                 }
+                CreateAccount.createAccount = null; 
                 this.DialogResult = true;
 
-
             }
-            else if (ChangeData.createAcc != null)
+            else if (ChangeData.changeData != null)
             {
-                string exguid = Guid.NewGuid().ToString();
-
-                string dt = ((DateTime)(ChangeData.createAcc.EDob.SelectedDate)).ToString("yyyy-MM-dd HH:mm:ss");
+               // string dt = ((DateTime)(ChangeData.createAcc.EDob.SelectedDate)).ToString("yyyy-MM-dd HH:mm:ss");
 
                 //suppose col0 and col1 are defined as VARCHAR in the DB
                 // string query = "SELECT ID FROM ExPro";
-                string query = "Update ExPro set ExPro.CountryID='" + ChangeData.createAcc.EFlag.SelectedItem.ToString() +
-                    "', ExPro.Username='" + ChangeData.createAcc.EName.Text + "',ExPro.DonateUrl='" + ChangeData.createAcc.EDonate.Text +
-                    "',ExPro.Email='" + ChangeData.createAcc.EEmail.Text + "',ExPro.Dob='" + dt + "' where ExPro.ExProID='" + Helper.Helper.Synched().ExID + "';";
+                string query = "Update boilpack set CountryID='" + ChangeData.changeData.EFlag.SelectedItem.ToString() +
+                    "', Username='" + ChangeData.changeData.EName.Text + "',DonateUrl='" + ChangeData.changeData.EDonate.Text +"' " +
+                    "WHERE ExProID = '"+ Helper.Helper.GetGuid() +"';";
                 var cmd = new MySqlCommand(query, DBConnection.Connection);
                 var reader = cmd.ExecuteNonQuery();
                 if (reader > 0)
@@ -110,15 +111,15 @@ namespace pq.Pages
                 using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
                 {
                     ExPro newep = ent.ExPro.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
-                    newep.ExUsername = ChangeData.createAcc.EName.Text;
-                    newep.Email = ChangeData.createAcc.EEmail.Text;
-                    newep.DonateUrl = ChangeData.createAcc.EDonate.Text;
-                    newep.Dob = ChangeData.createAcc.EDob.SelectedDate;
-                    newep.Country = ChangeData.createAcc.EFlag.SelectedItem.ToString();
+                    newep.ExUsername = ChangeData.changeData.EName.Text;
+                    newep.Password = ChangeData.changeData.EPassword.Password;
+                    newep.DonateUrl = ChangeData.changeData.EDonate.Text;
+                    newep.Country = ChangeData.changeData.EFlag.SelectedItem.ToString();
                     ent.SaveChanges();
                     ep = newep;
 
                 }
+                ChangeData.changeData = null;   
                 this.DialogResult = true;
             }
             else if (Login.login != null)

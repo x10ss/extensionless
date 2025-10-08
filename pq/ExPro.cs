@@ -29,6 +29,7 @@ namespace pq
         public Nullable<System.DateTime> Dob { get; set; }
         public string WinDomain { get; set; }
         public string DonateUrl { get; set; }
+        public string Password { get; set; }
         public string Country { get; set; }
         public Nullable<System.DateTime> ShareDate { get; set; }
     

@@ -161,8 +161,7 @@
 
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,20">
-                            <CheckBox Margin="0,0,8,0" Foreground="LightGray" Checked="IsExtended_Checked" Unchecked="IsExtended_Unchecked" x:Name="IsExtended" ToolTip="Don't see the extension you need? Extend the library..." Content="auxiliary library"></CheckBox>
-                            <CheckBox Margin="8,0,0,0" Foreground="LightGray" Checked="IsMine_Checked" Unchecked="IsMine_Unchecked" x:Name="IsMine" ToolTip="Still don't see the extension you need? Add it to your library..." Content="my library"></CheckBox>
+                              <CheckBox Margin="8,0,0,0" Foreground="LightGray" Checked="IsMachine_Checked" Unchecked="IsMachine_Unchecked" x:Name="IsMachineRegistry" ToolTip="Load machine registry" Content="system registry"></CheckBox>
 
                         </StackPanel>
                         <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">

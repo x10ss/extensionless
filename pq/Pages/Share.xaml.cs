@@ -9,12 +9,12 @@ namespace pq.Pages
     /// </summary>
     public partial class Share : UserControl, IContent
     {
-        public Achievements Ach { get; set; }
+      //  public Achievements Ach { get; set; }
         public Share()
         {
             // myPro.
             InitializeComponent();
-            Ach = Helper.Helper.GetAch();
+          //  Ach = Helper.Helper.GetAch();
             Check();
             DataContext = this;
 
@@ -39,7 +39,7 @@ namespace pq.Pages
         {
 
             //    Helper.Helper.SetTop(false);
-            Ach = Helper.Helper.GetAch();
+          //  Ach = Helper.Helper.GetAch();
             Check();
         }
 

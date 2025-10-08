@@ -399,7 +399,7 @@ namespace pq
                     IsBinary = null,
                     FEColor = (Color.FromRgb(111, 111, 111)),
                     FETE = FileExtensionTypeEnum.EXTENSIONLESS,
-                    FEMTE = FileExtensionMidTypeEnum.None,
+                   // FEMTE = FileExtensionMidTypeEnum.None,
                     FT = FyleTipe.Mix,
                     Name = "FILE TYPE BUNDLE of " + realfeislist.Count,
                     FullName = "Multiple Selection",

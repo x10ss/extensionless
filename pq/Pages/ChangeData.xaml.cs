@@ -14,29 +14,31 @@ namespace pq.Pages
     /// </summary>
     public partial class ChangeData : UserControl, IContent
     {
-        public static ChangeData createAcc;
+        public static ChangeData changeData;
         public TextBox EName;
-        public TextBox EEmail;
         public TextBox EDonate;
         public ComboBox EFlag;
-        public DatePicker EDob;
+        public PasswordBox EPassword;
 
         private bool IsAdmin;
         public ChangeData()
         {
 
             InitializeComponent();
+            changeData = this;
             ExPro ep = Helper.Helper.Synched();
             country.ItemsSource = Enum.GetValues(typeof(CountryFlag.CountryCode)).Cast<CountryFlag.CountryCode>();
 
             EName = exuser;
             exuser.Text = ep.ExUsername;
-            EEmail = email;
-            email.Text = ep.Email;
+            //   EEmail = email;
+            //  email.Text = ep.Email;
             EDonate = donate;
             donate.Text = ep.DonateUrl;
-            EDob = dob;
-            dob.SelectedDate = ep.Dob;
+            
+            EPassword = expass;
+            expass.Password = ep.Password;//   EDob = dob;
+            //   dob.SelectedDate = ep.Dob;
             EFlag = country;
             CountryCode cc;
             Enum.TryParse(ep.Country.ToString(), out cc);
@@ -47,12 +49,12 @@ namespace pq.Pages
 
         private void Province_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Province.SelectedIndex == -1)
+            //if (Province.SelectedIndex == -1)
             {
                 return;
             }
-            List<City> cities = Helper.Helper.WorldCities.Where(x => x.Province == Province.SelectedItem.ToString()).ToList();
-            City.ItemsSource = cities;
+           // List<City> cities = Helper.Helper.WorldCities.Where(x => x.Province == Province.SelectedItem.ToString()).ToList();
+          //  City.ItemsSource = cities;
         }
 
         private void country_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -62,26 +64,28 @@ namespace pq.Pages
                 return;
             }
             List<City> cities = Helper.Helper.WorldCities.Where(x => x.CountryCode == country.SelectedItem.ToString()).ToList();
-            City.ItemsSource = cities;
-            Province.ItemsSource = cities.GroupBy(x => x.Province).Select(x => x.FirstOrDefault().Province).ToList();
+          //  City.ItemsSource = cities;
+           // Province.ItemsSource = cities.GroupBy(x => x.Province).Select(x => x.FirstOrDefault().Province).ToList();
         }
 
         public void OnFragmentNavigation(FragmentNavigationEventArgs e)
         {
+            changeData = null;
         }
 
         public void OnNavigatedFrom(NavigationEventArgs e)
         {
-            createAcc = null;
+            changeData = null;
         }
 
         public void OnNavigatedTo(NavigationEventArgs e)
         {
-            createAcc = this;
+            changeData = this;
         }
 
         public void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
+            changeData = null;
         }
     }
 }

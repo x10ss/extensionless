@@ -1,5 +1,6 @@
 ﻿using FirstFloor.ModernUI.Presentation;
 using FirstFloor.ModernUI.Windows.Controls;
+using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -76,10 +77,7 @@ namespace pq
             l6.DisplayName = " OPTIONS ";
             lc.Add(l6);
 
-            Link l42 = new Link();
-            l42.Source = new Uri("/Pages/Profile.xaml", UriKind.RelativeOrAbsolute);
-            l42.DisplayName = Environment.UserName;
-            lc.Add(l42);
+            
             ////////////////////////// ABOUT
 
 
@@ -100,20 +98,26 @@ namespace pq
             Link l3new = new Link();
             l3new.Source = new Uri("/Pages/ControlsStylesDataGrid.xaml", UriKind.RelativeOrAbsolute);
             l3new.DisplayName = "| Forge |";
-            Link l4new = new Link();
-            l4new.Source = new Uri("/Pages/ExtendedLib.xaml", UriKind.RelativeOrAbsolute);
-            l4new.DisplayName = "| Warehouse |";
-
+            //Link l4new = new Link();
+            //l4new.Source = new Uri("/Pages/ExtendedLib.xaml", UriKind.RelativeOrAbsolute);
+            //l4new.DisplayName = "| Warehouse |";
+            Link l42 = new Link();
+            l42.Source = new Uri("/Pages/Profile.xaml", UriKind.RelativeOrAbsolute);
+            l42.DisplayName = Environment.UserName;
+           
             //lg.Links.Add(l4);
             //  lg2.Links.Add(l1new);
 
             // lg2.Links.Add(l2new);
             lg2.Links.Add(l3new);
-            lg2.Links.Add(l4new);
+            //lg2.Links.Add(l4new);
+            lg2.Links.Add(l42);
             ////////////////////
+            
+            MenuLinkGroups[0].Links.Add(l42);
             MenuLinkGroups[0].DisplayName = "Dashboard";
             MenuLinkGroups[0].Links.Add(l3new);
-            MenuLinkGroups[0].Links.Add(l4new);
+            //MenuLinkGroups[0].Links.Add(l4new);
             //    MenuLinkGroups.Add(lg);
             TitleLinks = lc;
             Helper.Helper.Top2 = lc;
@@ -147,10 +151,10 @@ namespace pq
             l4b.DisplayName = "| exhibition |";
             lc2.Add(l4b);
             ////////////////////////// ABOUT
-            Link l3b = new Link();
-            l3b.Source = new Uri("/Pages/ExtendedLib.xaml", UriKind.RelativeOrAbsolute);
-            l3b.DisplayName = "| warehouse |";
-            lc2.Add(l3b);     ////////////////////////// ABOUT
+            //Link l3b = new Link();
+            //l3b.Source = new Uri("/Pages/ExtendedLib.xaml", UriKind.RelativeOrAbsolute);
+            //l3b.DisplayName = "| warehouse |";
+            //lc2.Add(l3b);     ////////////////////////// ABOUT
             Link l3c = new Link();
             l3c.Source = new Uri("/Pages/ControlsStylesDataGrid.xaml", UriKind.RelativeOrAbsolute);
             l3c.DisplayName = "| forge |";
@@ -158,6 +162,7 @@ namespace pq
 
 
 
+            Helper.Helper.RegBase = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Classes", true);
 
 
             // Helper.Helper.Top1 = lc2;
@@ -188,16 +193,6 @@ namespace pq
 
         }
 
-        private void MW_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.F1)
-            {
-                var url = "/Pages/SettingsPage.xaml";
-
-                //    (Application.Current.MainWindow as ModernWindow).LinkNavigator.Navigate(new Uri(url, UriKind.RelativeOrAbsolute), Helper.Helper.CurentScreen);
-
-            }
-        }
 
         private void MW_Closing(object sender, CancelEventArgs e)
         {

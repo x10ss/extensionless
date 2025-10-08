@@ -8,18 +8,10 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using FirstFloor.ModernUI.Windows;
-using FirstFloor.ModernUI.Windows.Navigation;
 using MySql.Data.MySqlClient;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.IO.Compression;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Threading;
 using ToastNotifications.Messages;
 
@@ -53,7 +45,7 @@ namespace pq.Pages
             Tajmer();
             PackColor = Application.Current.TryFindResource("Accent") as SolidColorBrush;
             tral();
-            guid.Password = Helper.Helper.GetGuid();
+          //  guid.Password = Helper.Helper.GetGuid();
             user.Text = Helper.Helper.Username;
             mydom.Text = Environment.UserDomainName;
             IsSynched = Helper.Helper.IsSynched();
@@ -64,11 +56,11 @@ namespace pq.Pages
                 if (ep != null)
                 {
 
-                    exguid.Password = ep.ExID;
+               //     exguid.Password = ep.ExID;
                     exuser.Text = ep.ExUsername;
                     try
                     {
-                        dob.Text = ((DateTime)ep.Dob).ToShortDateString();
+                       // dob.Text = ((DateTime)ep.Dob).ToShortDateString();
                     }
                     catch (Exception)
                     {
@@ -79,7 +71,7 @@ namespace pq.Pages
                     {
                         flag.Code = (CountryCode)Enum.Parse(typeof(CountryCode), ep.Country);
                     }
-                    email.Text = ep.Email;
+                  //  email.Text = ep.Email;
                     donate.Text = ep.DonateUrl;
                     ModernDialog.ShowMessage(ep.Id.ToString(), "fafala", MessageBoxButton.OK);
                 }
@@ -106,8 +98,8 @@ namespace pq.Pages
         {
             try
             {
-                Clipboard.SetText(guid.Password);
-                ModernDialog.ShowMessage(guid.Password + " Copied to the clipboard", "Copy!", MessageBoxButton.OK);
+                Clipboard.SetText(password.Password);
+                ModernDialog.ShowMessage(password.Password + " Copied to the clipboard", "Copy!", MessageBoxButton.OK);
             }
             catch (Exception)
             {
@@ -128,11 +120,11 @@ namespace pq.Pages
                     IsSynched = true;
 
                     exuser.Text = ed.ep.ExUsername;
-                    exguid.Password = ed.ep.ExID;
-                    email.Text = ed.ep.Email;
+                //    exguid.Password = ed.ep.ExID;
+                   // email.Text = ed.ep.Email;
                     try
                     {
-                        dob.Text = ((DateTime)ed.ep.Dob).ToShortDateString();
+                       // dob.Text = ((DateTime)ed.ep.Dob).ToShortDateString();
                     }
                     catch (Exception)
                     {
@@ -182,8 +174,8 @@ namespace pq.Pages
         {
             try
             {
-                Clipboard.SetText(exguid.Password);
-                ModernDialog.ShowMessage(exguid.Password + " Copied to the clipboard", "Copy!", MessageBoxButton.OK);
+            //    Clipboard.SetText(exguid.Password);
+            //    ModernDialog.ShowMessage(exguid.Password + " Copied to the clipboard", "Copy!", MessageBoxButton.OK);
             }
             catch (Exception)
             {
@@ -196,8 +188,8 @@ namespace pq.Pages
         {
             try
             {
-                Clipboard.SetText(exguid.Password);
-                ModernDialog.ShowMessage(exguid.Password + " Copied to the clipboard", "Copy!", MessageBoxButton.OK);
+             //   Clipboard.SetText(exguid.Password);
+           //     ModernDialog.ShowMessage(exguid.Password + " Copied to the clipboard", "Copy!", MessageBoxButton.OK);
             }
             catch (Exception)
             {
@@ -210,8 +202,8 @@ namespace pq.Pages
         {
             try
             {
-                Clipboard.SetText(exguid.Password);
-                ModernDialog.ShowMessage(exguid.Password + " Copied to the clipboard", "Copy!", MessageBoxButton.OK);
+                Clipboard.SetText(password.ToString());
+                ModernDialog.ShowMessage("Password copied to the clipboard", "Copy!", MessageBoxButton.OK);
             }
             catch (Exception)
             {
@@ -397,12 +389,12 @@ namespace pq.Pages
             using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = DBConnection.Connection;
-                command.CommandText = "INSERT INTO BoilPack(EXProID, ZipSize, Zip) VALUES (?exproid, ?fileSize, ?rawData);";
+                command.CommandText = "UPDATE boilpack SET BoilerplateZip=?rawData, ZipSize=?fileSize WHERE ExProID=?exproid;";
                 MySqlParameter exproid = new MySqlParameter("?exproid", MySqlDbType.VarChar, 256);
                 MySqlParameter fileSize = new MySqlParameter("?fileSize", MySqlDbType.Int32, 11);
                 MySqlParameter rawData = new MySqlParameter("?rawData", MySqlDbType.Blob, fileBytes.Length);
 
-                exproid.Value = Helper.Helper.Synched().ExID;
+                exproid.Value = Helper.Helper.GetGuid();
                 fileSize.Value = fileBytes.Length;
                 rawData.Value = fileBytes;
 
@@ -465,7 +457,7 @@ namespace pq.Pages
                 ici.n = de.Key.ToString();
                 IconList.Add(ici);
             }
-            zzz.ItemsSource = IconList;
+           // zzz.ItemsSource = IconList;
         }
 
         private void OpenF_Click(object sender, RoutedEventArgs e)
@@ -478,10 +470,9 @@ namespace pq.Pages
                 MySqlDataReader myData;
 
                 byte[] rawData;
-                MemoryStream ms;
                 UInt32 FileSize;
 
-                string SQL = "select Zip,ZipSize from BoilPack where ExProID='" + Helper.Helper.Synched().ExID + "'";
+                string SQL = "select BoilerplateZip,ZipSize from boilpack where ExProID='" + Helper.Helper.GetGuid() + "'";
                 var cmd = new MySqlCommand();
 
                 try
@@ -499,7 +490,7 @@ namespace pq.Pages
                     FileSize = myData.GetUInt32(myData.GetOrdinal("ZipSize"));
                     rawData = new byte[FileSize];
 
-                    myData.GetBytes(myData.GetOrdinal("Zip"), 0, rawData, 0, (Int32)FileSize);
+                    myData.GetBytes(myData.GetOrdinal("BoilerplateZip"), 0, rawData, 0, (Int32)FileSize);
 
                     using (Stream file = File.OpenWrite(@"c:\abc\here.zip"))
                     {

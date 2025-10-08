@@ -25,11 +25,6 @@ namespace pq.Pages
                 l1.DisplayName = "Create account";
                 lc.Add(l1);
 
-                Link l3 = new Link();
-                l3.Source = new Uri("/Pages/Forgot.xaml", UriKind.RelativeOrAbsolute);
-                l3.DisplayName = "Forgot?";
-                lc.Add(l3);
-
             }
             else
             {

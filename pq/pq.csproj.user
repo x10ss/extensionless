@@ -2,7 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>c:\xampp\htdocs\x10ss\download\|ftp://extensionless.com//public_html/download/|fttp://extensionless.com//public_html/download/|fttp://ftp.extensionless.com/public_html/download/|ftp://ftp.extensionless.com/public_html/download/</PublishUrlHistory>
+    <PublishUrlHistory>ftp://extensionless.com//public_html/download/|fttp://extensionless.com//public_html/download/|fttp://ftp.extensionless.com/public_html/download/|ftp://ftp.extensionless.com/public_html/download/|ftp://ftp.extensionless.com/public_html/core/</PublishUrlHistory>
     <InstallUrlHistory>https://download.extensionless.com/|http://download.extensionless.com/|http://core.extensionless.com/|http://extensionless.com/builds/fayla/|http://extensionless.com/pq/</InstallUrlHistory>
     <SupportUrlHistory>http://support.extensionless.com</SupportUrlHistory>
     <UpdateUrlHistory>http://download.extensionless.com/|http://core.extensionless.com/|http://extensionless.com/builds/fayla/</UpdateUrlHistory>

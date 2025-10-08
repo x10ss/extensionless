@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Windows;
 
 namespace pq
 {
@@ -20,13 +22,13 @@ namespace pq
         }
 
         public static string Password { get; set; }
-       private static MySqlConnection connection= new MySqlConnection("Database=lovrenco_x10sionless;Server=49.12.60.2;Username=lovrenco_x10sionless2020; pwd=diegoRecoba8*;");
+       private static MySqlConnection connection= new MySqlConnection("Database=; Server=extensionless.com; Username=; pwd=;");
 
         public static MySqlConnection Connection
         {
             get
             {
-                MySqlConnection connection = new MySqlConnection("Database=lovrenco_x10sionless;Server=49.12.60.2;Username=lovrenco_x10sionless2020; pwd=diegoRecoba8*;");
+                MySqlConnection connection = new MySqlConnection("Database=; Server=extensionless.com; Username=; pwd=;");
                 connection.Open();
                 return connection;
             }
@@ -40,7 +42,7 @@ namespace pq
             if (Connection == null)
             {
 
-                connection = new MySqlConnection("Database=lovrenco_x10sionless;Server=htttps://www.extensionless.com;Username=lovrenco_x10sionless2020; pwd=diegoRecoba8*;");
+                connection = new MySqlConnection("Database=; Server=extensionless.com; Username=; pwd=;");
 
 
 
@@ -49,7 +51,7 @@ namespace pq
         }
         public static void Close()
         {
-            connection = new MySqlConnection("Database=lovrenco_x10sionless;Server=htttps://www.extensionless.com;Username=lovrenco_x10sionless2020; pwd=diegoRecoba8*;");
+            connection = new MySqlConnection("Database=; Server=extensionless.com; Username=; pwd=;") ;
 
             connection.Close();
             connection = null;

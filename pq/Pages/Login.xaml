@@ -16,19 +16,7 @@
             <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
-                    <ColumnDefinition Width="5*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Label HorizontalAlignment="Right" Content="ID: " Grid.Column="0">
-                </Label>
-                <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Stretch">
-                    <TextBox MaxLength="36" x:Name="exguid"></TextBox>
-                </StackPanel>
-            </Grid>
-            <Grid Margin="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"></ColumnDefinition>
                     <ColumnDefinition Width="3*"></ColumnDefinition>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label HorizontalAlignment="Right" Content="Username: " Grid.Column="0">
                 </Label>
@@ -36,7 +24,17 @@
                     <TextBox MaxLength="15" x:Name="exuser"></TextBox>
                 </StackPanel>
             </Grid>
-
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Right" Content="Password: " Grid.Column="0">
+                </Label>
+                <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Stretch">
+                    <TextBox MaxLength="36" x:Name="expass"></TextBox>
+                </StackPanel>
+            </Grid>
         </StackPanel>
         
     </StackPanel>

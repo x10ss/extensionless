@@ -1,0 +1,159 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\pages\\exdialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\pages\\exdialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\pages\\createaccount.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\pages\\createaccount.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|pq||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\pages\\createaccount.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\pages\\createaccount.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|c:\\users\\guvo\\documents\\github\\extensionless\\extensionless\\pq\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "pq",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\pq.csproj",
+              "RelativeDocumentMoniker": "pq\\pq.csproj",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\pq.csproj",
+              "RelativeToolTip": "pq\\pq.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-08T04:47:48.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CreateAccount.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Pages\\CreateAccount.xaml.cs",
+              "RelativeDocumentMoniker": "pq\\Pages\\CreateAccount.xaml.cs",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Pages\\CreateAccount.xaml.cs",
+              "RelativeToolTip": "pq\\Pages\\CreateAccount.xaml.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAD4vxEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T04:07:36.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateAccount.xaml",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Pages\\CreateAccount.xaml",
+              "RelativeDocumentMoniker": "pq\\Pages\\CreateAccount.xaml",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Pages\\CreateAccount.xaml",
+              "RelativeToolTip": "pq\\Pages\\CreateAccount.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-08T04:07:32.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExDialog.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Pages\\ExDialog.xaml.cs",
+              "RelativeDocumentMoniker": "pq\\Pages\\ExDialog.xaml.cs",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Pages\\ExDialog.xaml.cs",
+              "RelativeToolTip": "pq\\Pages\\ExDialog.xaml.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAqwDgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T03:46:01.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\App.xaml.cs",
+              "RelativeDocumentMoniker": "pq\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\App.xaml.cs",
+              "RelativeToolTip": "pq\\App.xaml.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T04:10:18.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DBConnection.cs",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\DBConnection.cs",
+              "RelativeDocumentMoniker": "pq\\DBConnection.cs",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\DBConnection.cs",
+              "RelativeToolTip": "pq\\DBConnection.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAawDUAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T04:01:47.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "pq\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\MainWindow.xaml",
+              "RelativeToolTip": "pq\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-08T04:10:06.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "pq\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\MainWindow.xaml.cs",
+              "RelativeToolTip": "pq\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T04:10:09.101Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

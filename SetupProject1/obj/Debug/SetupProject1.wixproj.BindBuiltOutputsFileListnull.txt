@@ -1,3 +1,0 @@
-C:\Users\Lovre\source\repos\pq - Copy\SetupProject1\bin\Debug\cab1.cab
-C:\Users\Lovre\source\repos\pq - Copy\SetupProject1\bin\Debug\SetupProject1.msi
-C:\Users\Lovre\source\repos\pq - Copy\SetupProject1\bin\Debug\SetupProject1.wixpdb

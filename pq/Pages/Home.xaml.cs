@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ToastNotifications.Messages;
 
+
 namespace pq.Pages
 {
     /// <summary>
@@ -36,8 +37,8 @@ namespace pq.Pages
             // AppearanceManager.Current.AccentColor = Helper.Helper.GetAccent(4); 
             //  Helper.Helper.CurentScreen = this as FrameworkElement;
             Helper.Helper.getDBST();
-            IsExtended.IsChecked = Helper.Helper.ST.IsExtended;
-            IsMine.IsChecked = Helper.Helper.ST.IsMine;
+         //   IsExtended.IsChecked = Helper.Helper.ST.IsExtended;
+        //    IsMine.IsChecked = Helper.Helper.ST.IsMine;
             //  Helper.Helper.SetTop(false);
             //  throw new NotImplementedException();
             //AppearanceManager.Current.ThemeSource = AppearanceManager.DarkThemeSource;
@@ -73,7 +74,7 @@ namespace pq.Pages
         public void MyInit()
         {
             Helper.Helper.All = new System.Collections.Generic.List<FileExtensionItem>();
-
+     
             //  Helper.Helper.getDB();
 
             //   Hi.Text = Helper.Helper.Username + ", start templating extensions";
@@ -81,36 +82,37 @@ namespace pq.Pages
         }
         public void Load()
         {
-            MyIsLoaded = false;
-            newdialoge = new OpenDialog();
-            // FETdetails UserControl1Control = sender as FETdetails;
+         //   MyIsLoaded = false;
+         ////   newdialoge = new OpenDialog();
+         //   // FETdetails UserControl1Control = sender as FETdetails;
 
-            newdialoge.Owner = Application.Current.MainWindow;
-            bool bl;
-            try
-            {
-                bl = (bool)newdialoge.ShowDialog();
-            }
-            catch (Exception exc)
-            {
-                bl = false;
-                ModernDialog.ShowMessage("suckadick", "pc", MessageBoxButton.OK);
-            }
+         //   newdialoge.Owner = Application.Current.MainWindow;
+         //   bool bl;
+         //   try
+         //   {
+         //       bl = (bool)newdialoge.ShowDialog();
+         //   }
+         //   catch (Exception exc)
+         //   {
+         //       bl = false;
+         //       ModernDialog.ShowMessage("suckadick", "pc", MessageBoxButton.OK);
+         //   }
 
-            if (bl)
-            {
-                pu = "Machine";
-                Helper.Helper.RegBase = Registry.ClassesRoot;
-                //  ModernDialog.ShowMessage("pc", "pc", MessageBoxButton.OK);
-            }
-            else
-            {
-                Helper.Helper.RegBase = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Classes", true);
-                pu = "User";
-                //  ModernDialog.ShowMessage("user", "user", MessageBoxButton.OK);
-            }
+         //   if (bl)
+         //   {
+         //       pu = "Machine";
+         //       Helper.Helper.RegBase = Registry.ClassesRoot;
+         //       //  ModernDialog.ShowMessage("pc", "pc", MessageBoxButton.OK);
+         //   }
+         //   else
+         //   {
+         //       Helper.Helper.RegBase = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Classes", true);
+         //       pu = "User";
+         //       //  ModernDialog.ShowMessage("user", "user", MessageBoxButton.OK);
+         //   }
 
-            if (!MyIsLoaded) LoadFete();
+           // if (!MyIsLoaded)
+           LoadFete();
         }
 
 
@@ -133,7 +135,7 @@ namespace pq.Pages
 
         private void LoadFete()
         {
-            (Application.Current.MainWindow as MainWindow).notifier.ShowInformation("DB...");
+             (Application.Current.MainWindow as MainWindow).notifier.ShowInformation("DB...");
             BackgroundWorker worker2 = new BackgroundWorker();
 
             worker2.DoWork += Helper.Helper.getDB;
@@ -169,8 +171,8 @@ namespace pq.Pages
             try
             {
                 QuickStart.Visibility = Visibility.Visible;
-                IsExtended.IsChecked = Helper.Helper.ST.IsExtended;
-                IsMine.IsChecked = Helper.Helper.ST.IsMine;
+               // IsExtended.IsChecked = Helper.Helper.ST.IsExtended;
+             //   IsMine.IsChecked = Helper.Helper.ST.IsMine;
 
                 (Application.Current.MainWindow as MainWindow).notifier.ShowInformation("Registry Loaded");
 
@@ -388,7 +390,17 @@ namespace pq.Pages
                 ent.SaveChanges();
             }
         }
+        private void IsMachine_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Helper.Helper.RegBase = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Classes", true);
+            ReReg(null,null);
 
+        }
+        private void IsMachine_Checked(object sender, RoutedEventArgs e)
+        {
+            Helper.Helper.RegBase = Registry.ClassesRoot;
+               ReReg(null,null);
+        }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             FrameworkElement fel = (Parent as FrameworkElement);

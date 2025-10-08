@@ -22,7 +22,7 @@ namespace pq.Pages
             InitializeComponent();
 
             EName = exuser;
-            EID = exguid;
+          //  EID = exguid;
         }
 
         public void OnFragmentNavigation(FragmentNavigationEventArgs e)
