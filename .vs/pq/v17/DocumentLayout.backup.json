@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|c:\\users\\guvo\\documents\\github\\extensionless\\extensionless\\pq\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|c:\\users\\guvo\\documents\\github\\extensionless\\extensionless\\pq\\inversebooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\inversebooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|c:\\users\\guvo\\documents\\github\\extensionless\\extensionless\\pq\\ifileextensionvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\ifileextensionvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +22,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\App.xaml.cs",
+              "RelativeDocumentMoniker": "pq\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\App.xaml.cs",
+              "RelativeToolTip": "pq\\App.xaml.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAADIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T10:22:51.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InverseBooleanConverter.cs",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\InverseBooleanConverter.cs",
+              "RelativeDocumentMoniker": "pq\\InverseBooleanConverter.cs",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\InverseBooleanConverter.cs",
+              "RelativeToolTip": "pq\\InverseBooleanConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T10:21:41.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IFileExtensionVM.cs",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\IFileExtensionVM.cs",
+              "RelativeDocumentMoniker": "pq\\IFileExtensionVM.cs",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\IFileExtensionVM.cs",
+              "RelativeToolTip": "pq\\IFileExtensionVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T10:21:37.822Z",
+              "EditorCaption": ""
             }
           ]
         }

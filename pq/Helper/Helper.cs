@@ -138,11 +138,13 @@ namespace pq.Helper
 
                     ent.ExProes.Add(newExpro);
 
+                    
                     ent.SaveChanges();
 
                     return newExpro;
                 }
             }
+
 
 
         }
@@ -503,8 +505,8 @@ namespace pq.Helper
 
             try
             {
-                svm.IsLoading = false;
-                svm.Notify();
+               //svm.IsLoading = false;
+                //svm.Notify();
             }
             catch (Exception eee)
             {

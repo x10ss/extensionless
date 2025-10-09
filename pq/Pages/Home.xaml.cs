@@ -60,7 +60,7 @@ namespace pq.Pages
             InitializeComponent();
             MyInit();
             Helper.Helper.MyHome = this;
-
+            Slajda.Maximum = Helper.Helper.LEX.Count;
             //  ModernDialog.ShowMessage(Helper.Helper.GetGuid(), "home", MessageBoxButton.OK);
             // ModernDialog.ShowMessage(Helper.Helper.GetExPro(), "home", MessageBoxButton.OK);
 
@@ -177,7 +177,7 @@ namespace pq.Pages
                 (Application.Current.MainWindow as MainWindow).notifier.ShowInformation("Registry Loaded");
 
                 MyIsLoaded = true;
-                Slajda5.Text = " Extensions loaded • " + pu.ToUpper() + " Registry";
+                Slajda5.Text = " Extensions loaded";
                 Slajda5a.Text = "✔";
             }
             catch (Exception eeee)

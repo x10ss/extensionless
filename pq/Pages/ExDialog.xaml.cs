@@ -44,18 +44,18 @@ namespace pq.Pages
             if (CreateAccount.createAccount != null)
             {
 
-               // string dt = ((DateTime)(CreateAccount.createAcc.EDob.SelectedDate)).ToString("yyyy-MM-dd HH:mm:ss");
+                // string dt = ((DateTime)(CreateAccount.createAcc.EDob.SelectedDate)).ToString("yyyy-MM-dd HH:mm:ss");
 
                 //suppose col0 and col1 are defined as VARCHAR in the DB
                 // string query = "SELECT ID FROM ExPro";
-               
-                
+
+
                 string query = "insert into boilpack(ExProID, CountryID, Username,DonateURL, BoilerplateZip, Hits, ZipSize, Category, FilesList, Password) " +
                     "values('" + Helper.Helper.GetGuid()
-                    + "','" + CreateAccount.createAccount.EFlag.SelectedItem.ToString() 
+                    + "','" + CreateAccount.createAccount.EFlag.SelectedItem.ToString()
                     + "','" + CreateAccount.createAccount.EName.Text
-                    + "','" + CreateAccount.createAccount.EDonate.Text 
-                    + "' , '',0, 0, '', '', '"+ CreateAccount.createAccount.EPassword.Password + "');";
+                    + "','" + CreateAccount.createAccount.EDonate.Text
+                    + "' , '',0, 0, '', '', '" + CreateAccount.createAccount.EPassword.Password + "');";
                 var cmd = new MySqlCommand(query, DBConnection.Connection);
                 int reader = cmd.ExecuteNonQuery();
                 if (reader > 0)
@@ -74,30 +74,30 @@ namespace pq.Pages
                     ExPro newep = ent.ExProes.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
                     //ExPro newep = new ExPro();
                     newep.ExUsername = CreateAccount.createAccount.EName.Text;
-                 //   newep.Password = CreateAccount.createAccount.EPassword.Password;
-                   // newep.Email = CreateAccount.createAcc.EEmail.Text;
+                    //   newep.Password = CreateAccount.createAccount.EPassword.Password;
+                    // newep.Email = CreateAccount.createAcc.EEmail.Text;
                     newep.DonateUrl = CreateAccount.createAccount.EDonate.Text;
                     newep.Password = CreateAccount.createAccount.EPassword.Password;
-                   // newep.Dob = CreateAccount.createAcc.EDob.SelectedDate;
+                    // newep.Dob = CreateAccount.createAcc.EDob.SelectedDate;
                     newep.ExID = Helper.Helper.GetGuid();
                     newep.Country = CreateAccount.createAccount.EFlag.SelectedItem.ToString();
                     ent.SaveChanges();
                     ep = newep;
                 }
-                CreateAccount.createAccount = null; 
+                CreateAccount.createAccount = null;
                 this.DialogResult = true;
 
             }
             else if (ChangeData.changeData != null)
             {
-               // string dt = ((DateTime)(ChangeData.createAcc.EDob.SelectedDate)).ToString("yyyy-MM-dd HH:mm:ss");
+                // string dt = ((DateTime)(ChangeData.createAcc.EDob.SelectedDate)).ToString("yyyy-MM-dd HH:mm:ss");
 
                 //suppose col0 and col1 are defined as VARCHAR in the DB
                 // string query = "SELECT ID FROM ExPro";
                 string query = "Update boilpack set CountryID='" + ChangeData.changeData.EFlag.SelectedItem.ToString() +
-                    "', Username='" + ChangeData.changeData.EName.Text + "',DonateUrl='" + ChangeData.changeData.EDonate.Text 
+                    "', Username='" + ChangeData.changeData.EName.Text + "',DonateUrl='" + ChangeData.changeData.EDonate.Text
                     + "',Password='" + ChangeData.changeData.EPassword.Password + "' " +
-                    "WHERE ExProID = '"+ Helper.Helper.GetGuid() +"';";
+                    "WHERE ExProID = '" + Helper.Helper.GetGuid() + "';";
                 var cmd = new MySqlCommand(query, DBConnection.Connection);
                 var reader = cmd.ExecuteNonQuery();
                 if (reader > 0)
@@ -115,7 +115,7 @@ namespace pq.Pages
                 {
                     ExPro newep = ent.ExProes.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
                     newep.ExUsername = ChangeData.changeData.EName.Text;
-                 //   newep.Password = ChangeData.changeData.EPassword.Password;
+                    //   newep.Password = ChangeData.changeData.EPassword.Password;
                     newep.DonateUrl = ChangeData.changeData.EDonate.Text;
                     newep.Password = ChangeData.changeData.EPassword.Password;
                     newep.Country = ChangeData.changeData.EFlag.SelectedItem.ToString();
@@ -123,7 +123,7 @@ namespace pq.Pages
                     ep = newep;
 
                 }
-                ChangeData.changeData = null;   
+                ChangeData.changeData = null;
                 this.DialogResult = true;
             }
             else if (Login.login != null)
@@ -131,8 +131,8 @@ namespace pq.Pages
 
                 //suppose col0 and col1 are defined as VARCHAR in the DB
                 // string query = "SELECT ID FROM ExPro";
-                string query = "SELECT ExPro.ExProID, ExPro.CountryID,ExPro.Username,ExPro.DonateUrl,ExPro.Email,ExPro.Dob FROM ExPro WHERE ExPro.ExProID='" + Login.login.EID.Text +
-                    "' and ExPro.Username='" + Login.login.EName.Text +
+                string query = "SELECT ExProID, CountryID,Username,DonateURL,Password FROM boilpack WHERE Username='" + Login.login.exuser.Text +
+                    "' and Password='" + Login.login.expass.Password +
                     "';";
 
                 var cmd = new MySqlCommand(query, DBConnection.Connection);
@@ -144,28 +144,28 @@ namespace pq.Pages
                     {
                         ExPro newep = ent.ExProes.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
                         newep.ExUsername = reader.GetString(2);
-                       // newep.Email = reader.GetString(4);
+                        // newep.Email = reader.GetString(4);
                         newep.DonateUrl = reader.GetString(3);
-                      //  newep.Dob = reader.GetDateTime(5);
+                        //  newep.Dob = reader.GetDateTime(5);
                         newep.Country = reader.GetString(1);
+                        newep.Password = reader.GetString(4);
                         newep.ExID = reader.GetString(0);
-                        newep.WinUsername = Environment.UserName;
                         ent.SaveChanges();
                         ep = newep;
 
                     }
-
-                    MessageBox.Show("Bravoggrrri22222ttt - ");
-
+                   
 
                 }
+ MessageBox.Show("Bravoggrrri22222ttt - ");
 
 
                 DBConnection.Close();
                 this.DialogResult = true;
+                Login.login = null;
             }
+           
         }
-
 
 
 

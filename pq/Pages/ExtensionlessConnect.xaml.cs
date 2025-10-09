@@ -30,12 +30,12 @@ namespace pq.Pages
             {
                 Link l4 = new Link();
                 l4.Source = new Uri("/Pages/ChangeData.xaml", UriKind.RelativeOrAbsolute);
-                l4.DisplayName = "Change Data";
+                l4.DisplayName = "Update";
                 lc.Add(l4);
 
                 Link l5 = new Link();
                 l5.Source = new Uri("/Pages/Disconnect.xaml", UriKind.RelativeOrAbsolute);
-                l5.DisplayName = "Disconnect";
+                l5.DisplayName = "Logout";
                 lc.Add(l5);
 
                 Link l6 = new Link();

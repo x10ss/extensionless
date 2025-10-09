@@ -45,7 +45,7 @@
                     <TextBlock Text="MY LIBRARY" VerticalAlignment="Center" Style="{StaticResource Heading2}"></TextBlock>
                 </CheckBox.Content>
             </CheckBox>
-            <ContentPresenter Content="{StaticResource appbar_transit_connection_departure}" ></ContentPresenter>
+            <ContentPresenter Content="{StaticResource appbar_transit_connection}" ></ContentPresenter>
 
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">

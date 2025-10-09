@@ -371,7 +371,7 @@ namespace pq.MyConverters
                     return Visibility.Visible;
 
             }
-            return false;
+          //  return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -589,7 +589,7 @@ namespace pq.MyConverters
                     return new SolidColorBrush(Color.FromArgb((byte)128, (byte)75, (byte)170, (byte)65)).ToString();
 
             }
-            return false;
+          //  return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

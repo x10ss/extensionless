@@ -87,7 +87,7 @@
         <ScrollViewer>
             <StackPanel>
                 <Grid>
-                    <ProgressBar Maximum="125" Height="22" x:Name="Slajda"></ProgressBar>
+                    <ProgressBar Height="22" x:Name="Slajda"></ProgressBar>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
                         <TextBlock Foreground="AliceBlue" Text="{Binding ElementName=Slajda,Path=Value, Converter={StaticResource Percival}}" />
                         <TextBlock Foreground="AliceBlue" Text=" %" />

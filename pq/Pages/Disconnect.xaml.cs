@@ -38,7 +38,6 @@ namespace pq.Pages
 
         private void ModernButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            MessageBox.Show("sure?");
             using (Entities ent = new Entities())
             {
                 ExPro ep = ent.ExProes.Where(x => x.WinUsername == Environment.UserName).FirstOrDefault();

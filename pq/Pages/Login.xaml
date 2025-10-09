@@ -32,7 +32,7 @@
                 <Label HorizontalAlignment="Right" Content="Password: " Grid.Column="0">
                 </Label>
                 <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Stretch">
-                    <TextBox MaxLength="36" x:Name="expass"></TextBox>
+                    <PasswordBox MaxLength="36" x:Name="expass"></PasswordBox>
                 </StackPanel>
             </Grid>
         </StackPanel>
