@@ -22,13 +22,13 @@ namespace pq
         }
 
         public static string Password { get; set; }
-       private static MySqlConnection connection= new MySqlConnection("Database=; Server=extensionless.com; Username=; pwd=;");
+       private static MySqlConnection connection= new MySqlConnection("Database=lowwwre_x10ss; Server=extensionless.com; Username=lowwwre_admin; pwd=diegoRecoba8*;");
 
         public static MySqlConnection Connection
         {
             get
             {
-                MySqlConnection connection = new MySqlConnection("Database=; Server=extensionless.com; Username=; pwd=;");
+                MySqlConnection connection = new MySqlConnection("Database=lowwwre_x10ss; Server=extensionless.com; Username=lowwwre_admin; pwd=diegoRecoba8*;");
                 connection.Open();
                 return connection;
             }
@@ -42,7 +42,7 @@ namespace pq
             if (Connection == null)
             {
 
-                connection = new MySqlConnection("Database=; Server=extensionless.com; Username=; pwd=;");
+                connection = new MySqlConnection("Database=lowwwre_x10ss; Server=extensionless.com; Username=lowwwre_admin; pwd=diegoRecoba8*;");
 
 
 
@@ -51,7 +51,7 @@ namespace pq
         }
         public static void Close()
         {
-            connection = new MySqlConnection("Database=; Server=extensionless.com; Username=; pwd=;") ;
+            connection = new MySqlConnection("Database=lowwwre_x10ss; Server=extensionless.com; Username=lowwwre_admin; pwd=diegoRecoba8*;") ;
 
             connection.Close();
             connection = null;

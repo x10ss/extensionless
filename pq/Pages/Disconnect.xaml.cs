@@ -39,11 +39,11 @@ namespace pq.Pages
         private void ModernButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             MessageBox.Show("sure?");
-            using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+            using (Entities ent = new Entities())
             {
-                ExPro ep = ent.ExPro.Where(x => x.WinUsername == Environment.UserName).FirstOrDefault();
-                ent.Setting.Remove(ent.Setting.Where(x => x.ExPro.ExID == ep.ExID).FirstOrDefault());
-                ent.ExPro.Remove(ep);
+                ExPro ep = ent.ExProes.Where(x => x.WinUsername == Environment.UserName).FirstOrDefault();
+                ent.Settings.Remove(ent.Settings.Where(x => x.ExPro.ExID == ep.ExID).FirstOrDefault());
+                ent.ExProes.Remove(ep);
                 ent.SaveChanges();
             }
             ExPro newep = Helper.Helper.GetExPro(true);

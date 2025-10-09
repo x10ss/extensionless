@@ -54,9 +54,9 @@ namespace pq.Pages
         {
             InitializeComponent();
             DataContext = this;
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
-                Setting st = ent.Setting.FirstOrDefault();
+                Setting st = ent.Settings.FirstOrDefault();
                 if (st.IsExtended == true)
                 {
 
@@ -156,10 +156,10 @@ namespace pq.Pages
 
         private void IsExtended_Checked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
 
-                Setting st = ent.Setting.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
                 st.IsExtended = true;
                 on.Visibility = Visibility.Visible;
                 off.Visibility = Visibility.Collapsed;
@@ -169,9 +169,9 @@ namespace pq.Pages
 
         private void IsExtended_Unchecked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
-                Setting st = ent.Setting.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
                 st.IsExtended = false;
                 off.Visibility = Visibility.Visible;
                 on.Visibility = Visibility.Collapsed;

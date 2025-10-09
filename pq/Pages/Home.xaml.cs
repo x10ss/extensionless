@@ -350,10 +350,10 @@ namespace pq.Pages
 
         private void IsExtended_Checked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
 
-                Setting st = ent.Setting.FirstOrDefault();
+                Setting st = ent.Settings.FirstOrDefault();
                 st.IsExtended = true;
                 ent.SaveChanges();
             }
@@ -361,9 +361,9 @@ namespace pq.Pages
 
         private void IsExtended_Unchecked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
-                Setting st = ent.Setting.FirstOrDefault();
+                Setting st = ent.Settings.FirstOrDefault();
                 st.IsExtended = false;
                 ent.SaveChanges();
             }
@@ -371,10 +371,10 @@ namespace pq.Pages
 
         private void IsMine_Checked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
 
-                Setting st = ent.Setting.FirstOrDefault();
+                Setting st = ent.Settings.FirstOrDefault();
                 st.IsMine = true;
                 ent.SaveChanges();
             }
@@ -382,10 +382,10 @@ namespace pq.Pages
 
         private void IsMine_Unchecked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
 
-                Setting st = ent.Setting.FirstOrDefault();
+                Setting st = ent.Settings.FirstOrDefault();
                 st.IsMine = false;
                 ent.SaveChanges();
             }

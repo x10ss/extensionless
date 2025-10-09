@@ -48,12 +48,14 @@ namespace pq.Pages
 
                 //suppose col0 and col1 are defined as VARCHAR in the DB
                 // string query = "SELECT ID FROM ExPro";
+               
+                
                 string query = "insert into boilpack(ExProID, CountryID, Username,DonateURL, BoilerplateZip, Hits, ZipSize, Category, FilesList, Password) " +
                     "values('" + Helper.Helper.GetGuid()
                     + "','" + CreateAccount.createAccount.EFlag.SelectedItem.ToString() 
                     + "','" + CreateAccount.createAccount.EName.Text
                     + "','" + CreateAccount.createAccount.EDonate.Text 
-                    + "' , '',0, 0, '', '', '');";
+                    + "' , '',0, 0, '', '', '"+ CreateAccount.createAccount.EPassword.Password + "');";
                 var cmd = new MySqlCommand(query, DBConnection.Connection);
                 int reader = cmd.ExecuteNonQuery();
                 if (reader > 0)
@@ -67,18 +69,18 @@ namespace pq.Pages
 
                 DBConnection.Close();
 
-                using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+                using (Entities ent = new Entities())
                 {
-                    //ExPro newep = ent.ExPro.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
-                    ExPro newep = new ExPro();
+                    ExPro newep = ent.ExProes.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
+                    //ExPro newep = new ExPro();
                     newep.ExUsername = CreateAccount.createAccount.EName.Text;
-                    newep.Password = CreateAccount.createAccount.EPassword.Password;
+                 //   newep.Password = CreateAccount.createAccount.EPassword.Password;
                    // newep.Email = CreateAccount.createAcc.EEmail.Text;
                     newep.DonateUrl = CreateAccount.createAccount.EDonate.Text;
+                    newep.Password = CreateAccount.createAccount.EPassword.Password;
                    // newep.Dob = CreateAccount.createAcc.EDob.SelectedDate;
                     newep.ExID = Helper.Helper.GetGuid();
                     newep.Country = CreateAccount.createAccount.EFlag.SelectedItem.ToString();
-                   // ent.ExPro.Add(newep);
                     ent.SaveChanges();
                     ep = newep;
                 }
@@ -93,7 +95,8 @@ namespace pq.Pages
                 //suppose col0 and col1 are defined as VARCHAR in the DB
                 // string query = "SELECT ID FROM ExPro";
                 string query = "Update boilpack set CountryID='" + ChangeData.changeData.EFlag.SelectedItem.ToString() +
-                    "', Username='" + ChangeData.changeData.EName.Text + "',DonateUrl='" + ChangeData.changeData.EDonate.Text +"' " +
+                    "', Username='" + ChangeData.changeData.EName.Text + "',DonateUrl='" + ChangeData.changeData.EDonate.Text 
+                    + "',Password='" + ChangeData.changeData.EPassword.Password + "' " +
                     "WHERE ExProID = '"+ Helper.Helper.GetGuid() +"';";
                 var cmd = new MySqlCommand(query, DBConnection.Connection);
                 var reader = cmd.ExecuteNonQuery();
@@ -108,12 +111,13 @@ namespace pq.Pages
 
                 DBConnection.Close();
 
-                using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+                using (Entities ent = new Entities())
                 {
-                    ExPro newep = ent.ExPro.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
+                    ExPro newep = ent.ExProes.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
                     newep.ExUsername = ChangeData.changeData.EName.Text;
-                    newep.Password = ChangeData.changeData.EPassword.Password;
+                 //   newep.Password = ChangeData.changeData.EPassword.Password;
                     newep.DonateUrl = ChangeData.changeData.EDonate.Text;
+                    newep.Password = ChangeData.changeData.EPassword.Password;
                     newep.Country = ChangeData.changeData.EFlag.SelectedItem.ToString();
                     ent.SaveChanges();
                     ep = newep;
@@ -136,13 +140,13 @@ namespace pq.Pages
                 while (reader.Read())
                 {
 
-                    using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+                    using (Entities ent = new Entities())
                     {
-                        ExPro newep = ent.ExPro.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
+                        ExPro newep = ent.ExProes.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
                         newep.ExUsername = reader.GetString(2);
-                        newep.Email = reader.GetString(4);
+                       // newep.Email = reader.GetString(4);
                         newep.DonateUrl = reader.GetString(3);
-                        newep.Dob = reader.GetDateTime(5);
+                      //  newep.Dob = reader.GetDateTime(5);
                         newep.Country = reader.GetString(1);
                         newep.ExID = reader.GetString(0);
                         newep.WinUsername = Environment.UserName;

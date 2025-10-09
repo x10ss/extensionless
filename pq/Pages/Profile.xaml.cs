@@ -73,6 +73,7 @@ namespace pq.Pages
                     }
                   //  email.Text = ep.Email;
                     donate.Text = ep.DonateUrl;
+                    password.Password = ep.Password;
                     ModernDialog.ShowMessage(ep.Id.ToString(), "fafala", MessageBoxButton.OK);
                 }
 
@@ -119,7 +120,16 @@ namespace pq.Pages
 
                     IsSynched = true;
 
-                    exuser.Text = ed.ep.ExUsername;
+                    exuser.Text=string.IsNullOrEmpty(ed.ep.ExUsername) ?"• • •" : ed.ep.ExUsername;
+                    donate.Text=string.IsNullOrEmpty(ed.ep.DonateUrl) ?"• • •" : ed.ep.DonateUrl;
+                    password.Password=string.IsNullOrEmpty(ed.ep.Password) ?"•••" : ed.ep.Password;
+                    if (string.IsNullOrEmpty(ed.ep.Country)) 
+                        flag.Visibility = Visibility.Hidden;
+                    else { 
+                        flag.Code = (CountryCode)Enum.Parse(typeof(CountryCode), ed.ep.Country);
+                        flag.Visibility= Visibility.Visible;
+                    }
+                  
                 //    exguid.Password = ed.ep.ExID;
                    // email.Text = ed.ep.Email;
                     try
@@ -131,12 +141,12 @@ namespace pq.Pages
 
                     }
 
-                    donate.Text = ed.ep.DonateUrl;
-                    if (!string.IsNullOrEmpty(ed.ep.Country))
-                    {
-                        flag.Code = (CountryCode)Enum.Parse(typeof(CountryCode), ed.ep.Country);
-                        flag.ToolTip = ((CountryCode)Enum.Parse(typeof(CountryCode), ed.ep.Country)).ToString();
-                    }
+                  //  donate.Text = ed.ep.DonateUrl;
+                  //  if (!string.IsNullOrEmpty(ed.ep.Country))
+                  //  {
+                   //     flag.Code = (CountryCode)Enum.Parse(typeof(CountryCode), ed.ep.Country);
+                  //      flag.ToolTip = ((CountryCode)Enum.Parse(typeof(CountryCode), ed.ep.Country)).ToString();
+                  //  }
                     IsSynched = string.IsNullOrEmpty(ed.ep.ExID) ? false : true;
                 }
                 else
@@ -202,7 +212,7 @@ namespace pq.Pages
         {
             try
             {
-                Clipboard.SetText(password.ToString());
+                Clipboard.SetText(password.Password);
                 ModernDialog.ShowMessage("Password copied to the clipboard", "Copy!", MessageBoxButton.OK);
             }
             catch (Exception)

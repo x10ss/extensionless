@@ -6,7 +6,7 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              xmlns:local="clr-namespace:pq.MyConverters"
-                  xmlns:country="clr-namespace:CountryFlag;assembly=CountryFlag"
+             xmlns:country="clr-namespace:CountryFlag;assembly=CountryFlag"
              d:DesignHeight="300" >
     <UserControl.Resources>
         <local:Synch x:Key="Synch"></local:Synch>

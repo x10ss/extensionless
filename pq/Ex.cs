@@ -25,5 +25,6 @@ namespace pq
         public Nullable<bool> IsMine { get; set; }
         public Nullable<bool> IsUsed { get; set; }
         public Nullable<System.DateTime> Last { get; set; }
+        public Nullable<int> wc { get; set; }
     }
 }

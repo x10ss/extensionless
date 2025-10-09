@@ -20,9 +20,9 @@ namespace pq.Pages
         private void ModernButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             MessageBox.Show("TODO DELETE ON SERVER");
-            using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+            using (Entities ent = new Entities())
             {
-                ent.ExPro.Remove(ent.ExPro.Where(x => x.WinUsername == Environment.UserName).FirstOrDefault());
+                ent.ExProes.Remove(ent.ExProes.Where(x => x.WinUsername == Environment.UserName).FirstOrDefault());
                 ent.SaveChanges();
             }
             ExDialog.exdialog.ep = Helper.Helper.GetExPro(true);

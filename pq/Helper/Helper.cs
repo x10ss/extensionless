@@ -14,6 +14,7 @@ using System.Linq;
 using System.Management;
 using System.Media;
 using System.Security.Principal;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Data;
@@ -56,9 +57,9 @@ namespace pq.Helper
         public static bool IsSynched()
         {
 
-            using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+            using (Entities ent = new Entities())
             {
-                return ent.ExPro.Any(x => x.WinUsername == Environment.UserName && x.ExID != null);
+                return ent.ExProes.Any(x => x.WinUsername == Environment.UserName && x.ExID != null);
 
             }
 
@@ -66,10 +67,10 @@ namespace pq.Helper
         public static ExPro Synched()
         {
 
-            using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+            using (Entities ent = new Entities())
             {
 
-                List<ExPro> lexpro = ent.ExPro.Where(x => x.WinUsername == Environment.UserName && x.ExID != null).ToList();
+                List<ExPro> lexpro = ent.ExProes.Where(x => x.WinUsername == Environment.UserName && x.ExID != null).ToList();
                 if (lexpro.Count > 0)
                 {
                     if (lexpro.Count > 1) ModernDialog.ShowMessage("Multiple,grabbing 1st", "first", MessageBoxButton.OK);
@@ -84,9 +85,9 @@ namespace pq.Helper
         }
         public static string GetExPro()
         {
-            using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+            using (Entities ent = new Entities())
             {
-                ExPro expro = ent.ExPro.FirstOrDefault();
+                ExPro expro = ent.ExProes.FirstOrDefault();
                 if (expro != null)
                 {
                     return expro.WinUsername + " | " + expro.ExUsername;
@@ -96,8 +97,8 @@ namespace pq.Helper
                     //  ModernDialog.ShowMessage("first EXPRO load!", "fl", MessageBoxButton.OK);
                     ExPro newExpro = new ExPro();
                     newExpro.WinUsername = Environment.UserName;
-                    newExpro.WinDomain = Environment.UserDomainName;
-                    ent.ExPro.Add(newExpro);
+                   // newExpro.WinDomain = Environment.UserDomainName;
+                    ent.ExProes.Add(newExpro);
 
                     ent.SaveChanges();
 
@@ -107,11 +108,23 @@ namespace pq.Helper
 
 
         }
+        public static string RemoveSpecialCharacters(this string str)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in str)
+            {
+                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_')
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
+        }
         public static ExPro GetExPro(bool b)
         {
-            using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+            using (Entities ent = new Entities())
             {
-                ExPro expro = ent.ExPro.FirstOrDefault();
+                ExPro expro = ent.ExProes.Where(x=>x.WinUsername== Environment.UserName).FirstOrDefault();
                 if (expro != null)
                 {
                     return expro;
@@ -121,9 +134,9 @@ namespace pq.Helper
                     // ModernDialog.ShowMessage("first EXPRO load!", "fl", MessageBoxButton.OK);
                     ExPro newExpro = new ExPro();
                     newExpro.WinUsername = Environment.UserName;
-                    newExpro.WinDomain = Environment.UserDomainName;
+                    //newExpro.WinDomain = Environment.UserDomainName;
 
-                    ent.ExPro.Add(newExpro);
+                    ent.ExProes.Add(newExpro);
 
                     ent.SaveChanges();
 
@@ -155,9 +168,9 @@ namespace pq.Helper
         //}
         public static string GetGuid()
         {
-            using (ExtensionlessBaseEntities ent = new ExtensionlessBaseEntities())
+            using (Entities ent = new Entities())
             {
-                Inst inst = ent.Inst.FirstOrDefault();
+                Inst inst = ent.Insts.FirstOrDefault();
                 if (inst != null)
                 {
                     return inst.Guid;
@@ -167,7 +180,7 @@ namespace pq.Helper
                     //  ModernDialog.ShowMessage("first load!", "fl", MessageBoxButton.OK);
                     Inst newInst = new Inst();
                     newInst.Guid = Guid.NewGuid().ToString();
-                    ent.Inst.Add(newInst);
+                    ent.Insts.Add(newInst);
 
                     ent.SaveChanges();
 
@@ -210,16 +223,16 @@ namespace pq.Helper
         }
         public static void getDB(object sender, DoWorkEventArgs e)
         {
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
-                List<Ex> lex = ent.Ex.Where(x => true).ToList();
+                List<Ex> lex = ent.Exes.Where(x => true).ToList();
                 LEX = lex;
 
-                Setting st = ent.Setting.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
                 if (st == null)
                 {
                     st = new Setting() { IsExtended = false, DoAsk = true, IsMine = false, ExProID = GetExPro(true).Id };
-                    ent.Setting.Add(st);
+                    ent.Settings.Add(st);
                     ent.SaveChanges();
                 }
                 ST = st;
@@ -243,23 +256,23 @@ namespace pq.Helper
         }
         public static void getDBST()
         {
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
 
-                Setting st = ent.Setting.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
                 ST = st;
             }
         }
         public static void getDBST2(int exproid)
         {
-            using (var ent = new ExtensionlessBaseEntities())
+            using (var ent = new Entities())
             {
 
-                Setting st = ent.Setting.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
                 if (st == null)
                 {
                     st = new Setting() { IsExtended = false, DoAsk = true, IsMine = false, ExProID = exproid };
-                    ent.Setting.Add(st);
+                    ent.Settings.Add(st);
                     ent.SaveChanges();
                 }
             }
@@ -377,7 +390,7 @@ namespace pq.Helper
 
         public static int InsertMyFEx(MyFEx myfex)
         {
-            using (ExtensionlessBaseEntities entities = new ExtensionlessBaseEntities())
+            using (Entities entities = new Entities())
             {
                 Ex ex = new Ex();
                 ex.IsUsed = myfex.IsUsed;
@@ -391,7 +404,7 @@ namespace pq.Helper
                 ex.IsMine = true;
                 ex.Last = DateTime.Now;
 
-                entities.Ex.Add(ex);
+                entities.Exes.Add(ex);
                 try
                 {
                     entities.SaveChanges();

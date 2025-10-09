@@ -17,8 +17,8 @@ namespace pq
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ExPro()
         {
-            this.Achievements = new HashSet<Achievements>();
-            this.Setting = new HashSet<Setting>();
+            this.Achievements = new HashSet<Achievement>();
+            this.Settings = new HashSet<Setting>();
         }
     
         public int Id { get; set; }
@@ -29,13 +29,13 @@ namespace pq
         public Nullable<System.DateTime> Dob { get; set; }
         public string WinDomain { get; set; }
         public string DonateUrl { get; set; }
-        public string Password { get; set; }
         public string Country { get; set; }
         public Nullable<System.DateTime> ShareDate { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Achievements> Achievements { get; set; }
+        public virtual ICollection<Achievement> Achievements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Setting> Setting { get; set; }
+        public virtual ICollection<Setting> Settings { get; set; }
     }
 }
