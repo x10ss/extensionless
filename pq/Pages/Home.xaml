@@ -24,65 +24,7 @@
         <c:InvBoolToVis x:Key="InvBoolToVis" />
         <c:RealConverterSample x:Key="RealConverterSample" />
     </UserControl.Resources>
-    <UserControl.ContextMenu>
-        <ContextMenu>
-            <MenuItem Click="MenuItem_Click_4" Header="ADD KEY"  Foreground="LightGreen" Background="ForestGreen">
-                <MenuItem.Icon>
-                    <ContentPresenter Content="{StaticResource appbar_chess_king}"></ContentPresenter>
-
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Click="MenuItem_Click" Header="Reload registry" Foreground="LightGreen" Background="ForestGreen">
-                <MenuItem.Icon>
-                    <ContentPresenter Content="{StaticResource appbar_alien}"></ContentPresenter>
-                </MenuItem.Icon>
-
-            </MenuItem>
-            <MenuItem Click="MenuItem_Click" Header="BACK" Foreground="LightGreen" Background="ForestGreen">
-                <MenuItem.Icon>
-                    <ContentPresenter Content="{StaticResource appbar_alien}"></ContentPresenter>
-                </MenuItem.Icon>
-
-            </MenuItem>
-            <MenuItem Click="MenuItem_Click" Header="BACK" Foreground="LightGreen" Background="ForestGreen">
-                <MenuItem.Icon>
-                    <ContentPresenter Content="{StaticResource appbar_alien}"></ContentPresenter>
-                </MenuItem.Icon>
-
-            </MenuItem>
-            <MenuItem Click="MenuItem_Click_1" Header="History log" Foreground="Teal" Background="LightGreen">
-                <MenuItem.Icon>
-                    <ContentPresenter Content="{StaticResource appbar_acorn}"></ContentPresenter>
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Click="MenuItem_Click_2" Header="Default apps"  Foreground="LightGreen" Background="ForestGreen">
-                <MenuItem.Icon>
-                    <ContentPresenter Content="{StaticResource appbar_undo_point}"></ContentPresenter>
-
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Click="MenuItem_Click_3"  Header="Start templating" Foreground="Teal" Background="LightGreen">
-                <MenuItem.Icon>
-                    <ContentPresenter Content="{StaticResource appbar_book_side}"></ContentPresenter>
-
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Click="MenuItem_Click_4" Header="Tutorial"  Foreground="LightGreen" Background="ForestGreen">
-                <MenuItem.Icon>
-                    <ContentPresenter Content="{StaticResource appbar_chess_king}"></ContentPresenter>
-
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Click="MenuItem_Click_4" Header="aBOUT"  Foreground="LightGreen" Background="ForestGreen">
-                <MenuItem.Icon>
-                    <ContentPresenter Content="{StaticResource appbar_chess_king}"></ContentPresenter>
-
-                </MenuItem.Icon>
-            </MenuItem>
-
-        </ContextMenu>
-
-    </UserControl.ContextMenu>
+  
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <StackPanel>

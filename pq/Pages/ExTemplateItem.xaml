@@ -8,10 +8,6 @@
              xmlns:local="clr-namespace:pq.MyConverters"
              Loaded="UserControl_Loaded"
              d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.Resources>
-        <local:NullToVis x:Key="NullToVis" />
-        <local:InvBoolToVis x:Key="InvBoolToVis" />
-    </UserControl.Resources>
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer>
             <Border  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{DynamicResource Accent}" CornerRadius="20"  BorderThickness="2">
@@ -25,39 +21,21 @@
                         <RowDefinition Height="1*"></RowDefinition>
 
                     </Grid.RowDefinitions>
-
-
-
                     <ContentPresenter Grid.Row="0" Content="{StaticResource appbar_folder_people}"></ContentPresenter>
                     <StackPanel Margin="0,-10,0,6"  HorizontalAlignment="Center" Grid.Row="1">
                         <TextBlock TextTrimming="CharacterEllipsis" Foreground="{DynamicResource Accent}" Text="..." x:Name="UsernameTxt" Style="{StaticResource Heading2}" ></TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                        <Button Margin="5" ToolTip="Restore a fresh copy">
-                            <ContentPresenter HorizontalAlignment="Center" Content="{StaticResource appbar_disk_download}"></ContentPresenter>
-                        </Button>
-                        <Button ToolTip="Donate to author (external link such as paypal.me/lvrsmnvc | kofi.com/lovre)">
-                            <ContentPresenter Content="{StaticResource appbar_currency_dollar}"></ContentPresenter>
-                        </Button>
-                        <StackPanel ToolTip="Not able to vote | not logged in">
-                        <Button Visibility="{Binding DidVote,Converter={StaticResource NullToVis }}" IsEnabled="False" Margin="5">
-                            <ContentPresenter Content="{StaticResource appbar_star_remove}"></ContentPresenter>
-                            </Button>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Visibility="{Binding DidVote,Converter={StaticResource InvBoolToVis }}">
-                            <Button  Width="37" Height="51" Padding="5,5,0,5" Margin="5,5,0,5" ToolTip="VoteDown --">
-                                <ContentPresenter Content="{StaticResource appbar_star_add}"></ContentPresenter>
-                            </Button>
-                            <Button Width="37" Height="51" Padding="0,5,5,5" Margin="0,5,5,5" ToolTip="VoteUp ++">
-                                <ContentPresenter Content="{StaticResource appbar_star_minus}"></ContentPresenter>
-                            </Button>
-                        </StackPanel>
-                        <Button Width="74" Height="51" Visibility="{Binding DidVote,Converter={StaticResource BooleanToVisibilityConverter }}" Margin="5" ToolTip="Remove Vote xx">
-                            <ContentPresenter Content="{StaticResource appbar_star_delete}"></ContentPresenter>
-                        </Button>
+                        <mui:ModernButton IconData="F1 M 48,39L 56,39L 56,49L 63.25,49L 52,60.25L 40.75,49L 48,49L 48,39 Z M 20,20L 50.25,20L 56,25.75L 56,38L 52,38L 52,27.25L 48.75,24L 48,24L 48,37L 28,37L 28,24L 24,24L 24,52L 42.25,52L 46.25,56L 20,56L 20,20 Z M 39,24L 39,34L 44,34L 44,24L 39,24 Z " Margin="5" ToolTip="Restore a fresh copy">
+                         </mui:ModernButton>
+                        <mui:ModernButton IconData="F1 M 39.9317,58.3617L 39.9317,53.1984C 42.9656,52.6781 45.2439,51.5757 46.7665,49.8912C 48.2891,48.2067 49.0508,46.2045 49.0517,43.8847C 49.0819,41.5743 48.4428,39.652 47.1343,38.1177C 45.8259,36.5835 43.6669,35.2898 40.6573,34.2367C 38.4191,33.4616 36.8047,32.741 35.8143,32.0749C 34.8239,31.4088 34.3385,30.6754 34.3583,29.8746C 34.3347,29.124 34.6508,28.4567 35.3066,27.8726C 35.9625,27.2885 37.0998,26.9804 38.7187,26.9483C 40.6959,26.9847 42.2936,27.2073 43.5116,27.616C 44.7296,28.0248 45.6405,28.4013 46.2442,28.7456L 47.7221,23.0015C 46.8926,22.5841 45.8837,22.2172 44.6955,21.901C 43.5073,21.5847 42.082,21.395 40.4195,21.3317L 40.4195,16.8783L 35.4538,16.8783L 35.4538,21.6859C 32.6538,22.2213 30.5179,23.2883 29.046,24.8868C 27.5742,26.4853 26.8327,28.4387 26.8217,30.747C 26.8607,33.2007 27.6817,35.1573 29.2847,36.6167C 30.8876,38.076 33.0384,39.25 35.7369,40.1384C 37.636,40.7639 39.0728,41.4246 40.0474,42.1206C 41.0219,42.8167 41.5111,43.6442 41.515,44.6032C 41.4785,45.6114 40.9661,46.3919 39.9779,46.9446C 38.9896,47.4974 37.7444,47.7775 36.2423,47.785C 34.6009,47.7647 33.0786,47.5359 31.6755,47.0986C 30.2723,46.6613 29.0485,46.1374 28.004,45.527L 26.5176,51.4439C 27.4094,51.9849 28.6021,52.4569 30.0958,52.8601C 31.5894,53.2632 33.2003,53.5096 34.9282,53.5994L 34.9282,58.3617L 39.9317,58.3617 Z " ToolTip="Donate to author (external link such as paypal.me/lvrsmnvc | kofi.com/lovre)">
+                            </mui:ModernButton>
+                        <mui:ModernButton Click="IsRated_Click" x:Name="IsRated" IconData="F1 M 17.4167,32.25L 32.9107,32.25L 38,18L 43.0893,32.25L 58.5833,32.25L 45.6798,41.4944L 51.4583,56L 38,48.0833L 26.125,56L 30.5979,41.7104L 17.4167,32.25 Z " Margin="5">
+                        </mui:ModernButton>
+
                     </StackPanel>
                     <StackPanel Margin="0,6,0,3"   Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal" >
-                        <ContentPresenter Content="{StaticResource appbar_tree_leaf}"></ContentPresenter>
+                        <ContentPresenter Content="{StaticResource appbar_star_add}"></ContentPresenter>
                         <TextBlock Margin="4,0,0,0"  VerticalAlignment="Center" Foreground="{DynamicResource Accent}" x:Name="RatingTxt" Text="..."></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="0,3,0,3"  Grid.Row="4" HorizontalAlignment="Center" Orientation="Horizontal">

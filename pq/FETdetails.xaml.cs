@@ -398,7 +398,6 @@ namespace pq
                     IsDark = Helper.Helper.IsDark(Color.FromRgb(111, 111, 111)).ToString(),
                     IsBinary = null,
                     FEColor = (Color.FromRgb(111, 111, 111)),
-                    FETE = FileExtensionTypeEnum.EXTENSIONLESS,
                    // FEMTE = FileExtensionMidTypeEnum.None,
                     FT = FyleTipe.Mix,
                     Name = "FILE TYPE BUNDLE of " + realfeislist.Count,

@@ -196,7 +196,7 @@ namespace pq
 
         private void MW_Closing(object sender, CancelEventArgs e)
         {
-            ModernDialog.ShowMessage("!", ":(", MessageBoxButton.OK);
+           // ModernDialog.ShowMessage("!", ":(", MessageBoxButton.OK);
         }
 
         private void MW_Loaded(object sender, RoutedEventArgs e)

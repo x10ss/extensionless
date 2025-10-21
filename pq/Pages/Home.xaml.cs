@@ -36,7 +36,7 @@ namespace pq.Pages
             Helper.Helper.svm = null;
             // AppearanceManager.Current.AccentColor = Helper.Helper.GetAccent(4); 
             //  Helper.Helper.CurentScreen = this as FrameworkElement;
-            Helper.Helper.getDBST();
+            //Helper.Helper.getDBST();
          //   IsExtended.IsChecked = Helper.Helper.ST.IsExtended;
         //    IsMine.IsChecked = Helper.Helper.ST.IsMine;
             //  Helper.Helper.SetTop(false);
@@ -350,45 +350,45 @@ namespace pq.Pages
 
         private void IsExtended_Checked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new Entities())
-            {
+            //using (var ent = new Entities())
+            //{
 
-                Setting st = ent.Settings.FirstOrDefault();
-                st.IsExtended = true;
-                ent.SaveChanges();
-            }
+            //    Setting st = ent.Settings.FirstOrDefault();
+            //    st.IsExtended = true;
+            //    ent.SaveChanges();
+            //}
         }
 
         private void IsExtended_Unchecked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new Entities())
-            {
-                Setting st = ent.Settings.FirstOrDefault();
-                st.IsExtended = false;
-                ent.SaveChanges();
-            }
+            //using (var ent = new Entities())
+            //{
+            //    Setting st = ent.Settings.FirstOrDefault();
+            //    st.IsExtended = false;
+            //    ent.SaveChanges();
+            //}
         }
 
         private void IsMine_Checked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new Entities())
-            {
+            //using (var ent = new Entities())
+            //{
 
-                Setting st = ent.Settings.FirstOrDefault();
-                st.IsMine = true;
-                ent.SaveChanges();
-            }
+            //    Setting st = ent.Settings.FirstOrDefault();
+            //    st.IsMine = true;
+            //    ent.SaveChanges();
+            //}
         }
 
         private void IsMine_Unchecked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new Entities())
-            {
+            //using (var ent = new Entities())
+            //{
 
-                Setting st = ent.Settings.FirstOrDefault();
-                st.IsMine = false;
-                ent.SaveChanges();
-            }
+            //    Setting st = ent.Settings.FirstOrDefault();
+            //    st.IsMine = false;
+            //    ent.SaveChanges();
+            //}
         }
         private void IsMachine_Unchecked(object sender, RoutedEventArgs e)
         {

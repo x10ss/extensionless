@@ -12,7 +12,7 @@ namespace pq.Pages
     /// </summary>
     public partial class ExDialog : ModernDialog
     {
-        public ExPro ep { get; set; }
+        public x10ss ep { get; set; }
         public static ExDialog exdialog;
         Button OK = new Button();
         Button PC = new Button();
@@ -69,17 +69,17 @@ namespace pq.Pages
 
                 DBConnection.Close();
 
-                using (Entities ent = new Entities())
+                using (ex10sionlessEntities ent = new ex10sionlessEntities())
                 {
-                    ExPro newep = ent.ExProes.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
+                    x10ss newep = ent.x10ss.Where(x => x.WindowsUsername == System.Environment.UserName).FirstOrDefault();
                     //ExPro newep = new ExPro();
-                    newep.ExUsername = CreateAccount.createAccount.EName.Text;
+                    newep.Username = CreateAccount.createAccount.EName.Text;
                     //   newep.Password = CreateAccount.createAccount.EPassword.Password;
                     // newep.Email = CreateAccount.createAcc.EEmail.Text;
-                    newep.DonateUrl = CreateAccount.createAccount.EDonate.Text;
+                    newep.DonationURL = CreateAccount.createAccount.EDonate.Text;
                     newep.Password = CreateAccount.createAccount.EPassword.Password;
                     // newep.Dob = CreateAccount.createAcc.EDob.SelectedDate;
-                    newep.ExID = Helper.Helper.GetGuid();
+                    newep.ExtensionlessID = Helper.Helper.GetGuid();
                     newep.Country = CreateAccount.createAccount.EFlag.SelectedItem.ToString();
                     ent.SaveChanges();
                     ep = newep;
@@ -111,12 +111,12 @@ namespace pq.Pages
 
                 DBConnection.Close();
 
-                using (Entities ent = new Entities())
+                using (ex10sionlessEntities ent = new ex10sionlessEntities())
                 {
-                    ExPro newep = ent.ExProes.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
-                    newep.ExUsername = ChangeData.changeData.EName.Text;
+                    x10ss newep = ent.x10ss.Where(x => x.WindowsUsername == System.Environment.UserName).FirstOrDefault();
+                    newep.Username = ChangeData.changeData.EName.Text;
                     //   newep.Password = ChangeData.changeData.EPassword.Password;
-                    newep.DonateUrl = ChangeData.changeData.EDonate.Text;
+                    newep.DonationURL = ChangeData.changeData.EDonate.Text;
                     newep.Password = ChangeData.changeData.EPassword.Password;
                     newep.Country = ChangeData.changeData.EFlag.SelectedItem.ToString();
                     ent.SaveChanges();
@@ -140,16 +140,16 @@ namespace pq.Pages
                 while (reader.Read())
                 {
 
-                    using (Entities ent = new Entities())
+                    using (ex10sionlessEntities ent = new ex10sionlessEntities())
                     {
-                        ExPro newep = ent.ExProes.Where(x => x.WinUsername == System.Environment.UserName).FirstOrDefault();
-                        newep.ExUsername = reader.GetString(2);
+                        x10ss newep = ent.x10ss.Where(x => x.WindowsUsername == System.Environment.UserName).FirstOrDefault();
+                        newep.Username = reader.GetString(2);
                         // newep.Email = reader.GetString(4);
-                        newep.DonateUrl = reader.GetString(3);
+                        newep.DonationURL = reader.GetString(3);
                         //  newep.Dob = reader.GetDateTime(5);
                         newep.Country = reader.GetString(1);
                         newep.Password = reader.GetString(4);
-                        newep.ExID = reader.GetString(0);
+                        newep.ExtensionlessID = reader.GetString(0);
                         ent.SaveChanges();
                         ep = newep;
 

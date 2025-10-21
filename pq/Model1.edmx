@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ex10sionlessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="files">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IsUsed" Type="bit" />
+          <Property Name="IsTemplated" Type="bit" />
+          <Property Name="TemplatePath" Type="varchar" MaxLength="50" />
+          <Property Name="IsBinary" Type="bit" />
+          <Property Name="IsOpen" Type="bit" />
+          <Property Name="SwitchDate" Type="datetime" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="IsMine" Type="bit" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="x10ss">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="2" />
+          <Property Name="DonationURL" Type="varchar" MaxLength="50" />
+          <Property Name="Sound" Type="bit" />
+          <Property Name="Theme" Type="bit" />
+          <Property Name="Color" Type="int" />
+          <Property Name="ExtensionlessID" Type="varchar" MaxLength="50" />
+          <Property Name="FolderPath" Type="varchar" MaxLength="50" />
+          <Property Name="FileList" Type="varchar(max)" />
+          <Property Name="WindowsUsername" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="ex10sionlessModelStoreContainer">
+          <EntitySet Name="files" EntityType="Self.files" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="x10ss" EntityType="Self.x10ss" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ex10sionlessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="x10ss">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="DonationURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sound" Type="Boolean" />
+          <Property Name="Theme" Type="Boolean" />
+          <Property Name="Color" Type="Int32" />
+          <Property Name="ExtensionlessID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FolderPath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FileList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="WindowsUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ex10sionlessEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="x10ss" EntityType="Self.x10ss" />
+          <EntitySet Name="files" EntityType="ex10sionlessModel.file" />
+        </EntityContainer>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IsUsed" Type="Boolean" />
+          <Property Name="IsTemplated" Type="Boolean" />
+          <Property Name="TemplatePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsBinary" Type="Boolean" />
+          <Property Name="IsOpen" Type="Boolean" />
+          <Property Name="SwitchDate" Type="DateTime" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsMine" Type="Boolean" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ex10sionlessModelStoreContainer" CdmEntityContainer="ex10sionlessEntities">
+          <EntitySetMapping Name="x10ss">
+            <EntityTypeMapping TypeName="ex10sionlessModel.x10ss">
+              <MappingFragment StoreEntitySet="x10ss">
+                <ScalarProperty Name="WindowsUsername" ColumnName="WindowsUsername" />
+                <ScalarProperty Name="FileList" ColumnName="FileList" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="DonationURL" ColumnName="DonationURL" />
+                <ScalarProperty Name="Sound" ColumnName="Sound" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="ExtensionlessID" ColumnName="ExtensionlessID" />
+                <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="files">
+            <EntityTypeMapping TypeName="ex10sionlessModel.file">
+              <MappingFragment StoreEntitySet="files">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IsMine" ColumnName="IsMine" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SwitchDate" ColumnName="SwitchDate" />
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+                <ScalarProperty Name="IsBinary" ColumnName="IsBinary" />
+                <ScalarProperty Name="TemplatePath" ColumnName="TemplatePath" />
+                <ScalarProperty Name="IsTemplated" ColumnName="IsTemplated" />
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

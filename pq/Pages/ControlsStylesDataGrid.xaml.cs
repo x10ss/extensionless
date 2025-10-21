@@ -282,11 +282,11 @@ namespace pq.Pages
 
         public void OnNavigatedTo(NavigationEventArgs e)
         {
-            Helper.Helper.getDBST();
-            IsMine.IsChecked = Helper.Helper.ST.IsMine;
-            on.Visibility = Helper.Helper.ST.IsMine ? Visibility.Visible : Visibility.Collapsed;
-            off.Visibility = Helper.Helper.ST.IsMine ? Visibility.Collapsed : Visibility.Visible;
-            //  Helper.Helper.SetTop(false);
+            //Helper.Helper.getDBST();
+            //IsMine.IsChecked = Helper.Helper.ST.IsMine;
+            //on.Visibility = Helper.Helper.ST.IsMine ? Visibility.Visible : Visibility.Collapsed;
+            //off.Visibility = Helper.Helper.ST.IsMine ? Visibility.Collapsed : Visibility.Visible;
+            ////  Helper.Helper.SetTop(false);
         }
 
         public void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -295,11 +295,11 @@ namespace pq.Pages
 
         private void IsExtended_Checked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new Entities())
+            using (var ent = new ex10sionlessEntities())
             {
 
-                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
-                st.IsMine = true;
+                //Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+                //st.IsMine = true;
                 on.Visibility = Visibility.Visible;
                 off.Visibility = Visibility.Collapsed;
                 ent.SaveChanges();
@@ -308,14 +308,14 @@ namespace pq.Pages
 
         private void IsExtended_Unchecked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new Entities())
-            {
-                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
-                st.IsMine = false;
-                off.Visibility = Visibility.Visible;
-                on.Visibility = Visibility.Collapsed;
-                ent.SaveChanges();
-            }
+            //using (var ent = new Entities())
+            //{
+            //    Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+            //    st.IsMine = false;
+            //    off.Visibility = Visibility.Visible;
+            //    on.Visibility = Visibility.Collapsed;
+            //    ent.SaveChanges();
+            //}
         }
 
         private void ModernButton_Click_1(object sender, RoutedEventArgs e)

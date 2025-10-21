@@ -57,20 +57,20 @@ namespace pq.Helper
         public static bool IsSynched()
         {
 
-            using (Entities ent = new Entities())
+            using (ex10sionlessEntities ent = new ex10sionlessEntities())
             {
-                return ent.ExProes.Any(x => x.WinUsername == Environment.UserName && x.ExID != null);
+                return ent.x10ss.Any(x => x.WindowsUsername == Environment.UserName && x.ExtensionlessID != null);
 
             }
 
         }
-        public static ExPro Synched()
+        public static x10ss Synched()
         {
 
-            using (Entities ent = new Entities())
+            using (ex10sionlessEntities ent = new ex10sionlessEntities())
             {
 
-                List<ExPro> lexpro = ent.ExProes.Where(x => x.WinUsername == Environment.UserName && x.ExID != null).ToList();
+                List<x10ss> lexpro = ent.x10ss.Where(x => x.WindowsUsername == Environment.UserName && x.ExtensionlessID != null).ToList();
                 if (lexpro.Count > 0)
                 {
                     if (lexpro.Count > 1) ModernDialog.ShowMessage("Multiple,grabbing 1st", "first", MessageBoxButton.OK);
@@ -83,26 +83,27 @@ namespace pq.Helper
             }
 
         }
+
         public static string GetExPro()
         {
-            using (Entities ent = new Entities())
+            using (ex10sionlessEntities ent = new ex10sionlessEntities())
             {
-                ExPro expro = ent.ExProes.FirstOrDefault();
+                x10ss expro = ent.x10ss.FirstOrDefault();
                 if (expro != null)
                 {
-                    return expro.WinUsername + " | " + expro.ExUsername;
+                    return expro.WindowsUsername + " | " + expro.Username;
                 }
                 else
                 {
                     //  ModernDialog.ShowMessage("first EXPRO load!", "fl", MessageBoxButton.OK);
-                    ExPro newExpro = new ExPro();
-                    newExpro.WinUsername = Environment.UserName;
+                    x10ss newExpro = new x10ss();
+                    newExpro.WindowsUsername = Environment.UserName;
                    // newExpro.WinDomain = Environment.UserDomainName;
-                    ent.ExProes.Add(newExpro);
+                    ent.x10ss.Add(newExpro);
 
                     ent.SaveChanges();
 
-                    return newExpro.WinUsername + " |" + newExpro.Id.ToString() + " NEW| " + newExpro.ExUsername;
+                    return newExpro.WindowsUsername + " |" + newExpro.Id.ToString() + " NEW| " + newExpro.Username;
                 }
             }
 
@@ -120,11 +121,11 @@ namespace pq.Helper
             }
             return sb.ToString();
         }
-        public static ExPro GetExPro(bool b)
+        public static x10ss GetExPro(bool b)
         {
-            using (Entities ent = new Entities())
+            using (ex10sionlessEntities ent = new ex10sionlessEntities())
             {
-                ExPro expro = ent.ExProes.Where(x=>x.WinUsername== Environment.UserName).FirstOrDefault();
+                x10ss expro = ent.x10ss.Where(x=>x.WindowsUsername== Environment.UserName).FirstOrDefault();
                 if (expro != null)
                 {
                     return expro;
@@ -132,11 +133,11 @@ namespace pq.Helper
                 else
                 {
                     // ModernDialog.ShowMessage("first EXPRO load!", "fl", MessageBoxButton.OK);
-                    ExPro newExpro = new ExPro();
-                    newExpro.WinUsername = Environment.UserName;
+                    x10ss newExpro = new x10ss();
+                    newExpro.WindowsUsername = Environment.UserName;
                     //newExpro.WinDomain = Environment.UserDomainName;
 
-                    ent.ExProes.Add(newExpro);
+                    ent.x10ss.Add(newExpro);
 
                     
                     ent.SaveChanges();
@@ -170,27 +171,7 @@ namespace pq.Helper
         //}
         public static string GetGuid()
         {
-            using (Entities ent = new Entities())
-            {
-                Inst inst = ent.Insts.FirstOrDefault();
-                if (inst != null)
-                {
-                    return inst.Guid;
-                }
-                else
-                {
-                    //  ModernDialog.ShowMessage("first load!", "fl", MessageBoxButton.OK);
-                    Inst newInst = new Inst();
-                    newInst.Guid = Guid.NewGuid().ToString();
-                    ent.Insts.Add(newInst);
-
-                    ent.SaveChanges();
-
-                    return newInst.Guid;
-                }
-            }
-
-
+                    return Guid.NewGuid().ToString();
         }
         public static RegistryKey RegBase { get; set; }
         public static string Username { get { return Environment.UserName; } }
@@ -198,9 +179,8 @@ namespace pq.Helper
         public static List<FileExtensionItem> All { get; set; }
         public static List<ExTemplate> Tmpl { get; set; }
         public static FrameworkElement CurentScreen { get; set; }
-        public static List<Ex> LEX { get; set; }
+        public static List<file> LEX { get; set; }
         public static Home MyHome { get; set; }
-        public static Setting ST { get; set; }
         public static List<FileExtensionItem> GetMine()
         {
             return All.Where(x => x.IsMine == true).ToList();
@@ -225,19 +205,19 @@ namespace pq.Helper
         }
         public static void getDB(object sender, DoWorkEventArgs e)
         {
-            using (var ent = new Entities())
+            using (var ent = new ex10sionlessEntities())
             {
-                List<Ex> lex = ent.Exes.Where(x => true).ToList();
+                List<file> lex = ent.files.Where(x => true).ToList();
                 LEX = lex;
 
-                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
-                if (st == null)
-                {
-                    st = new Setting() { IsExtended = false, DoAsk = true, IsMine = false, ExProID = GetExPro(true).Id };
-                    ent.Settings.Add(st);
-                    ent.SaveChanges();
-                }
-                ST = st;
+            //    Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+                //if (st == null)
+                //{
+                //    st = new Setting() { IsExtended = false, DoAsk = true, IsMine = false, ExProID = GetExPro(true).Id };
+                //    ent.Settings.Add(st);
+                //    ent.SaveChanges();
+                //}
+             //   ST = st;
 
                 string[] WorldArray = File.ReadAllLines("World/World.csv");
                 List<City> wc = new List<City>();
@@ -256,29 +236,29 @@ namespace pq.Helper
                 WorldCities = wc;
             }
         }
-        public static void getDBST()
-        {
-            using (var ent = new Entities())
-            {
+        //public static void getDBST()
+        //{
+        //    using (var ent = new ex10sionlessEntities())
+        //    {
 
-                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
-                ST = st;
-            }
-        }
-        public static void getDBST2(int exproid)
-        {
-            using (var ent = new Entities())
-            {
+        //        Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+        //        ST = st;
+        //    }
+        //}
+        //public static void getDBST2(int exproid)
+        //{
+        //    using (var ent = new ex10sionlessEntities())
+        //    {
 
-                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
-                if (st == null)
-                {
-                    st = new Setting() { IsExtended = false, DoAsk = true, IsMine = false, ExProID = exproid };
-                    ent.Settings.Add(st);
-                    ent.SaveChanges();
-                }
-            }
-        }
+        //        Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+        //        if (st == null)
+        //        {
+        //            st = new Setting() { IsExtended = false, DoAsk = true, IsMine = false, ExProID = exproid };
+        //            ent.Settings.Add(st);
+        //            ent.SaveChanges();
+        //        }
+        //    }
+        //}
         public static List<string> GetAllUsernames()
         {
             List<string> ls = new List<string>();
@@ -392,21 +372,19 @@ namespace pq.Helper
 
         public static int InsertMyFEx(MyFEx myfex)
         {
-            using (Entities entities = new Entities())
+            using (ex10sionlessEntities entities = new ex10sionlessEntities())
             {
-                Ex ex = new Ex();
+                file ex = new file();
                 ex.IsUsed = myfex.IsUsed;
                 ex.IsBinary = myfex.IsBinary;
                 ex.IsOpen = myfex.IsOpen;
                 ex.Name = myfex.Name;
-                ex.FullName = myfex.FullName;
-                ex.FT = ((int)myfex.FT).ToString();
-                ex.FEMTE = ((int)myfex.FEMTE).ToString();
-                ex.IsExtended = false;
+                ex.Category = ((int)myfex.FT).ToString();
+                ex.FullName = ((int)myfex.FEMTE).ToString();
                 ex.IsMine = true;
-                ex.Last = DateTime.Now;
+                ex.SwitchDate = DateTime.Now;
 
-                entities.Exes.Add(ex);
+                entities.files.Add(ex);
                 try
                 {
                     entities.SaveChanges();
@@ -480,9 +458,7 @@ namespace pq.Helper
                         FEMTE = GetFEMTEbyFETE(fete),
                         FT = ft,
                         PGB = color2,
-                        IsExtended = ex.IsExtended,
                         IsMine = ex.IsMine,
-                        Last = ex.Last,
                         IsUsed = ex.IsUsed
                     };
 
@@ -1192,261 +1168,261 @@ namespace pq.Helper
 
         public static string GetFullNameByFETE(FileExtensionTypeEnum fete)
         {
-            switch (fete)
-            {
-                case FileExtensionTypeEnum.EXTENSIONLESS:
-                    return "Extensionless";
-                case FileExtensionTypeEnum.TORRENT:
-                    return "BitTorrent P2P File";
-                case FileExtensionTypeEnum.XYZ:
-                    return "ɛks waɪ ɪzərd";
-                case FileExtensionTypeEnum.FILE:
-                    return "Generic Windows File";
-                case FileExtensionTypeEnum.GDC:
-                    return "Godot Engine Compiled Script";
-                case FileExtensionTypeEnum.MDF:
-                    return "SQL Server Database File";
-                case FileExtensionTypeEnum.GEN:
-                    return "Sega Genesis ROM";
-                case FileExtensionTypeEnum.GALAXY:
-                    return "Blizzard Galaxy File";
-                case FileExtensionTypeEnum.FUK:
-                    return "Postal 2 Map File";
-                case FileExtensionTypeEnum.GB:
-                    return "Game Boy ROM File";
-                case FileExtensionTypeEnum.GAME:
-                    return "GameSalad Exported Game File";
-                case FileExtensionTypeEnum.GAM:
-                    return "Saved Game File";
-                case FileExtensionTypeEnum.CTY:
-                    return "SimCity City File";
-                case FileExtensionTypeEnum.GRP:
-                    return "StarCraft Graphics Group File";
-                case FileExtensionTypeEnum.GXT:
-                    return "GTA Dialogue File";
-                case FileExtensionTypeEnum.H3M:
-                    return "Heroes 3 Map File";
-                case FileExtensionTypeEnum.H4R:
-                    return "Heroes of Might and Magic IV Data File";
-                case FileExtensionTypeEnum.J2L:
-                    return "Jazz Jackrabit 2 Level File";
-                case FileExtensionTypeEnum.LMU:
-                    return "RPG Maker MAp File";
-                case FileExtensionTypeEnum.MAP:
-                    return "Compiled Map file";
-                case FileExtensionTypeEnum.MM7:
-                    return "M&M 7 save game";
-                case FileExtensionTypeEnum.MP2S:
-                    return "Max Payne 2 Save";
-                case FileExtensionTypeEnum.NARC:
-                    return "Nintendo DS Archive Filen";
-                case FileExtensionTypeEnum.NDS:
-                    return "Nintendo DS Game ROM";
-                case FileExtensionTypeEnum.PSV:
-                    return "Playstation 2 save file";
-                case FileExtensionTypeEnum.PSK:
-                    return "Unreal Engine Skeletal Mesh";
-                case FileExtensionTypeEnum.SC2MAPS:
-                    return "StarCraft 2 Map File";
-                case FileExtensionTypeEnum.SC4:
-                    return "Sim City 4 saved City";
-                case FileExtensionTypeEnum.UNITY:
-                    return "Unity Scene File";
-                case FileExtensionTypeEnum.UT2:
-                    return "Unreal Tournament Map";
-                case FileExtensionTypeEnum.ZZZ:
-                    return "Black & White Game Data";
-                case FileExtensionTypeEnum.GSC:
-                    return "Call of Duty Game Script";
-                case FileExtensionTypeEnum.PGN:
-                    return "Chess Portable Game Notation";
-                case FileExtensionTypeEnum.EML:
-                    return "Email File Format";
-                case FileExtensionTypeEnum.VB:
-                    return "Visual Basic";
-                case FileExtensionTypeEnum.DART:
-                    return "Dart";
-                case FileExtensionTypeEnum.PHP:
-                    return "Hypertext Preprocessor";
-                case FileExtensionTypeEnum.PY:
-                    return "Phyton";
-                case FileExtensionTypeEnum.RB:
-                    return "Ruby";
-                case FileExtensionTypeEnum.JSX:
-                    return "JavaScript XML";
-                case FileExtensionTypeEnum.JS:
-                    return "JavaScript";
-                case FileExtensionTypeEnum.ES:
-                    return "ECMA Script";
-                case FileExtensionTypeEnum.TS:
-                    return "TypeScript";
-                case FileExtensionTypeEnum.CSS:
-                    return "Cascading Stylesheet";
-                case FileExtensionTypeEnum.LESS:
-                    return "Leaner Style Sheets";
-                case FileExtensionTypeEnum.CS:
-                    return "C# (sharp)";
-                case FileExtensionTypeEnum.CPP:
-                    return "C++";
-                case FileExtensionTypeEnum.XAML:
-                    return "Extensible App. Markup Lang.";
-                case FileExtensionTypeEnum.XML:
-                    return "EXtensible Markup Language";
-                case FileExtensionTypeEnum.HTML:
-                    return "Hypertext Markup Language";
-                case FileExtensionTypeEnum.PDF:
-                    return "Portable Document Format";
-                case FileExtensionTypeEnum.DOC:
-                    return "Document";
-                case FileExtensionTypeEnum.DOCX:
-                    return "Office Open XML";
-                case FileExtensionTypeEnum.ODT:
-                    return "Office Open Document";
-                case FileExtensionTypeEnum.RTF:
-                    return "Rich Text File";
-                case FileExtensionTypeEnum.TXT:
-                    return "Plain Text File";
-                case FileExtensionTypeEnum.PNG:
-                    return "Portable Network Graphics";
-                case FileExtensionTypeEnum.JPEG:
-                    return "Joint Photo. Experts Group";
-                case FileExtensionTypeEnum.PDN:
-                    return "Pain .NET";
-                case FileExtensionTypeEnum.GIF:
-                    return "Graphic Interchange Format";
-                case FileExtensionTypeEnum.EPS:
-                    return "Encapsulated PostScript";
-                case FileExtensionTypeEnum.SVG:
-                    return "Scalable Vector Graphics";
-                case FileExtensionTypeEnum.ASP:
-                    return "Active Server Pages";
-                case FileExtensionTypeEnum.ASPX:
-                    return "Active Server Page Framework";
-                case FileExtensionTypeEnum.CSHTML:
-                    return "C# 6 HTML | Razor";
-                case FileExtensionTypeEnum.LOG:
-                    return "Log Files";
-                case FileExtensionTypeEnum.BAT:
-                    return "Batch Files";
-                case FileExtensionTypeEnum.ISO:
-                    return "ISO Image";
-                case FileExtensionTypeEnum.ZIP:
-                    return "Zip Archive";
-                case FileExtensionTypeEnum.RAR:
-                    return "Roshal Archive";
-                case FileExtensionTypeEnum.APK:
-                    return "Android application package";
-                case FileExtensionTypeEnum.EXE:
-                    return "Executible File";
-                case FileExtensionTypeEnum.CFG:
-                    return "Configuration file";
-                case FileExtensionTypeEnum.XLS:
-                    return "Excel Spreadsheet format";
-                case FileExtensionTypeEnum.XLSX:
-                    return "Office Open XML";
-                case FileExtensionTypeEnum.ODS:
-                    return "OpenDocument Spreadsheets";
-                case FileExtensionTypeEnum.BAK:
-                    return "Backup file";
-                case FileExtensionTypeEnum.H:
-                    return "C/C++ Heading File";
-                case FileExtensionTypeEnum.JAVA:
-                    return "Java Oracle";
-                case FileExtensionTypeEnum.C:
-                    return "The C";
-                case FileExtensionTypeEnum.CLASS:
-                    return "Java Class File";
-                case FileExtensionTypeEnum.SH:
-                    return "Computer Shell";
-                case FileExtensionTypeEnum.ICO:
-                    return "Icon File";
-                case FileExtensionTypeEnum.DLL:
-                    return "Dynamic Link Library";
-                case FileExtensionTypeEnum.DMP:
-                    return "Dump File";
-                case FileExtensionTypeEnum.MP4:
-                    return "MPEG4 video file";
-                case FileExtensionTypeEnum.MPEG:
-                    return "Moving Pictures Expert Group";
-                case FileExtensionTypeEnum.AVI:
-                    return "Audio Video Interleav";
-                case FileExtensionTypeEnum.MKV:
-                    return "Matroska Multimedia Container";
-                case FileExtensionTypeEnum.MOV:
-                    return "Apple QuickTime movie file";
-                case FileExtensionTypeEnum.WMV:
-                    return "Windows Mesia Video";
-                case FileExtensionTypeEnum.SYS:
-                    return "System File";
-                case FileExtensionTypeEnum.MSI:
-                    return "Windows installer package";
-                case FileExtensionTypeEnum.LNK:
-                    return "Windows Link File";
-                case FileExtensionTypeEnum.INI:
-                    return "Initialization file";
-                case FileExtensionTypeEnum.TMP:
-                    return "Temporary files";
-                case FileExtensionTypeEnum.CAB:
-                    return "Cabinet Archive File";
-                case FileExtensionTypeEnum.PPT:
-                    return "PowerPoint presentation";
-                case FileExtensionTypeEnum.PPTX:
-                    return "PowerPoint Open XML presentation";
-                case FileExtensionTypeEnum.ODP:
-                    return "O.O. Impress presentation";
-                case FileExtensionTypeEnum.XHTML:
-                    return "Extensible Hypertext Markup Lang.";
-                case FileExtensionTypeEnum.CGI:
-                    return "Perl";
-                case FileExtensionTypeEnum.PL:
-                    return "Perl";
-                case FileExtensionTypeEnum.RSS:
-                    return "Really Simple Syndication XML";
-                case FileExtensionTypeEnum.BMP:
-                    return "Bitmap image";
-                case FileExtensionTypeEnum.OTF:
-                    return "Open type font file";
-                case FileExtensionTypeEnum.TTF:
-                    return "TrueType font file";
-                case FileExtensionTypeEnum.FON:
-                    return "Generic font file";
-                case FileExtensionTypeEnum.FNT:
-                    return "Windows font file";
-                case FileExtensionTypeEnum.COM:
-                    return "fMS - DOS command fil";
-                case FileExtensionTypeEnum.BIN:
-                    return "Binary file";
-                case FileExtensionTypeEnum.JAR:
-                    return "Java Archive file";
-                case FileExtensionTypeEnum.MDB:
-                    return "Microsoft Access D.B. file";
-                case FileExtensionTypeEnum.DAT:
-                    return "Data file";
-                case FileExtensionTypeEnum.DB:
-                    return "Database file";
-                case FileExtensionTypeEnum.DBF:
-                    return "Database file";
-                case FileExtensionTypeEnum.CSV:
-                    return "Comma separated value file";
-                case FileExtensionTypeEnum.SAV:
-                    return "Save File";
-                case FileExtensionTypeEnum.TAR:
-                    return "Linux / Unix tarball archive";
-                case FileExtensionTypeEnum.WMA:
-                    return "WMA audio file";
-                case FileExtensionTypeEnum.WAV:
-                    return "WAV audio file format";
-                case FileExtensionTypeEnum.MP3:
-                    return "MPEG-1 Audio Layer 3";
-                case FileExtensionTypeEnum.CDA:
-                    return "CD audio track file";
-                case FileExtensionTypeEnum.OGG:
-                    return "Ogg Vorbis audio file";
-                case FileExtensionTypeEnum.SQL:
-                    return "STructured Query Language";
-                default:
-                    return "Party and Bullshit";
-            }
+            //switch (fete)
+            //{
+            //    case FileExtensionTypeEnum.EXTENSIONLESS:
+            //        return "Extensionless";
+            //    case FileExtensionTypeEnum.TORRENT:
+            //        return "BitTorrent P2P File";
+            //    case FileExtensionTypeEnum.XYZ:
+            //        return "ɛks waɪ ɪzərd";
+            //    case FileExtensionTypeEnum.FILE:
+            //        return "Generic Windows File";
+            //    case FileExtensionTypeEnum.GDC:
+            //        return "Godot Engine Compiled Script";
+            //    case FileExtensionTypeEnum.MDF:
+            //        return "SQL Server Database File";
+            //    case FileExtensionTypeEnum.GEN:
+            //        return "Sega Genesis ROM";
+            //    case FileExtensionTypeEnum.GALAXY:
+            //        return "Blizzard Galaxy File";
+            //    case FileExtensionTypeEnum.FUK:
+            //        return "Postal 2 Map File";
+            //    case FileExtensionTypeEnum.GB:
+            //        return "Game Boy ROM File";
+            //    case FileExtensionTypeEnum.GAME:
+            //        return "GameSalad Exported Game File";
+            //    case FileExtensionTypeEnum.GAM:
+            //        return "Saved Game File";
+            //    case FileExtensionTypeEnum.CTY:
+            //        return "SimCity City File";
+            //    case FileExtensionTypeEnum.GRP:
+            //        return "StarCraft Graphics Group File";
+            //    case FileExtensionTypeEnum.GXT:
+            //        return "GTA Dialogue File";
+            //    case FileExtensionTypeEnum.H3M:
+            //        return "Heroes 3 Map File";
+            //    case FileExtensionTypeEnum.H4R:
+            //        return "Heroes of Might and Magic IV Data File";
+            //    case FileExtensionTypeEnum.J2L:
+            //        return "Jazz Jackrabit 2 Level File";
+            //    case FileExtensionTypeEnum.LMU:
+            //        return "RPG Maker MAp File";
+            //    case FileExtensionTypeEnum.MAP:
+            //        return "Compiled Map file";
+            //    case FileExtensionTypeEnum.MM7:
+            //        return "M&M 7 save game";
+            //    case FileExtensionTypeEnum.MP2S:
+            //        return "Max Payne 2 Save";
+            //    case FileExtensionTypeEnum.NARC:
+            //        return "Nintendo DS Archive Filen";
+            //    case FileExtensionTypeEnum.NDS:
+            //        return "Nintendo DS Game ROM";
+            //    case FileExtensionTypeEnum.PSV:
+            //        return "Playstation 2 save file";
+            //    case FileExtensionTypeEnum.PSK:
+            //        return "Unreal Engine Skeletal Mesh";
+            //    case FileExtensionTypeEnum.SC2MAPS:
+            //        return "StarCraft 2 Map File";
+            //    case FileExtensionTypeEnum.SC4:
+            //        return "Sim City 4 saved City";
+            //    case FileExtensionTypeEnum.UNITY:
+            //        return "Unity Scene File";
+            //    case FileExtensionTypeEnum.UT2:
+            //        return "Unreal Tournament Map";
+            //    case FileExtensionTypeEnum.ZZZ:
+            //        return "Black & White Game Data";
+            //    case FileExtensionTypeEnum.GSC:
+            //        return "Call of Duty Game Script";
+            //    case FileExtensionTypeEnum.PGN:
+            //        return "Chess Portable Game Notation";
+            //    case FileExtensionTypeEnum.EML:
+            //        return "Email File Format";
+            //    case FileExtensionTypeEnum.VB:
+            //        return "Visual Basic";
+            //    case FileExtensionTypeEnum.DART:
+            //        return "Dart";
+            //    case FileExtensionTypeEnum.PHP:
+            //        return "Hypertext Preprocessor";
+            //    case FileExtensionTypeEnum.PY:
+            //        return "Phyton";
+            //    case FileExtensionTypeEnum.RB:
+            //        return "Ruby";
+            //    case FileExtensionTypeEnum.JSX:
+            //        return "JavaScript XML";
+            //    case FileExtensionTypeEnum.JS:
+            //        return "JavaScript";
+            //    case FileExtensionTypeEnum.ES:
+            //        return "ECMA Script";
+            //    case FileExtensionTypeEnum.TS:
+            //        return "TypeScript";
+            //    case FileExtensionTypeEnum.CSS:
+            //        return "Cascading Stylesheet";
+            //    case FileExtensionTypeEnum.LESS:
+            //        return "Leaner Style Sheets";
+            //    case FileExtensionTypeEnum.CS:
+            //        return "C# (sharp)";
+            //    case FileExtensionTypeEnum.CPP:
+            //        return "C++";
+            //    case FileExtensionTypeEnum.XAML:
+            //        return "Extensible App. Markup Lang.";
+            //    case FileExtensionTypeEnum.XML:
+            //        return "EXtensible Markup Language";
+            //    case FileExtensionTypeEnum.HTML:
+            //        return "Hypertext Markup Language";
+            //    case FileExtensionTypeEnum.PDF:
+            //        return "Portable Document Format";
+            //    case FileExtensionTypeEnum.DOC:
+            //        return "Document";
+            //    case FileExtensionTypeEnum.DOCX:
+            //        return "Office Open XML";
+            //    case FileExtensionTypeEnum.ODT:
+            //        return "Office Open Document";
+            //    case FileExtensionTypeEnum.RTF:
+            //        return "Rich Text File";
+            //    case FileExtensionTypeEnum.TXT:
+            //        return "Plain Text File";
+            //    case FileExtensionTypeEnum.PNG:
+            //        return "Portable Network Graphics";
+            //    case FileExtensionTypeEnum.JPEG:
+            //        return "Joint Photo. Experts Group";
+            //    case FileExtensionTypeEnum.PDN:
+            //        return "Pain .NET";
+            //    case FileExtensionTypeEnum.GIF:
+            //        return "Graphic Interchange Format";
+            //    case FileExtensionTypeEnum.EPS:
+            //        return "Encapsulated PostScript";
+            //    case FileExtensionTypeEnum.SVG:
+            //        return "Scalable Vector Graphics";
+            //    case FileExtensionTypeEnum.ASP:
+            //        return "Active Server Pages";
+            //    case FileExtensionTypeEnum.ASPX:
+            //        return "Active Server Page Framework";
+            //    case FileExtensionTypeEnum.CSHTML:
+            //        return "C# 6 HTML | Razor";
+            //    case FileExtensionTypeEnum.LOG:
+            //        return "Log Files";
+            //    case FileExtensionTypeEnum.BAT:
+            //        return "Batch Files";
+            //    case FileExtensionTypeEnum.ISO:
+            //        return "ISO Image";
+            //    case FileExtensionTypeEnum.ZIP:
+            //        return "Zip Archive";
+            //    case FileExtensionTypeEnum.RAR:
+            //        return "Roshal Archive";
+            //    case FileExtensionTypeEnum.APK:
+            //        return "Android application package";
+            //    case FileExtensionTypeEnum.EXE:
+            //        return "Executible File";
+            //    case FileExtensionTypeEnum.CFG:
+            //        return "Configuration file";
+            //    case FileExtensionTypeEnum.XLS:
+            //        return "Excel Spreadsheet format";
+            //    case FileExtensionTypeEnum.XLSX:
+            //        return "Office Open XML";
+            //    case FileExtensionTypeEnum.ODS:
+            //        return "OpenDocument Spreadsheets";
+            //    case FileExtensionTypeEnum.BAK:
+            //        return "Backup file";
+            //    case FileExtensionTypeEnum.H:
+            //        return "C/C++ Heading File";
+            //    case FileExtensionTypeEnum.JAVA:
+            //        return "Java Oracle";
+            //    case FileExtensionTypeEnum.C:
+            //        return "The C";
+            //    case FileExtensionTypeEnum.CLASS:
+            //        return "Java Class File";
+            //    case FileExtensionTypeEnum.SH:
+            //        return "Computer Shell";
+            //    case FileExtensionTypeEnum.ICO:
+            //        return "Icon File";
+            //    case FileExtensionTypeEnum.DLL:
+            //        return "Dynamic Link Library";
+            //    case FileExtensionTypeEnum.DMP:
+            //        return "Dump File";
+            //    case FileExtensionTypeEnum.MP4:
+            //        return "MPEG4 video file";
+            //    case FileExtensionTypeEnum.MPEG:
+            //        return "Moving Pictures Expert Group";
+            //    case FileExtensionTypeEnum.AVI:
+            //        return "Audio Video Interleav";
+            //    case FileExtensionTypeEnum.MKV:
+            //        return "Matroska Multimedia Container";
+            //    case FileExtensionTypeEnum.MOV:
+            //        return "Apple QuickTime movie file";
+            //    case FileExtensionTypeEnum.WMV:
+            //        return "Windows Mesia Video";
+            //    case FileExtensionTypeEnum.SYS:
+            //        return "System File";
+            //    case FileExtensionTypeEnum.MSI:
+            //        return "Windows installer package";
+            //    case FileExtensionTypeEnum.LNK:
+            //        return "Windows Link File";
+            //    case FileExtensionTypeEnum.INI:
+            //        return "Initialization file";
+            //    case FileExtensionTypeEnum.TMP:
+            //        return "Temporary files";
+            //    case FileExtensionTypeEnum.CAB:
+            //        return "Cabinet Archive File";
+            //    case FileExtensionTypeEnum.PPT:
+            //        return "PowerPoint presentation";
+            //    case FileExtensionTypeEnum.PPTX:
+            //        return "PowerPoint Open XML presentation";
+            //    case FileExtensionTypeEnum.ODP:
+            //        return "O.O. Impress presentation";
+            //    case FileExtensionTypeEnum.XHTML:
+            //        return "Extensible Hypertext Markup Lang.";
+            //    case FileExtensionTypeEnum.CGI:
+            //        return "Perl";
+            //    case FileExtensionTypeEnum.PL:
+            //        return "Perl";
+            //    case FileExtensionTypeEnum.RSS:
+            //        return "Really Simple Syndication XML";
+            //    case FileExtensionTypeEnum.BMP:
+            //        return "Bitmap image";
+            //    case FileExtensionTypeEnum.OTF:
+            //        return "Open type font file";
+            //    case FileExtensionTypeEnum.TTF:
+            //        return "TrueType font file";
+            //    case FileExtensionTypeEnum.FON:
+            //        return "Generic font file";
+            //    case FileExtensionTypeEnum.FNT:
+            //        return "Windows font file";
+            //    case FileExtensionTypeEnum.COM:
+            //        return "fMS - DOS command fil";
+            //    case FileExtensionTypeEnum.BIN:
+            //        return "Binary file";
+            //    case FileExtensionTypeEnum.JAR:
+            //        return "Java Archive file";
+            //    case FileExtensionTypeEnum.MDB:
+            //        return "Microsoft Access D.B. file";
+            //    case FileExtensionTypeEnum.DAT:
+            //        return "Data file";
+            //    case FileExtensionTypeEnum.DB:
+            //        return "Database file";
+            //    case FileExtensionTypeEnum.DBF:
+            //        return "Database file";
+            //    case FileExtensionTypeEnum.CSV:
+            //        return "Comma separated value file";
+            //    case FileExtensionTypeEnum.SAV:
+            //        return "Save File";
+            //    case FileExtensionTypeEnum.TAR:
+            //        return "Linux / Unix tarball archive";
+            //    case FileExtensionTypeEnum.WMA:
+            //        return "WMA audio file";
+            //    case FileExtensionTypeEnum.WAV:
+            //        return "WAV audio file format";
+            //    case FileExtensionTypeEnum.MP3:
+            //        return "MPEG-1 Audio Layer 3";
+            //    case FileExtensionTypeEnum.CDA:
+            //        return "CD audio track file";
+            //    case FileExtensionTypeEnum.OGG:
+            //        return "Ogg Vorbis audio file";
+            //    case FileExtensionTypeEnum.SQL:
+            //        return "STructured Query Language";
+            //    default:
+            return "Party and Bullshit";
+            //}
         }
 
 
@@ -1705,522 +1681,522 @@ namespace pq.Helper
         }
         public static FileExtensionMidTypeEnum GetFEMTEbyFETE(FileExtensionTypeEnum fete)
         {
-            switch (fete)
-            {
-                case FileExtensionTypeEnum.EXTENSIONLESS:
-                    return FileExtensionMidTypeEnum.Generic;
-                case FileExtensionTypeEnum.XYZ:
-                    return FileExtensionMidTypeEnum.Generic;
-                case FileExtensionTypeEnum.TORRENT:
-                    return FileExtensionMidTypeEnum.Internet;
-                case FileExtensionTypeEnum.FILE:
-                    return FileExtensionMidTypeEnum.Generic;
-                case FileExtensionTypeEnum.SQL:
-                    return FileExtensionMidTypeEnum.Data;
-                case FileExtensionTypeEnum.GDC:
-                    return FileExtensionMidTypeEnum.Script;
-                case FileExtensionTypeEnum.GEN:
-                    return FileExtensionMidTypeEnum.ROM;
-                case FileExtensionTypeEnum.GALAXY:
-                    return FileExtensionMidTypeEnum.Map;
-                case FileExtensionTypeEnum.FUK:
-                    return FileExtensionMidTypeEnum.Map;
-                case FileExtensionTypeEnum.GB:
-                    return FileExtensionMidTypeEnum.ROM;
-                case FileExtensionTypeEnum.GAME:
-                    return FileExtensionMidTypeEnum.Engine;
-                case FileExtensionTypeEnum.GAM:
-                    return FileExtensionMidTypeEnum.Save;
-                case FileExtensionTypeEnum.CTY:
-                    return FileExtensionMidTypeEnum.Save;
-                case FileExtensionTypeEnum.GRP:
-                    return FileExtensionMidTypeEnum.AppData;
-                case FileExtensionTypeEnum.GXT:
-                    return FileExtensionMidTypeEnum.AppData;
-                case FileExtensionTypeEnum.H3M:
-                    return FileExtensionMidTypeEnum.Map;
-                case FileExtensionTypeEnum.H4R:
-                    return FileExtensionMidTypeEnum.AppData;
-                case FileExtensionTypeEnum.J2L:
-                    return FileExtensionMidTypeEnum.AppData;
-                case FileExtensionTypeEnum.LMU:
-                    return FileExtensionMidTypeEnum.Engine;
-                case FileExtensionTypeEnum.MAP:
-                    return FileExtensionMidTypeEnum.Map;
-                case FileExtensionTypeEnum.MM7:
-                    return FileExtensionMidTypeEnum.Save;
-                case FileExtensionTypeEnum.MP2S:
-                    return FileExtensionMidTypeEnum.Save;
-                case FileExtensionTypeEnum.NARC:
-                    return FileExtensionMidTypeEnum.Console;
-                case FileExtensionTypeEnum.NDS:
-                    return FileExtensionMidTypeEnum.ROM;
-                case FileExtensionTypeEnum.PSV:
-                    return FileExtensionMidTypeEnum.Console;
-                case FileExtensionTypeEnum.PSK:
-                    return FileExtensionMidTypeEnum.Mesh;
-                case FileExtensionTypeEnum.SC2MAPS:
-                    return FileExtensionMidTypeEnum.Map;
-                case FileExtensionTypeEnum.SC4:
-                    return FileExtensionMidTypeEnum.Save;
-                case FileExtensionTypeEnum.UNITY:
-                    return FileExtensionMidTypeEnum.Engine;
-                case FileExtensionTypeEnum.UT2:
-                    return FileExtensionMidTypeEnum.Map;
-                case FileExtensionTypeEnum.ZZZ:
-                    return FileExtensionMidTypeEnum.AppData;
-                case FileExtensionTypeEnum.GSC:
-                    return FileExtensionMidTypeEnum.Script;
-                case FileExtensionTypeEnum.EML:
-                    return FileExtensionMidTypeEnum.Internet;
-                case FileExtensionTypeEnum.PGN:
-                    return FileExtensionMidTypeEnum.Game;
-                case FileExtensionTypeEnum.VB:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.DART:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.PHP:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.PY:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.RB:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.JSX:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.JS:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.ES:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.TS:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.CSS:
-                    return FileExtensionMidTypeEnum.Style;
-                case FileExtensionTypeEnum.LESS:
-                    return FileExtensionMidTypeEnum.Style;
-                case FileExtensionTypeEnum.CS:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.CPP:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.XAML:
-                    return FileExtensionMidTypeEnum.Markup;
-                case FileExtensionTypeEnum.XML:
-                    return FileExtensionMidTypeEnum.Markup;
-                case FileExtensionTypeEnum.HTML:
-                    return FileExtensionMidTypeEnum.Markup;
-                case FileExtensionTypeEnum.PDF:
-                    return FileExtensionMidTypeEnum.RichText;
-                case FileExtensionTypeEnum.DOC:
-                    return FileExtensionMidTypeEnum.RichText;
-                case FileExtensionTypeEnum.DOCX:
-                    return FileExtensionMidTypeEnum.RichText;
-                case FileExtensionTypeEnum.ODT:
-                    return FileExtensionMidTypeEnum.RichText;
-                case FileExtensionTypeEnum.RTF:
-                    return FileExtensionMidTypeEnum.RichText;
-                case FileExtensionTypeEnum.TXT:
-                    return FileExtensionMidTypeEnum.RichText;
-                case FileExtensionTypeEnum.PNG:
-                    return FileExtensionMidTypeEnum.Raster;
-                case FileExtensionTypeEnum.JPEG:
-                    return FileExtensionMidTypeEnum.Raster;
-                case FileExtensionTypeEnum.PDN:
-                    return FileExtensionMidTypeEnum.Raster;
-                case FileExtensionTypeEnum.GIF:
-                    return FileExtensionMidTypeEnum.Raster;
-                case FileExtensionTypeEnum.EPS:
-                    return FileExtensionMidTypeEnum.Vector;
-                case FileExtensionTypeEnum.SVG:
-                    return FileExtensionMidTypeEnum.Vector;
-                case FileExtensionTypeEnum.ASP:
-                    return FileExtensionMidTypeEnum.Script;
-                case FileExtensionTypeEnum.ASPX:
-                    return FileExtensionMidTypeEnum.Script;
-                case FileExtensionTypeEnum.CSHTML:
-                    return FileExtensionMidTypeEnum.Script;
-                case FileExtensionTypeEnum.LOG:
-                    return FileExtensionMidTypeEnum.Log;
-                case FileExtensionTypeEnum.BAT:
-                    return FileExtensionMidTypeEnum.Executible;
-                case FileExtensionTypeEnum.ISO:
-                    return FileExtensionMidTypeEnum.Archive;
-                case FileExtensionTypeEnum.ZIP:
-                    return FileExtensionMidTypeEnum.Archive;
-                case FileExtensionTypeEnum.RAR:
-                    return FileExtensionMidTypeEnum.Archive;
-                case FileExtensionTypeEnum.APK:
-                    return FileExtensionMidTypeEnum.Setup;
-                case FileExtensionTypeEnum.EXE:
-                    return FileExtensionMidTypeEnum.Executible;
-                case FileExtensionTypeEnum.CFG:
-                    return FileExtensionMidTypeEnum.Configuration;
-                case FileExtensionTypeEnum.XLS:
-                    return FileExtensionMidTypeEnum.Sheets;
-                case FileExtensionTypeEnum.XLSX:
-                    return FileExtensionMidTypeEnum.Sheets;
-                case FileExtensionTypeEnum.ODS:
-                    return FileExtensionMidTypeEnum.Sheets;
-                case FileExtensionTypeEnum.BAK:
-                    return FileExtensionMidTypeEnum.Archive;
-                case FileExtensionTypeEnum.H:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.JAVA:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.C:
-                    return FileExtensionMidTypeEnum.Script;
-                case FileExtensionTypeEnum.CLASS:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.SH:
-                    return FileExtensionMidTypeEnum.Shell;
-                case FileExtensionTypeEnum.ICO:
-                    return FileExtensionMidTypeEnum.Raster;
-                case FileExtensionTypeEnum.DLL:
-                    return FileExtensionMidTypeEnum.Library;
-                case FileExtensionTypeEnum.DMP:
-                    return FileExtensionMidTypeEnum.Data;
-                case FileExtensionTypeEnum.MP4:
-                    return FileExtensionMidTypeEnum.Audio;
-                case FileExtensionTypeEnum.MPEG:
-                    return FileExtensionMidTypeEnum.Audio;
-                case FileExtensionTypeEnum.AVI:
-                    return FileExtensionMidTypeEnum.Audio;
-                case FileExtensionTypeEnum.MKV:
-                    return FileExtensionMidTypeEnum.Audio;
-                case FileExtensionTypeEnum.MOV:
-                    return FileExtensionMidTypeEnum.Video;
-                case FileExtensionTypeEnum.WMV:
-                    return FileExtensionMidTypeEnum.Video;
-                case FileExtensionTypeEnum.SYS:
-                    return FileExtensionMidTypeEnum.System;
-                case FileExtensionTypeEnum.MSI:
-                    return FileExtensionMidTypeEnum.Setup;
-                case FileExtensionTypeEnum.LNK:
-                    return FileExtensionMidTypeEnum.System;
-                case FileExtensionTypeEnum.INI:
-                    return FileExtensionMidTypeEnum.Data;
-                case FileExtensionTypeEnum.TMP:
-                    return FileExtensionMidTypeEnum.Data;
-                case FileExtensionTypeEnum.CAB:
-                    return FileExtensionMidTypeEnum.Archive;
-                case FileExtensionTypeEnum.PPT:
-                    return FileExtensionMidTypeEnum.Presentation;
-                case FileExtensionTypeEnum.PPTX:
-                    return FileExtensionMidTypeEnum.Presentation;
-                case FileExtensionTypeEnum.ODP:
-                    return FileExtensionMidTypeEnum.Presentation;
-                case FileExtensionTypeEnum.XHTML:
-                    return FileExtensionMidTypeEnum.Markup;
-                case FileExtensionTypeEnum.CGI:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.PL:
-                    return FileExtensionMidTypeEnum.OOPL;
-                case FileExtensionTypeEnum.RSS:
-                    return FileExtensionMidTypeEnum.Data;
-                case FileExtensionTypeEnum.BMP:
-                    return FileExtensionMidTypeEnum.Raster;
-                case FileExtensionTypeEnum.OTF:
-                    return FileExtensionMidTypeEnum.Font;
-                case FileExtensionTypeEnum.TTF:
-                    return FileExtensionMidTypeEnum.Font;
-                case FileExtensionTypeEnum.FON:
-                    return FileExtensionMidTypeEnum.Font;
-                case FileExtensionTypeEnum.FNT:
-                    return FileExtensionMidTypeEnum.Font;
-                case FileExtensionTypeEnum.COM:
-                    return FileExtensionMidTypeEnum.Shell;
-                case FileExtensionTypeEnum.BIN:
-                    return FileExtensionMidTypeEnum.Data;
-                case FileExtensionTypeEnum.JAR:
-                    return FileExtensionMidTypeEnum.Archive;
-                case FileExtensionTypeEnum.MDB:
-                    return FileExtensionMidTypeEnum.Database;
-                case FileExtensionTypeEnum.DAT:
-                    return FileExtensionMidTypeEnum.Data;
-                case FileExtensionTypeEnum.DB:
-                    return FileExtensionMidTypeEnum.Database;
-                case FileExtensionTypeEnum.DBF:
-                    return FileExtensionMidTypeEnum.Database;
-                case FileExtensionTypeEnum.CSV:
-                    return FileExtensionMidTypeEnum.Sheets;
-                case FileExtensionTypeEnum.SAV:
-                    return FileExtensionMidTypeEnum.Data;
-                case FileExtensionTypeEnum.TAR:
-                    return FileExtensionMidTypeEnum.Archive;
-                case FileExtensionTypeEnum.WMA:
-                    return FileExtensionMidTypeEnum.Audio;
-                case FileExtensionTypeEnum.WAV:
-                    return FileExtensionMidTypeEnum.Audio;
-                case FileExtensionTypeEnum.MP3:
-                    return FileExtensionMidTypeEnum.Audio;
-                case FileExtensionTypeEnum.CDA:
-                    return FileExtensionMidTypeEnum.Audio;
-                case FileExtensionTypeEnum.OGG:
-                    return FileExtensionMidTypeEnum.Audio;
-                case FileExtensionTypeEnum.MDF:
-                    return FileExtensionMidTypeEnum.Data;
-                default:
+            //switch (fete)
+            //{
+            //    case FileExtensionTypeEnum.EXTENSIONLESS:
+            //        return FileExtensionMidTypeEnum.Generic;
+            //    case FileExtensionTypeEnum.XYZ:
+            //        return FileExtensionMidTypeEnum.Generic;
+            //    case FileExtensionTypeEnum.TORRENT:
+            //        return FileExtensionMidTypeEnum.Internet;
+            //    case FileExtensionTypeEnum.FILE:
+            //        return FileExtensionMidTypeEnum.Generic;
+            //    case FileExtensionTypeEnum.SQL:
+            //        return FileExtensionMidTypeEnum.Data;
+            //    case FileExtensionTypeEnum.GDC:
+            //        return FileExtensionMidTypeEnum.Script;
+            //    case FileExtensionTypeEnum.GEN:
+            //        return FileExtensionMidTypeEnum.ROM;
+            //    case FileExtensionTypeEnum.GALAXY:
+            //        return FileExtensionMidTypeEnum.Map;
+            //    case FileExtensionTypeEnum.FUK:
+            //        return FileExtensionMidTypeEnum.Map;
+            //    case FileExtensionTypeEnum.GB:
+            //        return FileExtensionMidTypeEnum.ROM;
+            //    case FileExtensionTypeEnum.GAME:
+            //        return FileExtensionMidTypeEnum.Engine;
+            //    case FileExtensionTypeEnum.GAM:
+            //        return FileExtensionMidTypeEnum.Save;
+            //    case FileExtensionTypeEnum.CTY:
+            //        return FileExtensionMidTypeEnum.Save;
+            //    case FileExtensionTypeEnum.GRP:
+            //        return FileExtensionMidTypeEnum.AppData;
+            //    case FileExtensionTypeEnum.GXT:
+            //        return FileExtensionMidTypeEnum.AppData;
+            //    case FileExtensionTypeEnum.H3M:
+            //        return FileExtensionMidTypeEnum.Map;
+            //    case FileExtensionTypeEnum.H4R:
+            //        return FileExtensionMidTypeEnum.AppData;
+            //    case FileExtensionTypeEnum.J2L:
+            //        return FileExtensionMidTypeEnum.AppData;
+            //    case FileExtensionTypeEnum.LMU:
+            //        return FileExtensionMidTypeEnum.Engine;
+            //    case FileExtensionTypeEnum.MAP:
+            //        return FileExtensionMidTypeEnum.Map;
+            //    case FileExtensionTypeEnum.MM7:
+            //        return FileExtensionMidTypeEnum.Save;
+            //    case FileExtensionTypeEnum.MP2S:
+            //        return FileExtensionMidTypeEnum.Save;
+            //    case FileExtensionTypeEnum.NARC:
+            //        return FileExtensionMidTypeEnum.Console;
+            //    case FileExtensionTypeEnum.NDS:
+            //        return FileExtensionMidTypeEnum.ROM;
+            //    case FileExtensionTypeEnum.PSV:
+            //        return FileExtensionMidTypeEnum.Console;
+            //    case FileExtensionTypeEnum.PSK:
+            //        return FileExtensionMidTypeEnum.Mesh;
+            //    case FileExtensionTypeEnum.SC2MAPS:
+            //        return FileExtensionMidTypeEnum.Map;
+            //    case FileExtensionTypeEnum.SC4:
+            //        return FileExtensionMidTypeEnum.Save;
+            //    case FileExtensionTypeEnum.UNITY:
+            //        return FileExtensionMidTypeEnum.Engine;
+            //    case FileExtensionTypeEnum.UT2:
+            //        return FileExtensionMidTypeEnum.Map;
+            //    case FileExtensionTypeEnum.ZZZ:
+            //        return FileExtensionMidTypeEnum.AppData;
+            //    case FileExtensionTypeEnum.GSC:
+            //        return FileExtensionMidTypeEnum.Script;
+            //    case FileExtensionTypeEnum.EML:
+            //        return FileExtensionMidTypeEnum.Internet;
+            //    case FileExtensionTypeEnum.PGN:
+            //        return FileExtensionMidTypeEnum.Game;
+            //    case FileExtensionTypeEnum.VB:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.DART:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.PHP:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.PY:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.RB:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.JSX:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.JS:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.ES:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.TS:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.CSS:
+            //        return FileExtensionMidTypeEnum.Style;
+            //    case FileExtensionTypeEnum.LESS:
+            //        return FileExtensionMidTypeEnum.Style;
+            //    case FileExtensionTypeEnum.CS:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.CPP:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.XAML:
+            //        return FileExtensionMidTypeEnum.Markup;
+            //    case FileExtensionTypeEnum.XML:
+            //        return FileExtensionMidTypeEnum.Markup;
+            //    case FileExtensionTypeEnum.HTML:
+            //        return FileExtensionMidTypeEnum.Markup;
+            //    case FileExtensionTypeEnum.PDF:
+            //        return FileExtensionMidTypeEnum.RichText;
+            //    case FileExtensionTypeEnum.DOC:
+            //        return FileExtensionMidTypeEnum.RichText;
+            //    case FileExtensionTypeEnum.DOCX:
+            //        return FileExtensionMidTypeEnum.RichText;
+            //    case FileExtensionTypeEnum.ODT:
+            //        return FileExtensionMidTypeEnum.RichText;
+            //    case FileExtensionTypeEnum.RTF:
+            //        return FileExtensionMidTypeEnum.RichText;
+            //    case FileExtensionTypeEnum.TXT:
+            //        return FileExtensionMidTypeEnum.RichText;
+            //    case FileExtensionTypeEnum.PNG:
+            //        return FileExtensionMidTypeEnum.Raster;
+            //    case FileExtensionTypeEnum.JPEG:
+            //        return FileExtensionMidTypeEnum.Raster;
+            //    case FileExtensionTypeEnum.PDN:
+            //        return FileExtensionMidTypeEnum.Raster;
+            //    case FileExtensionTypeEnum.GIF:
+            //        return FileExtensionMidTypeEnum.Raster;
+            //    case FileExtensionTypeEnum.EPS:
+            //        return FileExtensionMidTypeEnum.Vector;
+            //    case FileExtensionTypeEnum.SVG:
+            //        return FileExtensionMidTypeEnum.Vector;
+            //    case FileExtensionTypeEnum.ASP:
+            //        return FileExtensionMidTypeEnum.Script;
+            //    case FileExtensionTypeEnum.ASPX:
+            //        return FileExtensionMidTypeEnum.Script;
+            //    case FileExtensionTypeEnum.CSHTML:
+            //        return FileExtensionMidTypeEnum.Script;
+            //    case FileExtensionTypeEnum.LOG:
+            //        return FileExtensionMidTypeEnum.Log;
+            //    case FileExtensionTypeEnum.BAT:
+            //        return FileExtensionMidTypeEnum.Executible;
+            //    case FileExtensionTypeEnum.ISO:
+            //        return FileExtensionMidTypeEnum.Archive;
+            //    case FileExtensionTypeEnum.ZIP:
+            //        return FileExtensionMidTypeEnum.Archive;
+            //    case FileExtensionTypeEnum.RAR:
+            //        return FileExtensionMidTypeEnum.Archive;
+            //    case FileExtensionTypeEnum.APK:
+            //        return FileExtensionMidTypeEnum.Setup;
+            //    case FileExtensionTypeEnum.EXE:
+            //        return FileExtensionMidTypeEnum.Executible;
+            //    case FileExtensionTypeEnum.CFG:
+            //        return FileExtensionMidTypeEnum.Configuration;
+            //    case FileExtensionTypeEnum.XLS:
+            //        return FileExtensionMidTypeEnum.Sheets;
+            //    case FileExtensionTypeEnum.XLSX:
+            //        return FileExtensionMidTypeEnum.Sheets;
+            //    case FileExtensionTypeEnum.ODS:
+            //        return FileExtensionMidTypeEnum.Sheets;
+            //    case FileExtensionTypeEnum.BAK:
+            //        return FileExtensionMidTypeEnum.Archive;
+            //    case FileExtensionTypeEnum.H:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.JAVA:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.C:
+            //        return FileExtensionMidTypeEnum.Script;
+            //    case FileExtensionTypeEnum.CLASS:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.SH:
+            //        return FileExtensionMidTypeEnum.Shell;
+            //    case FileExtensionTypeEnum.ICO:
+            //        return FileExtensionMidTypeEnum.Raster;
+            //    case FileExtensionTypeEnum.DLL:
+            //        return FileExtensionMidTypeEnum.Library;
+            //    case FileExtensionTypeEnum.DMP:
+            //        return FileExtensionMidTypeEnum.Data;
+            //    case FileExtensionTypeEnum.MP4:
+            //        return FileExtensionMidTypeEnum.Audio;
+            //    case FileExtensionTypeEnum.MPEG:
+            //        return FileExtensionMidTypeEnum.Audio;
+            //    case FileExtensionTypeEnum.AVI:
+            //        return FileExtensionMidTypeEnum.Audio;
+            //    case FileExtensionTypeEnum.MKV:
+            //        return FileExtensionMidTypeEnum.Audio;
+            //    case FileExtensionTypeEnum.MOV:
+            //        return FileExtensionMidTypeEnum.Video;
+            //    case FileExtensionTypeEnum.WMV:
+            //        return FileExtensionMidTypeEnum.Video;
+            //    case FileExtensionTypeEnum.SYS:
+            //        return FileExtensionMidTypeEnum.System;
+            //    case FileExtensionTypeEnum.MSI:
+            //        return FileExtensionMidTypeEnum.Setup;
+            //    case FileExtensionTypeEnum.LNK:
+            //        return FileExtensionMidTypeEnum.System;
+            //    case FileExtensionTypeEnum.INI:
+            //        return FileExtensionMidTypeEnum.Data;
+            //    case FileExtensionTypeEnum.TMP:
+            //        return FileExtensionMidTypeEnum.Data;
+            //    case FileExtensionTypeEnum.CAB:
+            //        return FileExtensionMidTypeEnum.Archive;
+            //    case FileExtensionTypeEnum.PPT:
+            //        return FileExtensionMidTypeEnum.Presentation;
+            //    case FileExtensionTypeEnum.PPTX:
+            //        return FileExtensionMidTypeEnum.Presentation;
+            //    case FileExtensionTypeEnum.ODP:
+            //        return FileExtensionMidTypeEnum.Presentation;
+            //    case FileExtensionTypeEnum.XHTML:
+            //        return FileExtensionMidTypeEnum.Markup;
+            //    case FileExtensionTypeEnum.CGI:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.PL:
+            //        return FileExtensionMidTypeEnum.OOPL;
+            //    case FileExtensionTypeEnum.RSS:
+            //        return FileExtensionMidTypeEnum.Data;
+            //    case FileExtensionTypeEnum.BMP:
+            //        return FileExtensionMidTypeEnum.Raster;
+            //    case FileExtensionTypeEnum.OTF:
+            //        return FileExtensionMidTypeEnum.Font;
+            //    case FileExtensionTypeEnum.TTF:
+            //        return FileExtensionMidTypeEnum.Font;
+            //    case FileExtensionTypeEnum.FON:
+            //        return FileExtensionMidTypeEnum.Font;
+            //    case FileExtensionTypeEnum.FNT:
+            //        return FileExtensionMidTypeEnum.Font;
+            //    case FileExtensionTypeEnum.COM:
+            //        return FileExtensionMidTypeEnum.Shell;
+            //    case FileExtensionTypeEnum.BIN:
+            //        return FileExtensionMidTypeEnum.Data;
+            //    case FileExtensionTypeEnum.JAR:
+            //        return FileExtensionMidTypeEnum.Archive;
+            //    case FileExtensionTypeEnum.MDB:
+            //        return FileExtensionMidTypeEnum.Database;
+            //    case FileExtensionTypeEnum.DAT:
+            //        return FileExtensionMidTypeEnum.Data;
+            //    case FileExtensionTypeEnum.DB:
+            //        return FileExtensionMidTypeEnum.Database;
+            //    case FileExtensionTypeEnum.DBF:
+            //        return FileExtensionMidTypeEnum.Database;
+            //    case FileExtensionTypeEnum.CSV:
+            //        return FileExtensionMidTypeEnum.Sheets;
+            //    case FileExtensionTypeEnum.SAV:
+            //        return FileExtensionMidTypeEnum.Data;
+            //    case FileExtensionTypeEnum.TAR:
+            //        return FileExtensionMidTypeEnum.Archive;
+            //    case FileExtensionTypeEnum.WMA:
+            //        return FileExtensionMidTypeEnum.Audio;
+            //    case FileExtensionTypeEnum.WAV:
+            //        return FileExtensionMidTypeEnum.Audio;
+            //    case FileExtensionTypeEnum.MP3:
+            //        return FileExtensionMidTypeEnum.Audio;
+            //    case FileExtensionTypeEnum.CDA:
+            //        return FileExtensionMidTypeEnum.Audio;
+            //    case FileExtensionTypeEnum.OGG:
+            //        return FileExtensionMidTypeEnum.Audio;
+            //    case FileExtensionTypeEnum.MDF:
+            //        return FileExtensionMidTypeEnum.Data;
+            //default:
                     return FileExtensionMidTypeEnum.None;
-            }
+            //}
         }
 
         public static FyleTipe GetFTbyFETE(FileExtensionTypeEnum fete)
         {
-            switch (fete)
-            {
+            //switch (fete)
+            //{
 
-                case FileExtensionTypeEnum.EXTENSIONLESS:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.XYZ:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.TORRENT:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.FILE:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.MDF:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.GDC:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.GEN:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.GALAXY:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.FUK:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.GB:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.GAME:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.GAM:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.CTY:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.GRP:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.GXT:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.H3M:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.H4R:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.J2L:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.LMU:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.MAP:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.MM7:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.MP2S:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.NARC:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.NDS:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.PSV:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.PSK:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.SC2MAPS:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.SC4:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.UNITY:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.UT2:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.ZZZ:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.GSC:
-                    return FyleTipe.Games;
-                case FileExtensionTypeEnum.EML:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.PGN:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.VB:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.DART:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.PHP:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.PY:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.RB:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.JSX:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.JS:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.ES:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.TS:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.CSS:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.LESS:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.CS:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.CPP:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.XAML:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.XML:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.HTML:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.PDF:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.DOC:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.DOCX:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.ODT:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.RTF:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.TXT:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.PNG:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.JPEG:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.PDN:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.GIF:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.EPS:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.SVG:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.ASP:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.ASPX:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.CSHTML:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.LOG:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.BAT:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.ISO:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.ZIP:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.RAR:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.APK:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.EXE:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.CFG:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.XLS:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.XLSX:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.ODS:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.BAK:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.H:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.JAVA:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.C:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.CLASS:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.SH:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.ICO:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.DLL:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.DMP:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.MP4:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.MPEG:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.AVI:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.MKV:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.MOV:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.WMV:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.SYS:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.MSI:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.LNK:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.INI:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.TMP:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.CAB:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.PPT:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.PPTX:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.ODP:
-                    return FyleTipe.Document;
-                case FileExtensionTypeEnum.XHTML:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.CGI:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.PL:
-                    return FyleTipe.Code;
-                case FileExtensionTypeEnum.RSS:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.BMP:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.OTF:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.TTF:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.FON:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.FNT:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.COM:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.BIN:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.JAR:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.MDB:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.DAT:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.DB:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.DBF:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.CSV:
-                    return FyleTipe.Data;
-                case FileExtensionTypeEnum.SAV:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.TAR:
-                    return FyleTipe.Misc;
-                case FileExtensionTypeEnum.WMA:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.WAV:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.MP3:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.CDA:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.OGG:
-                    return FyleTipe.Media;
-                case FileExtensionTypeEnum.SQL:
-                    return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.EXTENSIONLESS:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.XYZ:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.TORRENT:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.FILE:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.MDF:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.GDC:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.GEN:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.GALAXY:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.FUK:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.GB:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.GAME:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.GAM:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.CTY:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.GRP:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.GXT:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.H3M:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.H4R:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.J2L:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.LMU:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.MAP:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.MM7:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.MP2S:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.NARC:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.NDS:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.PSV:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.PSK:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.SC2MAPS:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.SC4:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.UNITY:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.UT2:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.ZZZ:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.GSC:
+            //        return FyleTipe.Games;
+            //    case FileExtensionTypeEnum.EML:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.PGN:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.VB:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.DART:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.PHP:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.PY:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.RB:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.JSX:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.JS:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.ES:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.TS:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.CSS:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.LESS:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.CS:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.CPP:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.XAML:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.XML:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.HTML:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.PDF:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.DOC:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.DOCX:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.ODT:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.RTF:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.TXT:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.PNG:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.JPEG:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.PDN:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.GIF:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.EPS:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.SVG:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.ASP:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.ASPX:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.CSHTML:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.LOG:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.BAT:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.ISO:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.ZIP:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.RAR:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.APK:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.EXE:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.CFG:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.XLS:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.XLSX:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.ODS:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.BAK:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.H:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.JAVA:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.C:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.CLASS:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.SH:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.ICO:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.DLL:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.DMP:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.MP4:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.MPEG:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.AVI:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.MKV:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.MOV:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.WMV:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.SYS:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.MSI:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.LNK:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.INI:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.TMP:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.CAB:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.PPT:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.PPTX:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.ODP:
+            //        return FyleTipe.Document;
+            //    case FileExtensionTypeEnum.XHTML:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.CGI:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.PL:
+            //        return FyleTipe.Code;
+            //    case FileExtensionTypeEnum.RSS:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.BMP:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.OTF:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.TTF:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.FON:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.FNT:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.COM:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.BIN:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.JAR:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.MDB:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.DAT:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.DB:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.DBF:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.CSV:
+            //        return FyleTipe.Data;
+            //    case FileExtensionTypeEnum.SAV:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.TAR:
+            //        return FyleTipe.Misc;
+            //    case FileExtensionTypeEnum.WMA:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.WAV:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.MP3:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.CDA:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.OGG:
+            //        return FyleTipe.Media;
+            //    case FileExtensionTypeEnum.SQL:
+            //        return FyleTipe.Code;
 
-                default:
-                    return FyleTipe.No_File_Type;
-            }
+            //    default:
+            return FyleTipe.No_File_Type;
+        //}
         }
         public static LinkCollection Top1 { get; set; }
         public static LinkCollection Top2 { get; set; }
@@ -2257,7 +2233,7 @@ namespace pq.Helper
                     while (reader.Read())
                     {
                         ExTemplate et = new ExTemplate();
-                        et.ID = reader.GetInt32(0);
+                        et.ID = reader.GetInt32(1);
                         et.Username = reader.GetString(3);
                         et.Rating = reader.GetInt64(6);
                         tmpl.Add(et);

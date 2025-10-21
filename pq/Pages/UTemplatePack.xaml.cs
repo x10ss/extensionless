@@ -59,8 +59,8 @@ namespace pq.Pages
             IsLoaded2 = true;
             LinkCollection lc = Helper.Helper.GetTmplLinks();
             UserTemplates.mt.Links = lc;
-            TemplateCountText.Text = (lc.Count - 1).ToString();
-            ChampText.Text = lc[1].DisplayName.ToUpper().Split('.')[1];
+           // TemplateCountText.Text = (lc.Count - 1).ToString();
+          //  ChampText.Text = lc[1].DisplayName.ToUpper().Split('.')[1];
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)

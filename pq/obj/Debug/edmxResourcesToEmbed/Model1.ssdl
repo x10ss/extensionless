@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ex10sionlessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IsUsed" Type="bit" />
+    <Property Name="IsTemplated" Type="bit" />
+    <Property Name="TemplatePath" Type="varchar" MaxLength="50" />
+    <Property Name="IsBinary" Type="bit" />
+    <Property Name="IsOpen" Type="bit" />
+    <Property Name="SwitchDate" Type="datetime" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+    <Property Name="IsMine" Type="bit" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" />
+    <Property Name="Category" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="x10ss">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="2" />
+    <Property Name="DonationURL" Type="varchar" MaxLength="50" />
+    <Property Name="Sound" Type="bit" />
+    <Property Name="Theme" Type="bit" />
+    <Property Name="Color" Type="int" />
+    <Property Name="ExtensionlessID" Type="varchar" MaxLength="50" />
+    <Property Name="FolderPath" Type="varchar" MaxLength="50" />
+    <Property Name="FileList" Type="varchar(max)" />
+    <Property Name="WindowsUsername" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="ex10sionlessModelStoreContainer">
+    <EntitySet Name="files" EntityType="Self.files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="x10ss" EntityType="Self.x10ss" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

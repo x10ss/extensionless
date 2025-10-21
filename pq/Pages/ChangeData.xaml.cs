@@ -26,15 +26,15 @@ namespace pq.Pages
 
             InitializeComponent();
             changeData = this;
-            ExPro ep = Helper.Helper.Synched();
+            x10ss ep = Helper.Helper.Synched();
             country.ItemsSource = Enum.GetValues(typeof(CountryFlag.CountryCode)).Cast<CountryFlag.CountryCode>();
 
             EName = exuser;
-            exuser.Text = ep.ExUsername;
+            exuser.Text = ep.Username;
             //   EEmail = email;
             //  email.Text = ep.Email;
             EDonate = donate;
-            donate.Text = ep.DonateUrl;
+            donate.Text = ep.DonationURL;
             
             EPassword = expass;
             expass.Password = ep.Password;//   EDob = dob;

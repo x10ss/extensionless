@@ -13,7 +13,7 @@ namespace pq.Pages
     /// </summary>
     public partial class Delete : UserControl, IContent
     {
-        public static ExPro del;
+        public static x10ss del;
         public Delete()
         {
             InitializeComponent();
@@ -39,13 +39,13 @@ namespace pq.Pages
         private void ModernButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
 
-            using (Entities ent = new Entities())
+            using (ex10sionlessEntities ent = new ex10sionlessEntities())
             {
-                ExPro ep = ent.ExProes.Where(x => x.WinUsername == Environment.UserName).FirstOrDefault();
+                x10ss ep = ent.x10ss.Where(x => x.WindowsUsername == Environment.UserName).FirstOrDefault();
                 //    ent.Settings.Remove(ent.Settings.Where(x => x.ExPro.ExID == ep.ExID).FirstOrDefault());
 
 
-                string query = "delete from boilpack where Username='"+ ep.ExUsername+"'";
+                string query = "delete from boilpack where Username='" + ep.Username + "'";
                 var cmd = new MySqlCommand(query, DBConnection.Connection);
                 int reader = cmd.ExecuteNonQuery();
                 if (reader > 0)
@@ -61,14 +61,12 @@ namespace pq.Pages
 
 
 
-                ent.Settings.Remove(ent.Settings.Where(x => x.ExPro.ExID == ep.ExID).FirstOrDefault());
-
-                ent.ExProes.Remove(ep);
+                ent.x10ss.Remove(ep);
                 ent.SaveChanges();
             }
-            ExPro newep = Helper.Helper.GetExPro(true);
+            x10ss newep = Helper.Helper.GetExPro(true);
             ExDialog.exdialog.ep = newep;
-            Helper.Helper.getDBST2(newep.Id);
+            //Helper.Helper.getDBST2(newep.Id);
             ExDialog.exdialog.DialogResult = true;
 
 

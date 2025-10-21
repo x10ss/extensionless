@@ -24,9 +24,9 @@ namespace pq.Pages
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-        Ex mySel = null;
-        List<Ex> lex = Helper.Helper.LEX.Where(x => x.IsMine == false).OrderBy(x => x.Name).ToList();
-        public List<Ex> LEX
+        file mySel = null;
+        List<file> lex = Helper.Helper.LEX.Where(x => x.IsMine == false).OrderBy(x => x.Name).ToList();
+        public List<file> LEX
         {
             get
             {
@@ -38,7 +38,7 @@ namespace pq.Pages
                 OnPropertyChanged("LEX");
             }
         }
-        public Ex MySel
+        public file MySel
         {
             get
             {
@@ -52,25 +52,25 @@ namespace pq.Pages
         }
         public ExtendedLib()
         {
-            InitializeComponent();
-            DataContext = this;
-            using (var ent = new Entities())
-            {
-                Setting st = ent.Settings.FirstOrDefault();
-                if (st.IsExtended == true)
-                {
+            //InitializeComponent();
+            //DataContext = this;
+            //using (var ent = new ex10sionlessEntities())
+            //{
+            //    Setting st = ent.Settings.FirstOrDefault();
+            //    if (st.IsExtended == true)
+            //    {
 
-                    off.Visibility = Visibility.Visible;
-                    on.Visibility = Visibility.Collapsed;
-                }
-                else
-                {
+            //        off.Visibility = Visibility.Visible;
+            //        on.Visibility = Visibility.Collapsed;
+            //    }
+            //    else
+            //    {
 
-                    on.Visibility = Visibility.Visible;
-                    off.Visibility = Visibility.Collapsed;
-                }
-                ent.SaveChanges();
-            }
+            //        on.Visibility = Visibility.Visible;
+            //        off.Visibility = Visibility.Collapsed;
+            //    }
+            //    ent.SaveChanges();
+            //}
         }
 
         private void CheckBox_Checked(object sender, System.Windows.RoutedEventArgs e)
@@ -104,8 +104,7 @@ namespace pq.Pages
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (MySel == null) return;
-            MySel.IsExtended = !MySel.IsExtended;
-            MySel = (sender as ListBox).SelectedItem as Ex;
+            MySel = (sender as ListBox).SelectedItem as file;
             LEX = lex.ToList();
 
         }
@@ -156,11 +155,9 @@ namespace pq.Pages
 
         private void IsExtended_Checked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new Entities())
+            using (var ent = new ex10sionlessEntities())
             {
-
-                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
-                st.IsExtended = true;
+                
                 on.Visibility = Visibility.Visible;
                 off.Visibility = Visibility.Collapsed;
                 ent.SaveChanges();
@@ -169,10 +166,8 @@ namespace pq.Pages
 
         private void IsExtended_Unchecked(object sender, RoutedEventArgs e)
         {
-            using (var ent = new Entities())
+            using (var ent = new ex10sionlessEntities())
             {
-                Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
-                st.IsExtended = false;
                 off.Visibility = Visibility.Visible;
                 on.Visibility = Visibility.Collapsed;
                 ent.SaveChanges();
@@ -189,8 +184,8 @@ namespace pq.Pages
 
         public void OnNavigatedTo(NavigationEventArgs e)
         {
-            Helper.Helper.getDBST();
-            IsExtended.IsChecked = Helper.Helper.ST.IsExtended;
+            //Helper.Helper.getDBST();
+            //IsExtended.IsChecked = Helper.Helper.ST.IsExtended;
 
             //    Helper.Helper.SetTop(false);
         }

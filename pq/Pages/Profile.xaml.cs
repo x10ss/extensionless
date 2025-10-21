@@ -52,12 +52,12 @@ namespace pq.Pages
             DataContext = this;
             if (IsSynched)
             {
-                ExPro ep = Helper.Helper.Synched();
+                x10ss ep = Helper.Helper.Synched();
                 if (ep != null)
                 {
 
                //     exguid.Password = ep.ExID;
-                    exuser.Text = ep.ExUsername;
+                    exuser.Text = ep.Username;
                     try
                     {
                        // dob.Text = ((DateTime)ep.Dob).ToShortDateString();
@@ -72,7 +72,7 @@ namespace pq.Pages
                         flag.Code = (CountryCode)Enum.Parse(typeof(CountryCode), ep.Country);
                     }
                   //  email.Text = ep.Email;
-                    donate.Text = ep.DonateUrl;
+                    donate.Text = ep.DonationURL;
                     password.Password = ep.Password;
                     ModernDialog.ShowMessage(ep.Id.ToString(), "fafala", MessageBoxButton.OK);
                 }
@@ -120,8 +120,8 @@ namespace pq.Pages
 
                     IsSynched = true;
 
-                    exuser.Text=string.IsNullOrEmpty(ed.ep.ExUsername) ?"• • •" : ed.ep.ExUsername;
-                    donate.Text=string.IsNullOrEmpty(ed.ep.DonateUrl) ?"• • •" : ed.ep.DonateUrl;
+                    exuser.Text=string.IsNullOrEmpty(ed.ep.Username) ?"• • •" : ed.ep.Username;
+                    donate.Text=string.IsNullOrEmpty(ed.ep.DonationURL) ?"• • •" : ed.ep.DonationURL;
                     password.Password=string.IsNullOrEmpty(ed.ep.Password) ?"•••" : ed.ep.Password;
                     if (string.IsNullOrEmpty(ed.ep.Country)) 
                         flag.Visibility = Visibility.Hidden;
@@ -147,7 +147,7 @@ namespace pq.Pages
                    //     flag.Code = (CountryCode)Enum.Parse(typeof(CountryCode), ed.ep.Country);
                   //      flag.ToolTip = ((CountryCode)Enum.Parse(typeof(CountryCode), ed.ep.Country)).ToString();
                   //  }
-                    IsSynched = string.IsNullOrEmpty(ed.ep.ExID) ? false : true;
+                    IsSynched = string.IsNullOrEmpty(ed.ep.ExtensionlessID) ? false : true;
                 }
                 else
                 {
@@ -399,18 +399,21 @@ namespace pq.Pages
             using (MySqlCommand command = new MySqlCommand())
             {
                 command.Connection = DBConnection.Connection;
-                command.CommandText = "UPDATE boilpack SET BoilerplateZip=?rawData, ZipSize=?fileSize WHERE ExProID=?exproid;";
+                command.CommandText = "UPDATE boilpack SET BoilerplateZip=?rawData, ZipSize=?fileSize WHERE ExProID=?exproid AND Username=?exusername; ";
                 MySqlParameter exproid = new MySqlParameter("?exproid", MySqlDbType.VarChar, 256);
                 MySqlParameter fileSize = new MySqlParameter("?fileSize", MySqlDbType.Int32, 11);
                 MySqlParameter rawData = new MySqlParameter("?rawData", MySqlDbType.Blob, fileBytes.Length);
+                MySqlParameter exusername = new MySqlParameter("?exusername", MySqlDbType.VarChar, 24);
 
                 exproid.Value = Helper.Helper.GetGuid();
                 fileSize.Value = fileBytes.Length;
                 rawData.Value = fileBytes;
+                exusername.Value = Helper.Helper.Synched().Username;
 
                 command.Parameters.Add(exproid);
                 command.Parameters.Add(fileSize);
                 command.Parameters.Add(rawData);
+                command.Parameters.Add(exusername);
                 if (command.ExecuteNonQuery() > 0)
                 {
                     MessageBox.Show("Bravo - 4");
@@ -436,8 +439,8 @@ namespace pq.Pages
             //  Helper.Helper.SetTop(false);
             IsSynched = Helper.Helper.IsSynched();
             Synch.IsEnabled = Synch.IsEnabled;
-            ExPro ep = Helper.Helper.Synched();
-            string exproexusername = ep == null ? "" : ep.ExUsername.ToUpper();
+            x10ss ep = Helper.Helper.Synched();
+            string exproexusername = ep == null ? "" : ep.Username.ToUpper();
             Username = string.IsNullOrEmpty(exproexusername) ? Helper.Helper.Username.ToUpper() : exproexusername;
             CountryFlag.CountryCode mycc;
             if (ep != null)
@@ -482,7 +485,7 @@ namespace pq.Pages
                 byte[] rawData;
                 UInt32 FileSize;
 
-                string SQL = "select BoilerplateZip,ZipSize from boilpack where ExProID='" + Helper.Helper.GetGuid() + "'";
+                string SQL = "select BoilerplateZip,ZipSize from boilpack where ExProID='" + Helper.Helper.GetGuid() + "'and'";
                 var cmd = new MySqlCommand();
 
                 try

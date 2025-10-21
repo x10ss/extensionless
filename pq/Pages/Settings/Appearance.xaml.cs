@@ -1,12 +1,13 @@
 ﻿using FirstFloor.ModernUI.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 
 namespace pq.Pages.Settings
 {
     /// <summary>
     /// Interaction logic for Appearance.xaml
     /// </summary>
-    public partial class Appearance : UserControl, IContent
+    public partial class Appearance : System.Windows.Controls.UserControl, IContent
     {
         public Appearance()
         {
@@ -31,6 +32,21 @@ namespace pq.Pages.Settings
 
         public void OnNavigatingFrom(FirstFloor.ModernUI.Windows.Navigation.NavigatingCancelEventArgs e)
         {
+        }
+
+        private void ModernButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            using (var dialog = new FolderBrowserDialog())
+            {
+                dialog.Description = "Select a folder";
+                dialog.ShowNewFolderButton = true;
+
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string selectedPath = dialog.SelectedPath;
+                    folder.Content = selectedPath;
+                }
+            }
         }
     }
 }

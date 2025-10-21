@@ -5,6 +5,7 @@
         public int ID { get; set; }
         public string Username { get; set; }
         public double Rating { get; set; }
+        public bool IsRated { get; set; }
 
     }
 }
