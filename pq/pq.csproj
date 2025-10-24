@@ -727,7 +727,7 @@
     </Page>
     <Compile Include="Model\FileExtensionItem.cs" />
     <Compile Include="Model\FileExtensionTypeEnum.cs" />
-    <Compile Include="Resources\FyleTipe.cs" />
+    <Compile Include="Model\FyleTipe.cs" />
     <Compile Include="Pages\OpenDialog.xaml.cs">
       <DependentUpon>OpenDialog.xaml</DependentUpon>
     </Compile>

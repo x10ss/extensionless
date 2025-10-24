@@ -14,7 +14,7 @@
     <Property Name="Name" Type="varchar" MaxLength="20" />
     <Property Name="IsMine" Type="bit" />
     <Property Name="FullName" Type="varchar" MaxLength="50" />
-    <Property Name="Category" Type="varchar" MaxLength="20" />
+    <Property Name="Category" Type="int" />
   </EntityType>
   <EntityType Name="x10ss">
     <Key>

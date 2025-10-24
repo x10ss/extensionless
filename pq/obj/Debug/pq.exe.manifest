@@ -211,14 +211,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="pq.exe" size="2714584">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="pq.exe" size="2697176">
       <assemblyIdentity name="pq" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3g05ET/8sF4MXRFhNDKYV3DTGi4HRe+0LQeZtl/vh1U=</dsig:DigestValue>
+        <dsig:DigestValue>cJxwvplRGBLmJqIIGZ2CuMYahTheHoOlj5kvRlGQuLQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -594,16 +594,16 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>N8lCvqMEh5Z0RbgPrP4XYuZ5TZrDcOcZraU2vLg3iBI=</dsig:DigestValue>
+      <dsig:DigestValue>HwIZxFN5BwwIOh/kaUJj2O2+U5oxiL18TURSE9TANcA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="x10ss_log.ldf" size="786432" writeableType="applicationData">
+  <file name="x10ss_log.ldf" size="516096" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>NLsZ+VQn0mGIh0IRHlyUpGIO2PdW1699iXYbwwBKv/8=</dsig:DigestValue>
+      <dsig:DigestValue>YR9DxPls2AmomXEXycJkIYQlVRoR8io6GZi9kbc4RaE=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

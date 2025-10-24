@@ -1,5 +1,6 @@
 ﻿using FirstFloor.ModernUI.Presentation;
 using FirstFloor.ModernUI.Windows.Controls;
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using pq.Model;
@@ -210,14 +211,22 @@ namespace pq.Helper
                 List<file> lex = ent.files.Where(x => true).ToList();
                 LEX = lex;
 
-            //    Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
+                //    Setting st = ent.Settings.FirstOrDefault(x => x.ExPro.WinUsername == Environment.UserName);
                 //if (st == null)
                 //{
                 //    st = new Setting() { IsExtended = false, DoAsk = true, IsMine = false, ExProID = GetExPro(true).Id };
                 //    ent.Settings.Add(st);
                 //    ent.SaveChanges();
                 //}
-             //   ST = st;
+                //   ST = st;
+                if (!ent.x10ss.Any(x => x.WindowsUsername == Environment.UserName))
+                {
+                    x10ss user = new x10ss();
+                    user.WindowsUsername = Environment.UserName;
+                    user.Id = 1;
+                    ent.x10ss.Add(user);
+                    ent.SaveChanges();
+                }
 
                 string[] WorldArray = File.ReadAllLines("World/World.csv");
                 List<City> wc = new List<City>();
@@ -379,7 +388,7 @@ namespace pq.Helper
                 ex.IsBinary = myfex.IsBinary;
                 ex.IsOpen = myfex.IsOpen;
                 ex.Name = myfex.Name;
-                ex.Category = ((int)myfex.FT).ToString();
+                ex.Category = ((int)myfex.FT);
                 ex.FullName = ((int)myfex.FEMTE).ToString();
                 ex.IsMine = true;
                 ex.SwitchDate = DateTime.Now;
@@ -415,7 +424,7 @@ namespace pq.Helper
 
                     isEnabled = GetRegKeyBool(name == "EXTENSIONLESS" ? "" : name);
 
-                    Enum.TryParse(name, out FileExtensionTypeEnum fete);
+                    System.Enum.TryParse(name, out FileExtensionTypeEnum fete);
                     string tmplID;
                     if (isEnabled)
                     {
@@ -425,8 +434,12 @@ namespace pq.Helper
                     {
                         tmplID = "";
                     }
-                    FyleTipe ft = GetFTbyFETE(fete);
 
+                    FyleTipe ft;
+                    if (ex.Category != null)
+                        ft = (FyleTipe)ex.Category;
+                    else
+                        ft = GetFTbyFETE(fete);
                     Color color = GetColor(rnd.Next() % 9);
                     SolidColorBrush isDark1 = IsDark(color);
                     string isDark = isDark1.ToString();
@@ -446,7 +459,7 @@ namespace pq.Helper
                     FileExtensionItem fe = new FileExtensionItem()
                     {
                         ID = ex.Id,
-                        Name = name == "EXTENSIONLESS" ? "." : "." + name,
+                        Name = name,
                         FullName = GetFullNameByFETE(fete),
                         IsEnabled = isEnabled,
                         IsOpen = ex.IsOpen,
@@ -1445,7 +1458,7 @@ namespace pq.Helper
                 FalseValue = Visibility.Collapsed;
             }
 
-            public object Convert(object value, Type targetType,
+            public object Convert(object value, System.Type targetType,
                 object parameter, CultureInfo culture)
             {
                 if (!(value is bool))
@@ -1453,7 +1466,7 @@ namespace pq.Helper
                 return (bool)value ? TrueValue : FalseValue;
             }
 
-            public object ConvertBack(object value, Type targetType,
+            public object ConvertBack(object value, System.Type targetType,
                 object parameter, CultureInfo culture)
             {
                 if (Equals(value, TrueValue))

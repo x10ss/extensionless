@@ -282,4 +282,3 @@ C:\Users\guvo\Documents\GitHub\Extensionless\extensionless\pq\obj\Debug\pq.appli
 C:\Users\guvo\Documents\GitHub\Extensionless\extensionless\pq\obj\Debug\pq.csproj.Up2Date
 C:\Users\guvo\Documents\GitHub\Extensionless\extensionless\pq\obj\Debug\pq.exe
 C:\Users\guvo\Documents\GitHub\Extensionless\extensionless\pq\obj\Debug\pq.pdb
-C:\Users\guvo\Documents\GitHub\Extensionless\extensionless\pq\obj\Debug\pq.exe.config

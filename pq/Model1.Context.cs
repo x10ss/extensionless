@@ -25,7 +25,7 @@ namespace pq
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<x10ss> x10ss { get; set; }
         public virtual DbSet<file> files { get; set; }
+        public virtual DbSet<x10ss> x10ss { get; set; }
     }
 }

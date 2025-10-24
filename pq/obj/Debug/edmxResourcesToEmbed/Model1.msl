@@ -1,24 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ex10sionlessModelStoreContainer" CdmEntityContainer="ex10sionlessEntities">
-    <EntitySetMapping Name="x10ss">
-      <EntityTypeMapping TypeName="ex10sionlessModel.x10ss">
-        <MappingFragment StoreEntitySet="x10ss">
-          <ScalarProperty Name="WindowsUsername" ColumnName="WindowsUsername" />
-          <ScalarProperty Name="FileList" ColumnName="FileList" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="DonationURL" ColumnName="DonationURL" />
-          <ScalarProperty Name="Sound" ColumnName="Sound" />
-          <ScalarProperty Name="Theme" ColumnName="Theme" />
-          <ScalarProperty Name="Color" ColumnName="Color" />
-          <ScalarProperty Name="ExtensionlessID" ColumnName="ExtensionlessID" />
-          <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="files">
       <EntityTypeMapping TypeName="ex10sionlessModel.file">
         <MappingFragment StoreEntitySet="files">
@@ -32,6 +14,24 @@
           <ScalarProperty Name="TemplatePath" ColumnName="TemplatePath" />
           <ScalarProperty Name="IsTemplated" ColumnName="IsTemplated" />
           <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="x10ss">
+      <EntityTypeMapping TypeName="ex10sionlessModel.x10ss">
+        <MappingFragment StoreEntitySet="x10ss">
+          <ScalarProperty Name="WindowsUsername" ColumnName="WindowsUsername" />
+          <ScalarProperty Name="FileList" ColumnName="FileList" />
+          <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+          <ScalarProperty Name="ExtensionlessID" ColumnName="ExtensionlessID" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Theme" ColumnName="Theme" />
+          <ScalarProperty Name="Sound" ColumnName="Sound" />
+          <ScalarProperty Name="DonationURL" ColumnName="DonationURL" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

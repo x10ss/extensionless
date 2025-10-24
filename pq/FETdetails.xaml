@@ -143,7 +143,7 @@
                                     </TextBlock>
                                     <StackPanel Margin="4,22,0,0" Orientation="Horizontal">
                                         <TextBlock  Foreground="{Binding IsDark}" ToolTip="Templated"  Visibility="{Binding TemplateID,Converter={StaticResource RealConverterSample}}">♥</TextBlock>
-                                        <TextBlock  Foreground="{Binding IsDark}" ToolTip="AUX"  Visibility="{Binding IsExtended,Converter={StaticResource BoolToVis}}">+</TextBlock>
+                                       <!-- <TextBlock  Foreground="{Binding IsDark}" ToolTip="AUX"  Visibility="{Binding IsExtended,Converter={StaticResource BoolToVis}}">+</TextBlock>-->
                                         <TextBlock  Foreground="{Binding IsDark}" ToolTip="MY" Visibility="{Binding IsMine,Converter={StaticResource BoolToVis}}">○</TextBlock>
                                     </StackPanel>
                                     <RadioButton GroupName="{Binding ID}" Foreground="{DynamicResource ItemText}" IsEnabled="False" IsChecked="{Binding IsEnabled}" Margin="27,18,0,0"/>
@@ -218,7 +218,7 @@
                                     <TextBlock FontStyle="Italic" HorizontalAlignment="Right" Foreground="{DynamicResource ItemTextDisabled}" VerticalAlignment="Center"  TextTrimming="CharacterEllipsis">
                                           <Run ToolTip="EXTENSION MIME TYPE">Application/Zip</Run>                                    
                                           <Run  ToolTip="EXTENSION FROM MY LIBRARY" Text="{Binding SelectedFE.IsMine,Converter={StaticResource Mine}}"></Run>                                    
-                                          <Run  ToolTip="EXTENSION FROM AUXILARY LIBRARY"  Text="{Binding SelectedFE.IsExtended,Converter={StaticResource Aux}}"></Run>
+                                       <!--   <Run  ToolTip="EXTENSION FROM AUXILARY LIBRARY"  Text="{Binding SelectedFE.IsExtended,Converter={StaticResource Aux}}"></Run>-->
                                     </TextBlock>
 
 

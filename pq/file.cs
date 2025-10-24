@@ -24,6 +24,6 @@ namespace pq
         public string Name { get; set; }
         public Nullable<bool> IsMine { get; set; }
         public string FullName { get; set; }
-        public string Category { get; set; }
+        public Nullable<int> Category { get; set; }
     }
 }

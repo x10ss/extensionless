@@ -3,27 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|c:\\users\\guvo\\documents\\github\\extensionless\\extensionless\\pq\\fetdetails.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\fetdetails.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_GUVO_DOCUMENTS_GITHUB_EXTENSIONLESS_EXTENSIONLESS_PQ_X10SS.MDF/True/SqlTable/dbo.files.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\helper\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|c:\\users\\guvo\\documents\\github\\extensionless\\extensionless\\pq\\model\\fyletipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\model\\fyletipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|c:\\users\\guvo\\documents\\github\\extensionless\\extensionless\\pq\\helper\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\helper\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\model\\fileextensiontypeenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\model\\fileextensiontypeenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\guvo\\AppData\\Local\\Temp\\0odzemcs..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\model\\mybutt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\model\\mybutt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\model\\extemplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92A809EE-03D1-4B15-8837-B2DCB5A9690F}|pq\\pq.csproj|solutionrelative:pq\\model\\extemplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,11 +21,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dbo.files [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_GUVO_DOCUMENTS_GITHUB_EXTENSIONLESS_EXTENSIONLESS_PQ_X10SS.MDF/True/SqlTable/dbo.files.sql",
+              "ToolTip": "dbo.files [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-10-23T15:42:30.947Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -45,75 +43,49 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FETdetails.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\FETdetails.xaml.cs",
-              "RelativeDocumentMoniker": "pq\\FETdetails.xaml.cs",
-              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\FETdetails.xaml.cs",
-              "RelativeToolTip": "pq\\FETdetails.xaml.cs",
-              "ViewState": "AgIAAH8BAAAAAAAAAAAhwI8BAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T11:15:57.905Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "0odzemcs..sql",
-              "DocumentMoniker": "C:\\Users\\guvo\\AppData\\Local\\Temp\\0odzemcs..sql",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\0odzemcs..sql",
-              "ToolTip": "C:\\Users\\guvo\\AppData\\Local\\Temp\\0odzemcs..sql",
-              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\0odzemcs..sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-10-21T10:54:08.721Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FileExtensionTypeEnum.cs",
-              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Model\\FileExtensionTypeEnum.cs",
-              "RelativeDocumentMoniker": "pq\\Model\\FileExtensionTypeEnum.cs",
-              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Model\\FileExtensionTypeEnum.cs",
-              "RelativeToolTip": "pq\\Model\\FileExtensionTypeEnum.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAD1CwAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T10:55:09.656Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MyButt.cs",
-              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Model\\MyButt.cs",
-              "RelativeDocumentMoniker": "pq\\Model\\MyButt.cs",
-              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Model\\MyButt.cs",
-              "RelativeToolTip": "pq\\Model\\MyButt.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T10:55:08.776Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ExTemplate.cs",
-              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Model\\ExTemplate.cs",
-              "RelativeDocumentMoniker": "pq\\Model\\ExTemplate.cs",
-              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Model\\ExTemplate.cs",
-              "RelativeToolTip": "pq\\Model\\ExTemplate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T10:55:06.399Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Helper.cs",
               "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Helper\\Helper.cs",
               "RelativeDocumentMoniker": "pq\\Helper\\Helper.cs",
               "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Helper\\Helper.cs",
               "RelativeToolTip": "pq\\Helper\\Helper.cs",
-              "ViewState": "AgIAAH4FAAAAAAAAAAAhwI8FAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAJcBAAAAAAAAAAAQwLABAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T06:18:57.628Z",
+              "WhenOpened": "2025-10-23T14:44:44.499Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "d3f1aa23-b817-4c91-b596-c5299a386792",
+        "Display": 1,
+        "X": 872,
+        "Y": 67,
+        "Width": 616,
+        "Height": 695,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FyleTipe.cs",
+              "DocumentMoniker": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Model\\FyleTipe.cs",
+              "RelativeDocumentMoniker": "pq\\Model\\FyleTipe.cs",
+              "ToolTip": "C:\\Users\\guvo\\Documents\\GitHub\\Extensionless\\extensionless\\pq\\Model\\FyleTipe.cs",
+              "RelativeToolTip": "pq\\Model\\FyleTipe.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T14:51:43.009Z",
               "EditorCaption": ""
             }
           ]

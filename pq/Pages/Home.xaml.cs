@@ -63,8 +63,8 @@ namespace pq.Pages
             Slajda.Maximum = Helper.Helper.LEX.Count;
             //  ModernDialog.ShowMessage(Helper.Helper.GetGuid(), "home", MessageBoxButton.OK);
             // ModernDialog.ShowMessage(Helper.Helper.GetExPro(), "home", MessageBoxButton.OK);
-
-
+            system_reg.Checked += RadioButton_Checked_1;
+            user_reg.Checked += RadioButton_Checked;
 
         }       /*   private async void LoadContentLoader()
                {
@@ -398,7 +398,7 @@ namespace pq.Pages
         }
         private void IsMachine_Checked(object sender, RoutedEventArgs e)
         {
-            Helper.Helper.RegBase = Registry.ClassesRoot;
+            Helper.Helper.RegBase = Registry.LocalMachine.OpenSubKey("Software").OpenSubKey("Classes", true); 
                ReReg(null,null);
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -419,6 +419,18 @@ namespace pq.Pages
 
             //    (fel.Parent as FrameworkElement).Visibility = Visibility.Collapsed;
 
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            Helper.Helper.RegBase = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Classes", true);
+            ReReg(null, null);
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            Helper.Helper.RegBase = Registry.LocalMachine.OpenSubKey("Software").OpenSubKey("Classes", true);
+            ReReg(null, null);
         }
     }
 }

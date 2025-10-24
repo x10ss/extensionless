@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c23c1623c33d45518027dfc524318dc1" Name="Diagram1">
-        <EntityTypeShape EntityType="ex10sionlessModel.x10ss" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ex10sionlessModel.file" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ex10sionlessModel.file" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ex10sionlessModel.x10ss" Width="1.5" PointX="2.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

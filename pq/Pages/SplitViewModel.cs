@@ -228,14 +228,14 @@ namespace pq.Pages
             OnPropertyChanged("SelectedFE");
             if (Flee == -1)
             {
-                return FEIs = Helper.Helper.GetFeteAll().Where(x => x.Name.StartsWith("." + token.ToUpper()) | x.FullName.ToUpper().Contains(Searchit.ToUpper()) || x.FEMTE.ToString().ToUpper().Contains(Searchit.ToUpper()) || x.FT.ToString().ToUpper().Contains(Searchit.ToUpper())).ToList();
+                return FEIs = Helper.Helper.GetFeteAll().Where(x => x.Name.StartsWith( token.ToUpper()) | x.FullName.ToUpper().Contains(Searchit.ToUpper()) || x.FEMTE.ToString().ToUpper().Contains(Searchit.ToUpper()) || x.FT.ToString().ToUpper().Contains(Searchit.ToUpper())).ToList();
             }
             else if (Flee == 6)
             {
-                return FEIs = Helper.Helper.GetFetePicks().Where(x => x.Name.StartsWith("." + token.ToUpper()) || x.FullName.ToUpper().Contains(Searchit.ToUpper()) || x.FEMTE.ToString().ToUpper().Contains(Searchit.ToUpper()) || x.FT.ToString().ToUpper().Contains(Searchit.ToUpper())).ToList();
+                return FEIs = Helper.Helper.GetFetePicks().Where(x => x.Name.StartsWith( token.ToUpper()) || x.FullName.ToUpper().Contains(Searchit.ToUpper()) || x.FEMTE.ToString().ToUpper().Contains(Searchit.ToUpper()) || x.FT.ToString().ToUpper().Contains(Searchit.ToUpper())).ToList();
             }
             else
-                return FEIs = Helper.Helper.GetFeteByFyle(Flee).Where(x => x.Name.StartsWith("." + token.ToUpper()) || x.FullName.ToUpper().Contains(Searchit.ToUpper()) || x.FEMTE.ToString().ToUpper().Contains(Searchit.ToUpper()) || x.FT.ToString().ToUpper().Contains(Searchit.ToUpper())).ToList();
+                return FEIs = Helper.Helper.GetFeteByFyle(Flee).Where(x => x.Name.StartsWith( token.ToUpper()) || x.FullName.ToUpper().Contains(Searchit.ToUpper()) || x.FEMTE.ToString().ToUpper().Contains(Searchit.ToUpper()) || x.FT.ToString().ToUpper().Contains(Searchit.ToUpper())).ToList();
 
 
         }

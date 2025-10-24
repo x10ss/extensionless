@@ -19,7 +19,7 @@
           <Property Name="Name" Type="varchar" MaxLength="20" />
           <Property Name="IsMine" Type="bit" />
           <Property Name="FullName" Type="varchar" MaxLength="50" />
-          <Property Name="Category" Type="varchar" MaxLength="20" />
+          <Property Name="Category" Type="int" />
         </EntityType>
         <EntityType Name="x10ss">
           <Key>
@@ -46,6 +46,26 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ex10sionlessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ex10sionlessEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="files" EntityType="ex10sionlessModel.file" />
+          <EntitySet Name="x10ss" EntityType="ex10sionlessModel.x10ss" />
+        </EntityContainer>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IsUsed" Type="Boolean" />
+          <Property Name="IsTemplated" Type="Boolean" />
+          <Property Name="TemplatePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsBinary" Type="Boolean" />
+          <Property Name="IsOpen" Type="Boolean" />
+          <Property Name="SwitchDate" Type="DateTime" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsMine" Type="Boolean" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="Int32" />
+        </EntityType>
         <EntityType Name="x10ss">
           <Key>
             <PropertyRef Name="Id" />
@@ -63,50 +83,12 @@
           <Property Name="FileList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="WindowsUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="ex10sionlessEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="x10ss" EntityType="Self.x10ss" />
-          <EntitySet Name="files" EntityType="ex10sionlessModel.file" />
-        </EntityContainer>
-        <EntityType Name="file">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IsUsed" Type="Boolean" />
-          <Property Name="IsTemplated" Type="Boolean" />
-          <Property Name="TemplatePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsBinary" Type="Boolean" />
-          <Property Name="IsOpen" Type="Boolean" />
-          <Property Name="SwitchDate" Type="DateTime" Precision="3" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="IsMine" Type="Boolean" />
-          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ex10sionlessModelStoreContainer" CdmEntityContainer="ex10sionlessEntities">
-          <EntitySetMapping Name="x10ss">
-            <EntityTypeMapping TypeName="ex10sionlessModel.x10ss">
-              <MappingFragment StoreEntitySet="x10ss">
-                <ScalarProperty Name="WindowsUsername" ColumnName="WindowsUsername" />
-                <ScalarProperty Name="FileList" ColumnName="FileList" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="DonationURL" ColumnName="DonationURL" />
-                <ScalarProperty Name="Sound" ColumnName="Sound" />
-                <ScalarProperty Name="Theme" ColumnName="Theme" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="ExtensionlessID" ColumnName="ExtensionlessID" />
-                <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="files">
             <EntityTypeMapping TypeName="ex10sionlessModel.file">
               <MappingFragment StoreEntitySet="files">
@@ -120,6 +102,24 @@
                 <ScalarProperty Name="TemplatePath" ColumnName="TemplatePath" />
                 <ScalarProperty Name="IsTemplated" ColumnName="IsTemplated" />
                 <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="x10ss">
+            <EntityTypeMapping TypeName="ex10sionlessModel.x10ss">
+              <MappingFragment StoreEntitySet="x10ss">
+                <ScalarProperty Name="WindowsUsername" ColumnName="WindowsUsername" />
+                <ScalarProperty Name="FileList" ColumnName="FileList" />
+                <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+                <ScalarProperty Name="ExtensionlessID" ColumnName="ExtensionlessID" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="Sound" ColumnName="Sound" />
+                <ScalarProperty Name="DonationURL" ColumnName="DonationURL" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
