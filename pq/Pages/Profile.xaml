@@ -136,11 +136,11 @@
                                         <StackPanel HorizontalAlignment="Center" Margin="2"/>
 
                                         <StackPanel HorizontalAlignment="Center" Margin="2"/>
-
+                                        <TextBlock x:Name="PackPath"/>
                                     </StackPanel>
                                     <StackPanel Margin="0,0,0,15" Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
 
-
+                                       
                                         <TextBlock>
                             <Run MouseDown="TextBlock_MouseLeftButtonDown" Foreground="{Binding BorderColor2}" FontWeight="Bold" Text="{Binding Username}"></Run>
                             <Run FontStyle="Italic" Text="template pack"></Run>

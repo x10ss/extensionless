@@ -39,8 +39,9 @@
 
         <mui:LinkGroup DisplayName="Catalog">
             <mui:LinkGroup.Links>
-                <mui:Link DisplayName="| Quickstart |" Source="/Pages/Templates.xaml" />
                 <mui:Link DisplayName="| Community Exhibition |" Source="/Pages/UserTemplates.xaml" />
+                <mui:Link DisplayName="| Quickstart |" Source="/Pages/Templates.xaml" />
+               
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <!--<mui:LinkGroup DisplayName="Utility">

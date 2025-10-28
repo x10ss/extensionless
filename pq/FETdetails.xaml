@@ -40,7 +40,7 @@
         <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" />
         <CommandBinding Command="ApplicationCommands.Delete" Executed="NewCommand_Executed2" CanExecute="NewCommand_CanExecute2" />
     </UserControl.CommandBindings>
-    <UserControl.ContextMenu>
+ <!--   <UserControl.ContextMenu>
         <ContextMenu>
             <MenuItem Header="ADD KEY"  Foreground="LightGreen" Background="ForestGreen">
                 <MenuItem.Icon>
@@ -98,7 +98,7 @@
 
         </ContextMenu>
 
-    </UserControl.ContextMenu>
+    </UserControl.ContextMenu>-->
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -115,7 +115,8 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox VerticalAlignment="Top" x:Name="Searchit" Grid.Row="0" HorizontalAlignment="Stretch" ToolTip="Search" Margin="5" KeyUp="TextBox_KeyUp"></TextBox>
+            <TextBox TextChanged="Searchit_TextChanged" VerticalAlignment="Top" x:Name="Searchit" Grid.Row="0" HorizontalAlignment="Stretch" ToolTip="Search" Margin="5" KeyUp="TextBox_KeyUp"></TextBox>
+            <TextBlock x:Name="PlaceholderText" Text="search..." Foreground="Gray" Margin="12,0,0,0" IsHitTestVisible="False" VerticalAlignment="Center" Visibility="Visible"/>
             <mui:ModernProgressRing Visibility="{Binding IsLoading,Converter={StaticResource BoolToVis}}" Style="{StaticResource WaveProgressRingStyle}" Grid.Row="1" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"></mui:ModernProgressRing>
             <ListBox Visibility="{Binding IsLoading,Converter={StaticResource InvBoolToVis}}" PreviewKeyDown="Board_PreviewKeyDown" x:Name="Board" SelectionMode="Extended" VerticalAlignment="Top" SizeChanged="Gridlock" Grid.Row="1" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListBox_Selected" ItemsSource="{Binding FEIs}"
                          SelectedItem="{Binding SelectedFE}">

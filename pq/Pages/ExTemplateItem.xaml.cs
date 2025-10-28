@@ -44,7 +44,9 @@ namespace pq.Pages
         {
             InitializeComponent();
             DataContext = this;
-
+            ExTemplate et = Helper.Helper.Tmpl[0];
+            UsernameTxt.Text = et.Username.ToUpper();
+            RatingTxt.Text = et.Rating.ToString();
         }
 
         
@@ -76,7 +78,7 @@ namespace pq.Pages
 
             Grid g = (Parent as FrameworkElement).Parent as Grid;
             int ind = ((((g).Children[0] as ListBox).SelectedIndex));
-            ExTemplate et = Helper.Helper.Tmpl[ind - 1];
+            ExTemplate et = Helper.Helper.Tmpl[ind];
             UsernameTxt.Text = et.Username.ToUpper();
             RatingTxt.Text = et.Rating.ToString();
 
@@ -132,7 +134,7 @@ namespace pq.Pages
 
             Grid g = (Parent as FrameworkElement).Parent as Grid;
             int ind = ((((g).Children[0] as ListBox).SelectedIndex));
-            ExTemplate et = Helper.Helper.Tmpl[ind - 1];
+            ExTemplate et = Helper.Helper.Tmpl[ind];
             
             string query2 = "SELECT ForID FROM ratings WHERE FromID='" + IsUserSynched + "';";
 

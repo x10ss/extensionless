@@ -170,10 +170,22 @@ namespace pq.Helper
 
 
         //}
+        public static string ExProID { get; set; }
         public static string GetGuid()
         {
-                    return Guid.NewGuid().ToString();
+            using (var ent = new ex10sionlessEntities())
+            {
+                ExProID = ent.x10ss.Where(x => x.WindowsUsername == Environment.UserName).FirstOrDefault().ExtensionlessID;
+                if (!string.IsNullOrEmpty(ExProID))
+                    return ExProID;
+            }
+            ExProID =new Guid().ToString();
+
+            return ExProID;
+            
+  
         }
+        
         public static RegistryKey RegBase { get; set; }
         public static string Username { get { return Environment.UserName; } }
         public static SplitViewModel svm { get; set; }
@@ -190,10 +202,10 @@ namespace pq.Helper
         public static LinkCollection GetTmplLinks()
         {
             LinkCollection lc = new LinkCollection();
-            Link l0 = new Link();
-            l0.DisplayName = "- Community -";
-            l0.Source = new Uri("/Pages/UTemplatePack.xaml", UriKind.RelativeOrAbsolute);
-            lc.Add(l0);
+            //Link l0 = new Link();
+            //l0.DisplayName = "- Community -";
+            //l0.Source = new Uri("/Pages/UTemplatePack.xaml", UriKind.RelativeOrAbsolute);
+            //lc.Add(l0);
             for (int i = 0; i < Tmpl.Count; i++)
             {
                 Link l = new Link();
@@ -422,13 +434,13 @@ namespace pq.Helper
                     String name = ex.Name;
                     bool isEnabled;
 
-                    isEnabled = GetRegKeyBool(name == "EXTENSIONLESS" ? "" : name);
+                    isEnabled = GetRegKeyBool(name);
 
                     System.Enum.TryParse(name, out FileExtensionTypeEnum fete);
                     string tmplID;
                     if (isEnabled)
                     {
-                        tmplID = GetTemplateID(name == "EXTENSIONLESS" ? "" : name);
+                        tmplID = GetTemplateID(name);
                     }
                     else
                     {
@@ -815,8 +827,8 @@ namespace pq.Helper
                                     {
                                         //RegistryKey newrkey = rkey.CreateSubKey("." + name);
                                         winLogonKey.SetValue("", name);
-                                        winLogonKey.SetValue("PerceivedType", "text");
-                                        winLogonKey.SetValue("ContentType", "text/plain");
+                                       // winLogonKey.SetValue("PerceivedType", "text");
+                                      //  winLogonKey.SetValue("ContentType", "text/plain");
                                         RegistryKey sn = winLogonKey.CreateSubKey("ShellNew", true);
                                         sn.SetValue("NullFile", "");
                                         RegistryKey newestrkey = rkey.CreateSubKey(name, true);
@@ -2261,7 +2273,7 @@ namespace pq.Helper
             }
             catch (Exception bazatemplajt)
             {
-                  //ModernDialog.ShowMessage(bazatemplajt.Message, "bazatemplajt", MessageBoxButton.OK);
+                  ModernDialog.ShowMessage(bazatemplajt.Message, "bazatemplajt", MessageBoxButton.OK);
             }
 
         }

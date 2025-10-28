@@ -3,9 +3,9 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <PublishUrlHistory>C:\Users\guvo\Desktop\pq publish\|ftp://extensionless.com//public_html/download/|fttp://extensionless.com//public_html/download/|fttp://ftp.extensionless.com/public_html/download/|ftp://ftp.extensionless.com/public_html/download/</PublishUrlHistory>
-    <InstallUrlHistory>https://extensionless.com/download/|https://download.extensionless.com/|http://download.extensionless.com/|http://core.extensionless.com/|http://extensionless.com/builds/fayla/</InstallUrlHistory>
+    <InstallUrlHistory>https://download.extensionless.com/|https://extensionless.com/download/|http://download.extensionless.com/|http://core.extensionless.com/|http://extensionless.com/builds/fayla/</InstallUrlHistory>
     <SupportUrlHistory>http://extensionless.com/support|http://support.extensionless.com</SupportUrlHistory>
-    <UpdateUrlHistory>http://download.extensionless.com/|http://core.extensionless.com/|http://extensionless.com/builds/fayla/</UpdateUrlHistory>
+    <UpdateUrlHistory>https://download.extensionless.com/|http://download.extensionless.com/|http://core.extensionless.com/|http://extensionless.com/builds/fayla/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>

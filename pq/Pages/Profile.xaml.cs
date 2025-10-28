@@ -2,16 +2,19 @@
 using FirstFloor.ModernUI.Windows;
 using FirstFloor.ModernUI.Windows.Controls;
 using FirstFloor.ModernUI.Windows.Navigation;
-using System;
-using System.ComponentModel;
-using System.IO;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using MySql.Data.MySqlClient;
+using pq.Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.IO.Compression;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Forms;
+using System.Windows.Media;
 using System.Windows.Threading;
 using ToastNotifications.Messages;
 
@@ -25,7 +28,7 @@ namespace pq.Pages
     /// <summary>
     /// Interaction logic for Profile.xaml
     /// </summary>
-    public partial class Profile : UserControl, IContent, INotifyPropertyChanged
+    public partial class Profile : System.Windows.Controls.UserControl, IContent, INotifyPropertyChanged
     {
 
         private bool issynched;
@@ -43,7 +46,7 @@ namespace pq.Pages
             DirSize.SelectionEnd = DirSize.Value;
             DirSizer.Text = DirSize.Value.ToString("0.00") + " MB";
             Tajmer();
-            PackColor = Application.Current.TryFindResource("Accent") as SolidColorBrush;
+            PackColor = System.Windows.Application.Current.TryFindResource("Accent") as SolidColorBrush;
             tral();
           //  guid.Password = Helper.Helper.GetGuid();
             user.Text = Helper.Helper.Username;
@@ -88,6 +91,8 @@ namespace pq.Pages
                 //    ModernDialog.ShowMessage("klončo", "čembrio", MessageBoxButton.OK);
 
             }
+            var settings = pq.Properties.Settings.Default;
+            PackPath.Text = settings.PackPath;
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -99,7 +104,7 @@ namespace pq.Pages
         {
             try
             {
-                Clipboard.SetText(password.Password);
+                System.Windows.Clipboard.SetText(password.Password);
                 ModernDialog.ShowMessage(password.Password + " Copied to the clipboard", "Copy!", MessageBoxButton.OK);
             }
             catch (Exception)
@@ -212,7 +217,7 @@ namespace pq.Pages
         {
             try
             {
-                Clipboard.SetText(password.Password);
+                System.Windows.Clipboard.SetText(password.Password);
                 ModernDialog.ShowMessage("Password copied to the clipboard", "Copy!", MessageBoxButton.OK);
             }
             catch (Exception)
@@ -357,24 +362,41 @@ namespace pq.Pages
 
         private void Button2_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
-            (Application.Current.MainWindow as MainWindow).notifier.ShowInformation("SHARE started");
-            BackgroundWorker worker2 = new BackgroundWorker();
-
-            worker2.DoWork += DoShare;
-
-            worker2.RunWorkerCompleted += Helper.Helper.DBWorker_RunWorkerCompleted;
-            worker2.RunWorkerAsync();
-
-            BlankDialog bd = new BlankDialog();
-            bd.Owner = Application.Current.MainWindow;
-            Helper.Helper.BD = bd;
-
-            if (bd.ShowDialog() == true)
+            var settings = pq.Properties.Settings.Default;
+            if (!string.IsNullOrEmpty(settings.PackPath))
             {
-                MessageBox.Show("Bravo2");
-            }
+                (System.Windows.Application.Current.MainWindow as MainWindow).notifier.ShowInformation("SHARE started");
+                BackgroundWorker worker2 = new BackgroundWorker();
 
+                worker2.DoWork += DoShare;
+
+                worker2.RunWorkerCompleted += Helper.Helper.DBWorker_RunWorkerCompleted;
+                worker2.RunWorkerAsync();
+
+                BlankDialog bd = new BlankDialog();
+                bd.Owner = System.Windows.Application.Current.MainWindow;
+                Helper.Helper.BD = bd;
+
+                if (bd.ShowDialog() == true)
+                {
+                    System.Windows.MessageBox.Show("Bravo2");
+                }
+            }
+            else
+            {
+                using (var dialog = new FolderBrowserDialog())
+                {
+                    dialog.Description = "Select a folder";
+                    dialog.ShowNewFolderButton = true;
+
+                    if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        string selectedPath = dialog.SelectedPath;
+
+                        settings.PackPath = selectedPath;
+                    }
+                }
+            }
 
 
 
@@ -416,11 +438,11 @@ namespace pq.Pages
                 command.Parameters.Add(exusername);
                 if (command.ExecuteNonQuery() > 0)
                 {
-                    MessageBox.Show("Bravo - 4");
+                    System.Windows.MessageBox.Show("Bravo - 4");
                 }
                 else
                 {
-                    MessageBox.Show("Fail - 5");
+                    System.Windows.MessageBox.Show("Fail - 5");
                 }
                 DBConnection.Close();
 
@@ -475,60 +497,66 @@ namespace pq.Pages
 
         private void OpenF_Click(object sender, RoutedEventArgs e)
         {
-            //    var dbCon = DBConnection.Instance();
-            // if (DBConnection.IsConnect())
-            {
+            var settings = pq.Properties.Settings.Default;
+            string folderPath = settings.PackPath;
+            Process.Start("explorer.exe", folderPath);
+        }
+        //private void OpenF_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //    var dbCon = DBConnection.Instance();
+        //    // if (DBConnection.IsConnect())
+        //    {
 
 
-                MySqlDataReader myData;
+        //        MySqlDataReader myData;
 
-                byte[] rawData;
-                UInt32 FileSize;
+        //        byte[] rawData;
+        //        UInt32 FileSize;
 
-                string SQL = "select BoilerplateZip,ZipSize from boilpack where ExProID='" + Helper.Helper.GetGuid() + "'and'";
-                var cmd = new MySqlCommand();
+        //        string SQL = "select BoilerplateZip,ZipSize from boilpack where ExProID='" + Helper.Helper.GetGuid()+"'";
+        //        var cmd = new MySqlCommand();
 
-                try
-                {
-                    cmd.Connection = DBConnection.Connection;
-                    cmd.CommandText = SQL;
+        //        try
+        //        {
+        //            cmd.Connection = DBConnection.Connection;
+        //            cmd.CommandText = SQL;
 
-                    myData = cmd.ExecuteReader();
+        //            myData = cmd.ExecuteReader();
 
-                    if (!myData.HasRows)
-                        throw new Exception("There are no blobs to save");
+        //            if (!myData.HasRows)
+        //                throw new Exception("There are no blobs to save");
 
-                    myData.Read();
+        //            myData.Read();
 
-                    FileSize = myData.GetUInt32(myData.GetOrdinal("ZipSize"));
-                    rawData = new byte[FileSize];
+        //            FileSize = myData.GetUInt32(myData.GetOrdinal("ZipSize"));
+        //            rawData = new byte[FileSize];
 
-                    myData.GetBytes(myData.GetOrdinal("BoilerplateZip"), 0, rawData, 0, (Int32)FileSize);
+        //            myData.GetBytes(myData.GetOrdinal("BoilerplateZip"), 0, rawData, 0, (Int32)FileSize);
 
-                    using (Stream file = File.OpenWrite(@"c:\abc\here.zip"))
-                    {
-                        if (rawData != null)
-                        {
-                            file.Write(rawData, 0, rawData.Length);
-                        }
+        //            using (Stream file = File.OpenWrite(@"c:\abc\here.zip"))
+        //            {
+        //                if (rawData != null)
+        //                {
+        //                    file.Write(rawData, 0, rawData.Length);
+        //                }
 
-                    }
+        //            }
 
-                    myData.Close();
-                    myData.Dispose();
+        //            myData.Close();
+        //            myData.Dispose();
 
-                    cmd.Dispose();
+        //            cmd.Dispose();
 
-                    DBConnection.Close();
+        //            DBConnection.Close();
 
 
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+        //        }
+        //        catch (MySqlException ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //        }
 
-            }
+        //    }
 
 
 
@@ -554,7 +582,7 @@ namespace pq.Pages
                  dbCon.Close();
              }*/
 
-        }
+        //}
 
 
         private void StackPanel_MouseDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)

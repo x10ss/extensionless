@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 

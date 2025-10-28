@@ -13,13 +13,13 @@
     <AssemblyName>pq</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <PublishUrl>C:\Users\guvo\Desktop\pq publish\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -27,15 +27,16 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>https://extensionless.com/download/</UpdateUrl>
+    <InstallUrl>https://download.extensionless.com/</InstallUrl>
+    <UpdateUrl>https://download.extensionless.com/</UpdateUrl>
     <SupportUrl>http://extensionless.com/support</SupportUrl>
     <TargetCulture>en-GB</TargetCulture>
     <ProductName>Extensionless</ProductName>
     <PublisherName>extensionless</PublisherName>
     <MinimumRequiredVersion>1.0.0.10</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationRevision>58</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -471,6 +472,11 @@
     </Compile>
     <Compile Include="Pages\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Resources\Resources\HLResources.cs" />
     <Compile Include="x10ss.cs">
@@ -935,6 +941,10 @@
     </None>
     <None Include="packages.config" />
     <None Include="pq_9_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\Resources\Light\AS3.xshd" />
     <None Include="Resources\Resources\Light\ASPX.xshd" />
     <None Include="Resources\Resources\Light\Boo.xshd" />
@@ -997,11 +1007,11 @@
     </Content>
     <Content Include="tanji.ico" />
     <Content Include="x10ss.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="x10ss_log.ldf">
       <DependentUpon>x10ss.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\Copy.png" />
     <Resource Include="Images\Cut.png" />

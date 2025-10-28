@@ -1,4 +1,5 @@
-﻿using FirstFloor.ModernUI.Windows;
+﻿using FirstFloor.ModernUI.Presentation;
+using FirstFloor.ModernUI.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 
@@ -12,7 +13,8 @@ namespace pq.Pages.Settings
         public Appearance()
         {
             InitializeComponent();
-
+            var settings = pq.Properties.Settings.Default;
+            folder.Content = settings.PackPath;
             // create and assign the appearance view model
             this.DataContext = new AppearanceViewModel();
         }
@@ -45,6 +47,9 @@ namespace pq.Pages.Settings
                 {
                     string selectedPath = dialog.SelectedPath;
                     folder.Content = selectedPath;
+
+                    var settings = pq.Properties.Settings.Default;
+                    settings.PackPath = selectedPath;
                 }
             }
         }

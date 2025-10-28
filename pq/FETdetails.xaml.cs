@@ -102,6 +102,7 @@ namespace pq
             ContentPresenter cp = new ContentPresenter();
             Canvas c = Application.Current.TryFindResource("appbar_layer_arrange_bringforward") as Canvas;
             cp.Content = c;
+            
             md.Content = cp;
             bool bl = (bool)md.ShowDialog();
             if (bl)
@@ -785,5 +786,10 @@ namespace pq
             }
         }
 
+        private void Searchit_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PlaceholderText.Visibility =
+             string.IsNullOrEmpty(Searchit.Text) ? Visibility.Visible : Visibility.Hidden;
+        }
     }
 }

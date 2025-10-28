@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Name="g1" Style="{StaticResource ContentRoot}">
         <!-- TODO: set @SelectedSource -->
-        <mui:ModernTab Layout="List" x:Name="ListLinksList" >
+        <mui:ModernTab  Layout="List" x:Name="ListLinksList" >
             <!--    <mui:ModernTab.Links x:Uid="sdsds">
               TODO: set @Source 
                 <mui:Link DisplayName="Item 2" Source="/Pages/Tab.xaml" />

@@ -8,9 +8,9 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
         <!-- TODO: set @SelectedSource -->
-        <mui:ModernTab SelectedSource="/Pages/TemplatePack.xaml" Layout="List">
+        <mui:ModernTab SelectedSource="/Pages/TemplatePack1.xaml" Layout="List">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="- QUICKSTART -" Source="/Pages/TemplatePack.xaml" />
+               <!-- <mui:Link DisplayName="- QUICKSTART -" Source="/Pages/TemplatePack.xaml" />-->
                 <mui:Link DisplayName="1. BoiL BundLe" Source="/Pages/TemplatePack1.xaml" />
                 <mui:Link DisplayName="2. Code In" Source="/Pages/TemplatePack5.xaml" />
                 <mui:Link DisplayName="3. Scrap Tome" Source="/Pages/TemplatePack8.xaml" />

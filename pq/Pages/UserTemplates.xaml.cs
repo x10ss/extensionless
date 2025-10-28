@@ -1,4 +1,5 @@
-﻿using FirstFloor.ModernUI.Windows;
+﻿using FirstFloor.ModernUI.Presentation;
+using FirstFloor.ModernUI.Windows;
 using FirstFloor.ModernUI.Windows.Controls;
 using System.Windows.Controls;
 
@@ -15,8 +16,10 @@ namespace pq.Pages
         {
             InitializeComponent();
             mt = ListLinksList;
-            mt.SelectedSource = new System.Uri("/Pages/UTemplatePack.xaml", System.UriKind.Relative);
+            mt.SelectedSource = new System.Uri("/Pages/ExTemplateItem.xaml", System.UriKind.Relative);
 
+            LinkCollection lc = Helper.Helper.GetTmplLinks();
+            UserTemplates.mt.Links = lc;
 
 
         }

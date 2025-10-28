@@ -1,9 +1,11 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Presentation;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Security.Principal;
 using System.Windows;
+using System.Windows.Media;
 
 namespace pq
 {
@@ -24,6 +26,32 @@ namespace pq
             }
 
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDir);
+
+            var settings = pq.Properties.Settings.Default;
+
+            // Load theme
+            AppearanceManager.Current.ThemeSource = new Uri(settings.ThemeSource, UriKind.RelativeOrAbsolute);
+
+            // Load accent color from string
+            if (!string.IsNullOrWhiteSpace(settings.AccentColor))
+            {
+                var color = (Color)ColorConverter.ConvertFromString(settings.AccentColor);
+                AppearanceManager.Current.AccentColor = color;
+            }
+
+
+
+            // Optional: auto-save on changes
+            AppearanceManager.Current.PropertyChanged += (s, ev) =>
+            {
+                if (ev.PropertyName == nameof(AppearanceManager.Current.ThemeSource))
+                    settings.ThemeSource = AppearanceManager.Current.ThemeSource.ToString();
+
+                if (ev.PropertyName == nameof(AppearanceManager.Current.AccentColor))
+                    settings.AccentColor = AppearanceManager.Current.AccentColor.ToString();
+
+                settings.Save();
+            };
         }
         public App()
         {
@@ -56,6 +84,11 @@ namespace pq
             var wp = new WindowsPrincipal(wi);
 
             return wp.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            pq.Properties.Settings.Default.Save();
         }
     }
 }

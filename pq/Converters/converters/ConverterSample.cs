@@ -175,8 +175,8 @@ namespace pq.MyConverters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return ((decimal)(decimal.Parse(value.ToString()) * 100 / 125)).ToString("0.##");
-
+            if (Helper.Helper.LEX != null) return ((decimal)(decimal.Parse(value.ToString()) * 100 / Helper.Helper.LEX.Count)).ToString("0.##");
+            else return 0.00f;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

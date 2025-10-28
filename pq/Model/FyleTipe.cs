@@ -9,11 +9,11 @@
     public enum FyleTipe
     {
         Code,
-       Document,
-       Media,
+        Document,
+        Media,
         Data,
         Misc,
-         Games,
+        Games,
         Enabled,
         Binary,
         No_File_Type,

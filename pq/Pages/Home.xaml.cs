@@ -61,6 +61,9 @@ namespace pq.Pages
             MyInit();
             Helper.Helper.MyHome = this;
             Slajda.Maximum = Helper.Helper.LEX.Count;
+            Slajda2.Maximum = Helper.Helper.LEX.Count;
+            Slajda3.Maximum = Helper.Helper.LEX.Count;
+            Slajda4.Maximum = Helper.Helper.LEX.Count;
             //  ModernDialog.ShowMessage(Helper.Helper.GetGuid(), "home", MessageBoxButton.OK);
             // ModernDialog.ShowMessage(Helper.Helper.GetExPro(), "home", MessageBoxButton.OK);
             system_reg.Checked += RadioButton_Checked_1;
