@@ -14,7 +14,6 @@ namespace pq
     
     public partial class file
     {
-        public int Id { get; set; }
         public Nullable<bool> IsUsed { get; set; }
         public Nullable<bool> IsTemplated { get; set; }
         public string TemplatePath { get; set; }
@@ -25,5 +24,6 @@ namespace pq
         public Nullable<bool> IsMine { get; set; }
         public string FullName { get; set; }
         public Nullable<int> Category { get; set; }
+        public int ID { get; set; }
     }
 }

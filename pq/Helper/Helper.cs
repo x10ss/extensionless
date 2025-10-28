@@ -415,7 +415,7 @@ namespace pq.Helper
                     return 0;
                 }
 
-                return ex.Id;
+                return ex.ID;
             }
         }
         public static void getall(object sender, DoWorkEventArgs e)
@@ -470,7 +470,7 @@ namespace pq.Helper
 
                     FileExtensionItem fe = new FileExtensionItem()
                     {
-                        ID = ex.Id,
+                        ID = ex.ID,
                         Name = name,
                         FullName = GetFullNameByFETE(fete),
                         IsEnabled = isEnabled,
